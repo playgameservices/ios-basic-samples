@@ -57,6 +57,10 @@
 @property (nonatomic, strong) NSArray *levelButtons;
 @end
 
+
+static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn";
+static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
+
 @implementation GCATViewController
 
 # pragma mark - Sign-in functions
@@ -88,7 +92,14 @@
     // Tell your GPGManager that you're ready to go.
     [self startGoogleGamesSignIn];
   } else {
-    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@",error,auth);
+    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@", [error localizedDescription],
+          auth);
+    if ([error code] == kErrorCodeFromUserDecliningSignIn) {
+      // This error code is actually pretty vague, but we can generally assume it's because
+      // the user clicked cancel. Let's to the right thing and remember this choice.
+      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDeclinedGooglePreviously];
+      [[NSUserDefaults standardUserDefaults] synchronize];
+    }
   }
   
  
@@ -289,8 +300,19 @@
   signIn.delegate = self;
   signIn.shouldFetchGoogleUserID =YES;
 
-  
   self.currentlySigningIn = [signIn trySilentAuthentication];
+
+  if (!self.currentlySigningIn) {
+    // Have we tried signing the user in before?
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kDeclinedGooglePreviously]) {
+      // They've said no previously. Let's just show the sign in button
+    } else {
+      // In this case, we will just send the user to a sign-in screen right away.
+      // You may want to show an alert or bring up a button instead, depending on your situation.
+      [[GPPSignIn sharedInstance] authenticate];
+    }
+  }
+
 }
 
 
