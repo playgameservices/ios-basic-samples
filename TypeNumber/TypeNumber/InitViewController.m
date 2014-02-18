@@ -180,6 +180,17 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   
 }
 
+- (IBAction)testAdminButtonClicked:(UIButton *)sender {
+  [GPGAchievement resetAllAchievementsWithCompletionHandler:^(NSError *error) {
+    if (error) {
+      NSLog(@"***ERROR resetting achievements: %@ ***", [error localizedDescription]);
+    } else {
+      NSLog(@"Done! Restart the app to view your new data");
+    }
+  }];
+
+}
+
 - (IBAction)peopleListButtonClicked:(UIButton *)sender {
   // Nothing to do here, really...
 }
