@@ -133,13 +133,15 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyF-jj-f8B">
-                                <rect key="frame" x="124" y="200" width="72" height="30"/>
+                                <rect key="frame" x="145" y="518" width="44" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="AdminTest">
+                                <state key="normal" title="Admin">
+                                    <color key="titleColor" red="1" green="0.14861158830000001" blue="0.29029209299999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="testAdminButtonClicked:" destination="fkX-b5-YaU" eventType="touchUpInside" id="ldF-ic-m4Q"/>
+                                    <segue destination="A4p-lW-6Ee" kind="push" id="KX2-z2-zJi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -148,6 +150,7 @@
                     <navigationItem key="navigationItem" id="YBd-Mn-4Xj"/>
                     <connections>
                         <outlet property="achButton" destination="b0m-9e-X4g" id="2cI-JS-pxx"/>
+                        <outlet property="adminButton" destination="wyF-jj-f8B" id="Zmv-yZ-3Jn"/>
                         <outlet property="easyButton" destination="PRV-AU-Nm8" id="SLu-PX-rWd"/>
                         <outlet property="gameIcons" destination="U2f-c7-Mes" id="hZg-RU-ycC"/>
                         <outlet property="hardButton" destination="Mww-Nm-HKb" id="RVC-10-9Oh"/>
@@ -162,6 +165,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oCS-w1-zPC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1535" y="257"/>
+        </scene>
+        <!--Admin View Controller-->
+        <scene sceneID="k30-KG-xtR">
+            <objects>
+                <viewController id="A4p-lW-6Ee" customClass="AdminViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gJh-8j-xcT"/>
+                        <viewControllerLayoutGuide type="bottom" id="YJw-mq-kSw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cT8-vI-2de">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Management Calls" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHT-jb-OLt">
+                                <rect key="frame" x="70" y="80" width="180" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUQ-JW-h9d">
+                                <rect key="frame" x="79" y="151" width="166" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset My Achievements">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetAllAchievements:" destination="A4p-lW-6Ee" eventType="touchUpInside" id="aep-Rr-oEZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aab-eD-EhJ">
+                                <rect key="frame" x="96" y="213" width="129" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset Score (Easy)">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetEasyLeaderboard:" destination="A4p-lW-6Ee" eventType="touchUpInside" id="pzI-j8-am6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4m-uR-g1h">
+                                <rect key="frame" x="95" y="269" width="130" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reset Score (Hard)">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetHardLeaderboard:" destination="A4p-lW-6Ee" eventType="touchUpInside" id="lVH-Ht-fht"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zU2-ey-sip"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sLC-cz-hy3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1535" y="1001"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qXw-9G-OyF">

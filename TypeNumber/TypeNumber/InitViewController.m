@@ -25,6 +25,7 @@
 
 @interface InitViewController () <GPPSignInDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *achButton;
+@property (weak, nonatomic) IBOutlet UIButton *adminButton;
 @property (weak, nonatomic) IBOutlet UIButton *leadsButton;
 @property (weak, nonatomic) IBOutlet UIButton *easyButton;
 @property (weak, nonatomic) IBOutlet UIButton *hardButton;
@@ -103,7 +104,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   BOOL shouldEnable = [[GPGManager sharedInstance] hasAuthorizer];
   
   NSArray *buttonsToManage = @[self.achButton, self.leadsButton, self.easyButton, self.hardButton,
-                               self.signOutButton, self.peopleListButton];
+                               self.signOutButton, self.peopleListButton, self.adminButton];
   for (UIButton *flipMe in buttonsToManage) {
     flipMe.enabled = shouldEnable;
     flipMe.hidden = ! shouldEnable;

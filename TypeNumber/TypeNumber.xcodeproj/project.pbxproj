@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		493BA8FE18B544E7001E775C /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493BA8FD18B544E7001E775C /* AdminViewController.m */; };
 		49CF0E2818B3D4EB00CEA887 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CF0E2718B3D4EB00CEA887 /* Foundation.framework */; };
 		49CF0E2A18B3D4EB00CEA887 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CF0E2918B3D4EB00CEA887 /* CoreGraphics.framework */; };
 		49CF0E2C18B3D4EB00CEA887 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CF0E2B18B3D4EB00CEA887 /* UIKit.framework */; };
@@ -81,6 +82,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		493BA8FC18B544E7001E775C /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
+		493BA8FD18B544E7001E775C /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
 		49CF0E2418B3D4EB00CEA887 /* TypeNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CF0E2718B3D4EB00CEA887 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49CF0E2918B3D4EB00CEA887 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -260,6 +263,8 @@
 				49CF0E6118B3D55C00CEA887 /* PeopleListTVC.m */,
 				49CF0E3918B3D4EB00CEA887 /* Images.xcassets */,
 				49CF0E2E18B3D4EB00CEA887 /* Supporting Files */,
+				493BA8FC18B544E7001E775C /* AdminViewController.h */,
+				493BA8FD18B544E7001E775C /* AdminViewController.m */,
 			);
 			path = TypeNumber;
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				493BA8FE18B544E7001E775C /* AdminViewController.m in Sources */,
 				49CF0E6718B3D55C00CEA887 /* PeopleListTVC.m in Sources */,
 				49CF0E6418B3D55C00CEA887 /* GameViewController.m in Sources */,
 				49CF0E6218B3D55C00CEA887 /* AchievementManager.m in Sources */,
