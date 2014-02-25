@@ -8,7 +8,7 @@ Google Play game services.
 * **Type-a-Number Challenge**. Demonstrates sign-in, leaderboards, achievements, 
 creating Interactive Posts to brag about one's score, showing a list people in the
 user's circles, and making calls to the  Management API to reset scores or achievements.
-* **Collect All the Stars** . Demonstrates Sign-in and cloud save.
+* **Collect All the Stars**. Demonstrates sign-in and cloud save.
 
 In addition, there is a shared `Libraries` folder that contains all of the 
 frameworks and bundles required to run these applications. Each application 
