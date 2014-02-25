@@ -13,6 +13,11 @@ The Type-a-Number Challenge consists of a number of files that might be of inter
 performed whatever actions are necessary to unlock or make progress towards a
 particular achievement.
 
+* `AdminViewController` contains a few buttons that make calls to the v1Management
+APIs. These allow you to reset leaderboards and achievements. Please note that even
+if your game has been published, these calls can only be made by accounts on the official
+Tester list.
+
 * `AppDelegate` contains some of the code required to handle deep links (i.e.
 challenges).
 
@@ -118,7 +123,5 @@ That's it! Your application should be ready to run!
 
 * Performance in the PeopleListTVC seems rather poor. I think it's something I'm
   doing wrong with loading the players' images.
-* iPad version isn't well designed for tablets.
+* iPad version isn't really designed for tablets. 
 * My art skills have much room for improvement. :)
-
-[![Analytics](https://ga-beacon.appspot.com/UA-46743168-1/playgameservices/type-a-number-ios)](https://github.com/playgameservices/type-a-number-ios)

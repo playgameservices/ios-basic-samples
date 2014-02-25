@@ -85,6 +85,3 @@ That's it! Your application should be ready to run!
 ## Troubleshooting / Known Issues
 
 * This ain't the prettiest game you've ever played.
-
-
-[![Analytics](https://ga-beacon.appspot.com/UA-46743168-1/playgameservices/all-the-stars-ios)](https://github.com/playgameservices/all-the-stars-ios)
