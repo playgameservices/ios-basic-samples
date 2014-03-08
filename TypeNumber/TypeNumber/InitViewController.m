@@ -23,7 +23,7 @@
 #import "GameViewController.h"
 #import "InitViewController.h"
 
-@interface InitViewController () <GPPSignInDelegate>
+@interface InitViewController () <GPPSignInDelegate, GPGStatusDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *achButton;
 @property (weak, nonatomic) IBOutlet UIButton *adminButton;
 @property (weak, nonatomic) IBOutlet UIButton *leadsButton;
@@ -61,6 +61,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   signIn.language = [[NSLocale preferredLanguages] objectAtIndex:0];
   signIn.delegate=self;
   signIn.shouldFetchGoogleUserID =YES;
+  [GPGManager sharedInstance].statusDelegate = self;
 }
 
 -(void)startGoogleGamesSignIn
@@ -74,7 +75,6 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     }
     [[GPPSignIn sharedInstance] authenticate];
   }];
-    [self refreshInterface];
 }
 
 -(void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error
@@ -95,25 +95,35 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
       [[NSUserDefaults standardUserDefaults] synchronize];
     }
   }
+  [self refreshInterface];
 }
 
 
 -(void)refreshInterface
 {
   
-  BOOL shouldEnable = [[GPGManager sharedInstance] hasAuthorizer];
-  
+  BOOL hasAuthToken = [[GPGManager sharedInstance] hasAuthorizer];
+  BOOL gamesSignInComplete = [GPGManager sharedInstance].isSignedIn;
+
+  // We update most of our game interface when game services sign-in is totally complete. In an
+  // actual game, you probably will want to allow basic gameplay even if the user isn't signed
+  // in to Google Play Games.
   NSArray *buttonsToManage = @[self.achButton, self.leadsButton, self.easyButton, self.hardButton,
-                               self.signOutButton, self.peopleListButton, self.adminButton];
+                                self.peopleListButton, self.adminButton];
   for (UIButton *flipMe in buttonsToManage) {
-    flipMe.enabled = shouldEnable;
-    flipMe.hidden = ! shouldEnable;
+    flipMe.enabled = gamesSignInComplete;
+    flipMe.hidden = ! gamesSignInComplete;
   }
   
   [self.signingIn stopAnimating];
-  self.gameIcons.hidden = !shouldEnable;
-  self.signInButton.hidden = (shouldEnable);
-  self.signInButton.enabled = !shouldEnable;
+  self.gameIcons.hidden = !gamesSignInComplete;
+
+  // But we update our sign-in and sign out buttons as soon as we have a valid auth token
+  // (which happens a little bit earlier.)
+  self.signInButton.hidden = (hasAuthToken);
+  self.signInButton.enabled = !hasAuthToken;
+  self.signOutButton.hidden = !hasAuthToken;
+  self.signOutButton.enabled = hasAuthToken;
   AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   
   // This catches the case where we're not signed in, but the service is in the
@@ -129,7 +139,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   
   // This would also be a good time to jump directly into our game
   // if we got here from a deep link
-  if (shouldEnable) {
+  if (gamesSignInComplete) {
     NSDictionary *deepLinkParams = [appDelegate.deepLinkParams copy];
     if (deepLinkParams && [deepLinkParams objectForKey:@"difficulty"]) {
       // So we don't jump muliple times
@@ -141,15 +151,26 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 
 }
 
+- (void)didFinishGamesSignInWithError:(NSError *)error {
+  if (error) {
+    NSLog(@"ERROR during sign in: %@", [error localizedDescription]);
+  }
+  [self refreshInterface];
+}
+
+- (void)didFinishGamesSignOutWithError:(NSError *)error {
+  if (error) {
+    NSLog(@"ERROR during sign out: %@", [error localizedDescription]);
+  }
+  [self refreshInterface];
+}
 
 - (IBAction)signInClicked:(id)sender {
   [[GPPSignIn sharedInstance] authenticate];
 }
 
 - (IBAction)signOutClicked:(id)sender {
-  [[GPGManager sharedInstance] signout];
-  [self refreshInterface];
-  
+  [[GPGManager sharedInstance] signOut];
 }
 
 # pragma mark - Picking difficulty level and transitioning

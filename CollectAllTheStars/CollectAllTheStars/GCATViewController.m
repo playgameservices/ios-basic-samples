@@ -23,7 +23,7 @@
 #import "GCATViewController.h"
 #import "GCATModel.h"
 
-@interface GCATViewController () <GPPSignInDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
+@interface GCATViewController () <GPPSignInDelegate, GPGStatusDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
 @property (nonatomic) BOOL currentlySigningIn;
 @property (nonatomic) int currentWorld;
 @property (nonatomic) int pickerSelectedRow;
@@ -77,7 +77,6 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
                      [[GPPSignIn sharedInstance] authenticate];
                    }];
   
-  [self refreshStarDisplay];
 //  [self loadFromTheCloud];
 
 }
@@ -101,20 +100,36 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
       [[NSUserDefaults standardUserDefaults] synchronize];
     }
   }
-  
- 
   [self refreshButtons];
-  
+}
+
+- (void)didFinishGamesSignInWithError:(NSError *)error {
+  if (error) {
+    NSLog(@"ERROR signing in: %@", [error localizedDescription]);
+  }
+  [self refreshButtons];
+  [self refreshStarDisplay];
+
+}
+
+- (void)didFinishGamesSignOutWithError:(NSError *)error {
+  if (error) {
+    NSLog(@"ERROR signing out: %@", [error localizedDescription]);
+  }
+  [self refreshButtons];
 }
 
 // Refresh our buttons depending on whether or not the user has signed in to
 // Play Games
 -(void)refreshButtons
 {
-  BOOL signedIn = [[GPGManager sharedInstance] hasAuthorizer];
-  self.signInButton.hidden = signedIn;
-  self.signInLabel.hidden = signedIn;
-  self.signOutButton.hidden = !signedIn;
+  BOOL haveAuthToken = [[GPGManager sharedInstance] hasAuthorizer];
+  self.signInButton.hidden = haveAuthToken;
+  self.signInLabel.hidden = haveAuthToken;
+  self.signOutButton.hidden = !haveAuthToken;
+
+
+  BOOL signedIn = [[GPGManager sharedInstance] isSignedIn];
   for (UIButton *hideMe in self.levelButtons) {
     hideMe.hidden = !signedIn;
   }
@@ -143,9 +158,10 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 }
 
 - (IBAction)signOutWasPressed:(id)sender {
-  [[GPGManager sharedInstance] signout];
-  [self refreshButtons];
+  [[GPGManager sharedInstance] signOut];
 }
+
+
 
 # pragma mark - Actual game stuff
 
@@ -300,6 +316,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   signIn.delegate = self;
   signIn.shouldFetchGoogleUserID =YES;
 
+  [GPGManager sharedInstance].statusDelegate = self;
   self.currentlySigningIn = [signIn trySilentAuthentication];
 
   if (!self.currentlySigningIn) {
