@@ -44,6 +44,7 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
 @property (nonatomic) GPGTurnBasedMatch *matchToTransfer;
 @property (nonatomic) GPGTurnBasedMatch *matchFromNotification;
 @property (nonatomic) LobbyAlertViewType lobbyAlertType;
+@property (nonatomic) BOOL justCameFromMatchVC;
 @end
 
 static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn";
@@ -69,7 +70,8 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   // Register for push notifications
   NSLog(@"Registering for push notifications");
   [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert)];
+   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert |
+    UIRemoteNotificationTypeSound)];
 }
 
 - (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error {
@@ -172,6 +174,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   GPGTurnBasedMatchViewController *matchViewController =
       [[GPGTurnBasedMatchViewController alloc] init];
   matchViewController.matchDelegate = self;
+  self.justCameFromMatchVC = YES;
   [self presentViewController:matchViewController animated:YES completion:nil];
 }
 
@@ -223,27 +226,41 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-// TODO: If I got here from a push notification, then yes, I probably need a full reload.
-// Otherwise, I can just get turnbased.allMatches directly.
+
+- (void)updateNumberOfGamesNeedingAttention {
+  NSInteger invitedGamesCount = [[GPGManager sharedInstance].applicationModel.turnBased
+                                 matchesForUserMatchStatus:GPGTurnBasedUserMatchStatusInvited].count;
+  NSInteger myTurnGamesCount = [[GPGManager sharedInstance].applicationModel.turnBased
+                                matchesForUserMatchStatus:GPGTurnBasedUserMatchStatusTurn].count;
+  NSInteger gamesToRespondTo = invitedGamesCount + myTurnGamesCount;
+
+  NSString *buttonText;
+  if (gamesToRespondTo > 0) {
+    buttonText = [NSString stringWithFormat:@"All my matches (%ld)", (long) gamesToRespondTo];
+  } else {
+    buttonText = @"All my matches";
+  }
+  // If this were a real app, I might use a library to add a nice badge to my button instead.
+  [self.viewMyMatchesButton setTitle:buttonText forState:UIControlStateNormal];
+
+}
 
 - (void)refreshPendingGames {
-  [[GPGManager sharedInstance].applicationModel reloadDataForKey:GPGModelAllMatchesKey completionHandler:^(NSError *error) {
-    // TODO: I could also get allMatchesForUserMatchStatus, add the two list lengths, and I'm done!
-    NSInteger invitedGamesCount = [[GPGManager sharedInstance].applicationModel.turnBased
-        matchesForUserMatchStatus:GPGTurnBasedUserMatchStatusInvited].count;
-    NSInteger myTurnGamesCount = [[GPGManager sharedInstance].applicationModel.turnBased
-        matchesForUserMatchStatus:GPGTurnBasedUserMatchStatusTurn].count;
-    NSInteger gamesToRespondTo = invitedGamesCount + myTurnGamesCount;
+  NSLog(@"Refreshing my pending games");
+  // If we just came from our TurnBasedMatchViewController, it might be safer to reload this
+  // data when refreshing. However, if we just got here from our TBMVC, all that data has
+  // just been loaded, and the reloadDataForKey step is unnecessary.
 
-    NSString *buttonText;
-    if (gamesToRespondTo > 0) {
-      buttonText = [NSString stringWithFormat:@"All my matches (%ld)", (long) gamesToRespondTo];
-    } else {
-      buttonText = @"All my matches";
-    }
-    // If this were a real app, I might use a library to add a nice badge to my button instead.
-    [self.viewMyMatchesButton setTitle:buttonText forState:UIControlStateNormal];
-  }];
+  if (!self.justCameFromMatchVC) {
+    NSLog(@"Performing a network call");
+    [[GPGManager sharedInstance].applicationModel reloadDataForKey:GPGModelAllMatchesKey completionHandler:^(NSError *error) {
+      [self updateNumberOfGamesNeedingAttention];
+     }];
+  } else {
+    NSLog(@"Skipping a network call");
+    [self updateNumberOfGamesNeedingAttention];
+  }
+  self.justCameFromMatchVC = NO;
 }
 
 - (NSInteger)numberOfGamesNeedingPlayersAttention {
@@ -450,7 +467,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 
 
 - (void)turnBasedMatchViewControllerDidFinish:(GPGTurnBasedMatchViewController *)controller {
-    NSLog(@"Match VC did finish called");
+  NSLog(@"Match VC did finish called");
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
