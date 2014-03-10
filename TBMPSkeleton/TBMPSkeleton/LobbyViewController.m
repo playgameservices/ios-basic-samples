@@ -246,18 +246,17 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 }
 
 - (void)refreshPendingGames {
-  NSLog(@"Refreshing my pending games");
   // If we just came from our TurnBasedMatchViewController, it might be safer to reload this
   // data when refreshing. However, if we just got here from our TBMVC, all that data has
   // just been loaded, and the reloadDataForKey step is unnecessary.
 
   if (!self.justCameFromMatchVC) {
-    NSLog(@"Performing a network call");
+    // Perform a network call
     [[GPGManager sharedInstance].applicationModel reloadDataForKey:GPGModelAllMatchesKey completionHandler:^(NSError *error) {
       [self updateNumberOfGamesNeedingAttention];
      }];
   } else {
-    NSLog(@"Skipping a network call");
+    // Skip the network call!
     [self updateNumberOfGamesNeedingAttention];
   }
   self.justCameFromMatchVC = NO;
