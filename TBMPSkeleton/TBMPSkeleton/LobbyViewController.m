@@ -106,7 +106,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   self.signInButton.enabled = !_tryingSilentSignin;
 
   // Step 2: Are we completely signed in to Game services?
-  BOOL signedInToGames = [[GPGManager sharedInstance] isSignedIn];
+  BOOL signedInToGames = [GPGManager sharedInstance].signedIn;
   NSLog(@"Signed in to games services is %@", (signedIn) ? @"Yes" : @"No");
   self.quickMatchButton.enabled = signedInToGames;
   self.inviteFriendsButton.enabled = signedInToGames;

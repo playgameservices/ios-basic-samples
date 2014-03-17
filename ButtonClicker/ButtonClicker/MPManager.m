@@ -97,7 +97,6 @@ static MPManager *_instance = nil;
 
   }
 
-  [self.lobbyDelegate showInviteViewController:roomViewController];
 }
 
 - (void)numberOfInvitesAwaitingResponse:(void (^)(int))returnBlock {

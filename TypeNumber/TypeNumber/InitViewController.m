@@ -102,7 +102,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 -(void)refreshInterface
 {
   
-  BOOL hasAuthToken = [[GPGManager sharedInstance] hasAuthorizer];
+  BOOL hasAuthToken = [GPGManager sharedInstance].hasAuthorizer;
   BOOL gamesSignInComplete = [GPGManager sharedInstance].isSignedIn;
 
   // We update most of our game interface when game services sign-in is totally complete. In an

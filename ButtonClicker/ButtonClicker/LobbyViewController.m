@@ -157,14 +157,14 @@
 
 - (void)refreshButtons {
   // Two different types of sign-in now! This asks whether or not we've received an auth token
-  BOOL signedIn = [[GPGManager sharedInstance] hasAuthorizer];
+  BOOL signedIn = [GPGManager sharedInstance].hasAuthorizer;
   self.signInButton.hidden = signedIn;
   self.signOutButton.hidden = !signedIn;
   self.signInButton.enabled = !_currentlySigningIn;
 
 
   // But then the following checks whether or not we've finished signing in to game services
-  BOOL gamesSignedIn = [[GPGManager sharedInstance] isSignedIn];
+  BOOL gamesSignedIn = [GPGManager sharedInstance].signedIn;
   // Let's check out our incoming invites
   [self.incomingInvitesButton setTitle:@"Incoming Invites" forState:UIControlStateNormal];
   self.incomingInvitesButton.enabled = NO;

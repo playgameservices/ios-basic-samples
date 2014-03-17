@@ -91,7 +91,7 @@ extern NSString * const GPGUserDidSignOutNotification  __attribute__((deprecated
 
 @property(nonatomic, readwrite, assign) id<GPGStatusDelegate> statusDelegate;
 
-- (BOOL)isSignedIn;
+@property(nonatomic, readonly, assign, getter = isSignedIn) BOOL signedIn;
 
 #pragma mark Device Orientation 
 @property(nonatomic, readwrite, assign) NSUInteger validOrientationFlags;
