@@ -9,6 +9,8 @@ Google Play game services.
 creating Interactive Posts to brag about one's score, showing a list people in the
 user's circles, and making calls to the  Management API to reset scores or achievements.
 * **Collect All the Stars**. Demonstrates sign-in and cloud save.
+* **Button-Clicker 2000**. Demonstrates real-time multiplayer using invites or quickmatch
+* **TBMP Skeleton**. Demonstrates asynchronous turn-based multiplayer using invites or quickmatch
 
 In addition, there is a shared `Libraries` folder that contains all of the 
 frameworks and bundles required to run these applications. Each application 
