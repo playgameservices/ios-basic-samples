@@ -3,7 +3,8 @@
 //  CollectAllTheStars
 //
 //  Created by Todd Kerpelman on 5/7/13.
-//  Copyright (c) 2013 Google. All rights reserved.
+//  Updated by Gus Class on 6/24/14.
+//  Copyright (c) 2014 Google. All rights reserved.
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
 //  You may obtain a copy of the License at
@@ -23,7 +24,8 @@
 #import "GCATViewController.h"
 #import "GCATModel.h"
 
-@interface GCATViewController () <GPPSignInDelegate, GPGStatusDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
+@interface GCATViewController () <GPGStatusDelegate, UIPickerViewDelegate,
+    GPGSnapshotListLauncherDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
 @property (nonatomic) BOOL currentlySigningIn;
 @property (nonatomic) int currentWorld;
 @property (nonatomic) int pickerSelectedRow;
@@ -32,6 +34,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *signOutButton;
+@property (weak, nonatomic) IBOutlet UIButton *listSnapshotsButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *signInIndicator;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *savingIndicator;
@@ -59,87 +62,60 @@
 
 
 static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn";
-static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 
 @implementation GCATViewController
 
 # pragma mark - Sign-in functions
 -(void)startGoogleGamesSignIn
 {
-  // The GPPSignIn object has an auth token now. Pass it to the GPGManager.
-  [[GPGManager sharedInstance] signIn:[GPPSignIn sharedInstance]
-                   reauthorizeHandler:^(BOOL requiresKeychainWipe, NSError *error) {
-                     // If you hit this, auth has failed and you need to authenticate.
-                     // Most likely you can refresh behind the scenes
-                     if (requiresKeychainWipe) {
-                       [[GPPSignIn sharedInstance] signOut];
-                     }
-                     [[GPPSignIn sharedInstance] authenticate];
-                   }];
-  
-//  [self loadFromTheCloud];
-
+    // Without this line, you will get an error code: GPGServiceMethodFailedError.
+  [GPGManager sharedInstance].snapshotsEnabled = YES;
+    // This is the updated way to sign in and does not require reauthorize.
+  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:false];
 }
 
-// Hooray! The user has finished the sign-in process.
-- (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error
-{
-  NSLog(@"Finished with auth.");
-  self.currentlySigningIn = NO;
-  if (error == nil && auth) {
-    NSLog(@"Success signing in to Google! Auth object is %@", auth);
-    // Tell your GPGManager that you're ready to go.
-    [self startGoogleGamesSignIn];
-  } else {
-    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@", [error localizedDescription],
-          auth);
-    if ([error code] == kErrorCodeFromUserDecliningSignIn) {
-      // This error code is actually pretty vague, but we can generally assume it's because
-      // the user clicked cancel. Let's to the right thing and remember this choice.
-      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDeclinedGooglePreviously];
-      [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-  }
-  [self refreshButtons];
-}
 
 - (void)didFinishGamesSignInWithError:(NSError *)error {
   if (error) {
     NSLog(@"ERROR signing in: %@", [error localizedDescription]);
+  } else {
+    NSLog(@"Finished with games sign in!");
+
+   [self loadFromTheCloud];
+
   }
+  self.currentlySigningIn = NO;
   [self refreshButtons];
   [self refreshStarDisplay];
-
 }
 
 - (void)didFinishGamesSignOutWithError:(NSError *)error {
   if (error) {
     NSLog(@"ERROR signing out: %@", [error localizedDescription]);
   }
+  self.currentlySigningIn = NO;
   [self refreshButtons];
 }
 
-// Refresh our buttons depending on whether or not the user has signed in to
-// Play Games
+  // Refresh our buttons depending on whether or not the user has signed in to
+  // Play Games
 -(void)refreshButtons
 {
-  BOOL haveAuthToken = [[GPGManager sharedInstance] hasAuthorizer];
-  self.signInButton.hidden = haveAuthToken;
-  self.signInLabel.hidden = haveAuthToken;
-  self.signOutButton.hidden = !haveAuthToken;
-
-
   BOOL signedIn = [[GPGManager sharedInstance] isSignedIn];
   for (UIButton *hideMe in self.levelButtons) {
     hideMe.hidden = !signedIn;
   }
+  self.signInButton.hidden = signedIn;
+  self.signInLabel.hidden = signedIn;
+  self.signOutButton.hidden = !signedIn;
   self.worldLabel.hidden = !signedIn;
   self.changeWorldButton.hidden = !signedIn;
   self.loadButton.hidden = !signedIn;
   self.saveButton.hidden = !signedIn;
+  self.listSnapshotsButton.hidden = !signedIn;
   
-  // Don't enable the sign in button if we're trying to sign the user in
-  // already.
+    // Don't enable the sign in button if we're trying to sign the user in
+    // already.
   if (self.currentlySigningIn) {
     self.signInButton.enabled = NO;
     [self.signInIndicator startAnimating];
@@ -148,13 +124,13 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     self.signInButton.enabled = YES;
     [self.signInIndicator stopAnimating];
     self.signInLabel.text = @"Please Sign-In To Begin";
-
+    
   }
-  // Consider showing a "Loading" animation here as well.
+    // Consider showing a "Loading" animation here as well.
 }
 
 - (IBAction)signInWasPressed:(id)sender {
-  [[GPPSignIn sharedInstance] authenticate];
+  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:NO];
 }
 
 - (IBAction)signOutWasPressed:(id)sender {
@@ -162,6 +138,59 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 }
 
 
+- (IBAction)listSavesWasPressed:(id)sender {
+  [[GPGLauncherController sharedInstance] presentSnapshotList];
+}
+
+
+
+
+/** Called when the user picks a snapshot. */
+- (void)snapshotListLauncherDidTapSnapshotMetadata:(GPGSnapshotMetadata *)snapshot {
+  NSLog(@"Selected snapshot metadata: %@", [snapshot description].description);
+  [self.gameModel loadSnapshot: snapshot];
+}
+
+// These three methods would handle the case where you want to give the user the ability
+// to save to more than one slot
+- (BOOL)shouldAllowCreateForSnapshotListLauncher {
+  // Make this YES if you want users to enable more than 1 save slot
+  return NO;
+}
+
+- (int)maxSaveSlotsForSnapshotListLauncher {
+  return 3;
+}
+
+/** Called when the user selects the Create New button from the picker. */
+- (void)snapshotListLauncherDidCreateNewSnapshot {
+  NSLog(@"New snapshot selected");
+}
+
+  // In a real game, we'd probably want to save and load behind the scenes.
+  // Here we're calling these explicitly through buttons so you can try out
+  // different scenarios.
+-(void)saveToTheCloud {
+  
+  [self.view bringSubviewToFront:self.savingIndicator];
+  [self.savingIndicator startAnimating];
+  self.loadButton.enabled = NO;
+  self.saveButton.enabled = NO;
+  self.listSnapshotsButton.enabled = NO;
+
+  [self.gameModel saveSnapshotWithImage:[self takeScreenshot]];
+}
+
+- (void)loadFromTheCloud {
+  
+  [self.view bringSubviewToFront:self.loadingIndicator];
+  [self.loadingIndicator startAnimating];
+  self.loadButton.enabled = NO;
+  self.saveButton.enabled = NO;
+  self.listSnapshotsButton.enabled = NO;
+  [self.gameModel loadSnapshot:nil];
+
+}
 
 # pragma mark - Actual game stuff
 
@@ -173,6 +202,17 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   [self.gameModel setStars:starNum forWorld:self.currentWorld andLevel:levelNum];
   [self.saveButton setTitle:@"Save*" forState:UIControlStateNormal];
   [self refreshStarDisplay];
+}
+
+- (void)allDoneWithCloud {
+  [self refreshStarDisplay];
+  self.loadButton.enabled = YES;
+  self.saveButton.enabled = YES;
+  self.listSnapshotsButton.enabled = YES;
+  [self.loadingIndicator stopAnimating];
+  [self.savingIndicator stopAnimating];
+  [self.saveButton setTitle:@"Save" forState:UIControlStateNormal];
+
 }
 
 // Update our level buttons
@@ -197,52 +237,18 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   self.worldLabel.text = [NSString stringWithFormat:@"World %d",self.currentWorld];  
 }
 
-
+// Manual load to current snapshot.
 - (IBAction)loadWasPressed:(id)sender {
   [self loadFromTheCloud];
 }
+
+// Manual save to a snapshot.
 - (IBAction)saveWasPressed:(id)sender {
   [self saveToTheCloud];
 }
 
 
-// In a real game, we'd probably want to save and load behind the scenes.
-// Here we're calling these explicitly through buttons so you can try out
-// different scenarios.
--(void)saveToTheCloud {
-  [self.view bringSubviewToFront:self.savingIndicator];
-  [self.savingIndicator startAnimating];
-  self.loadButton.enabled = NO;
-  self.saveButton.enabled = NO;
-
-  [self.gameModel saveToCloudWithCompletionHandler:^{
-    [self.savingIndicator stopAnimating];
-    [self refreshStarDisplay];
-    [self.saveButton setTitle:@"Save" forState:UIControlStateNormal];
-    self.loadButton.enabled = YES;
-    self.saveButton.enabled = YES;
-
-  }];
-}
-
-- (void)loadFromTheCloud {
-  [self.view bringSubviewToFront:self.loadingIndicator];
-  [self.loadingIndicator startAnimating];
-  self.loadButton.enabled = NO;
-  self.saveButton.enabled = NO;
-  [self.gameModel loadDataFromCloudWithCompletionHandler:^{
-    [self.loadingIndicator stopAnimating];
-    [self refreshStarDisplay];
-    self.loadButton.enabled = YES;
-    self.saveButton.enabled = YES;
-  }];
-}
-
 # pragma mark - PickerView methods
-- (IBAction)changeWorldClicked:(id)sender {
-  
-}
-
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
   return 1;
@@ -289,6 +295,22 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   }
 }
 
+- (UIImage *) takeScreenshot {
+    // Parts taken from:
+    //    http://stackoverflow.com/questions/12687909/ios-screenshot-part-of-the-screen
+  UIGraphicsBeginImageContext(self.view.bounds.size);
+  [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+  UIImage *sourceImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  UIGraphicsBeginImageContext(self.view.frame.size);
+  [sourceImage drawAtPoint:CGPointMake(0, -160)];
+  UIImage *croppedImage = UIGraphicsGetImageFromCurrentImageContext();
+  UIGraphicsEndImageContext();
+  
+  return croppedImage;
+}
+
+
 
 # pragma mark - Standard lifecycle functions
 
@@ -304,31 +326,12 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
                         self.level12Button, nil];
   self.currentWorld = 1;
   self.gameModel = [[GCATModel alloc] init];
+  [self.gameModel setViewController: self];
   
-  GPPSignIn *signIn = [GPPSignIn sharedInstance];
-  // You set kClientID in a previous step
-  signIn.clientID = CLIENT_ID;
-  signIn.scopes = [NSArray arrayWithObjects:
-                   @"https://www.googleapis.com/auth/games",
-                   @"https://www.googleapis.com/auth/appstate",
-                   nil];
-  signIn.language = [[NSLocale preferredLanguages] objectAtIndex:0];
-  signIn.delegate = self;
-  signIn.shouldFetchGoogleUserID =YES;
-
+  [GPGManager sharedInstance].snapshotsEnabled = YES;
   [GPGManager sharedInstance].statusDelegate = self;
-  self.currentlySigningIn = [signIn trySilentAuthentication];
-
-  if (!self.currentlySigningIn) {
-    // Have we tried signing the user in before?
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kDeclinedGooglePreviously]) {
-      // They've said no previously. Let's just show the sign in button
-    } else {
-      // In this case, we will just send the user to a sign-in screen right away.
-      // You may want to show an alert or bring up a button instead, depending on your situation.
-      [[GPPSignIn sharedInstance] authenticate];
-    }
-  }
+  self.currentlySigningIn  = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
+  [self refreshButtons];
 
 }
 

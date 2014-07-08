@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28372D61196CABE000EAACE9 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28372D5C196CABE000EAACE9 /* GoogleOpenSource.framework */; };
+		28372D62196CABE000EAACE9 /* GooglePlayGames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28372D5D196CABE000EAACE9 /* GooglePlayGames.bundle */; };
+		28372D63196CABE000EAACE9 /* GooglePlayGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28372D5E196CABE000EAACE9 /* GooglePlayGames.framework */; };
+		28372D64196CABE000EAACE9 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28372D5F196CABE000EAACE9 /* GooglePlus.bundle */; };
+		28372D65196CABE000EAACE9 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28372D60196CABE000EAACE9 /* GooglePlus.framework */; };
 		494FF777173DBB430099295C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 494FF775173DBB430099295C /* README.md */; };
 		4979D93618A557E400D773E7 /* allTheStarsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D93418A557E400D773E7 /* allTheStarsIcon.png */; };
 		4979D93718A557E400D773E7 /* allTheStarsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D93518A557E400D773E7 /* allTheStarsIcon@2x.png */; };
@@ -16,8 +21,6 @@
 		4979D94118A557EE00D773E7 /* gplus_signin_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D93B18A557EE00D773E7 /* gplus_signin_normal@2x.png */; };
 		4979D94218A557EE00D773E7 /* gplus_signin_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D93C18A557EE00D773E7 /* gplus_signin_pressed.png */; };
 		4979D94318A557EE00D773E7 /* gplus_signin_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D93D18A557EE00D773E7 /* gplus_signin_pressed@2x.png */; };
-		4979D94A18A5580400D773E7 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4979D94618A5580400D773E7 /* GooglePlus.framework */; };
-		4979D94B18A5580400D773E7 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4979D94718A5580400D773E7 /* GoogleOpenSource.framework */; };
 		4979D94F18A5581700D773E7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D94C18A5581700D773E7 /* Default-568h@2x.png */; };
 		4979D95018A5581700D773E7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D94D18A5581700D773E7 /* Default.png */; };
 		4979D95118A5581700D773E7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D94E18A5581700D773E7 /* Default@2x.png */; };
@@ -39,14 +42,19 @@
 		49C3C73818122A4B00EA0C93 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C3C73718122A4B00EA0C93 /* CoreLocation.framework */; };
 		49C3C73A18122A5100EA0C93 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C3C73918122A5100EA0C93 /* AssetsLibrary.framework */; };
 		49C3C73C18122A5700EA0C93 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49C3C73B18122A5700EA0C93 /* MediaPlayer.framework */; };
-		49D7687918CBB2BD007FDE22 /* GooglePlayGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7687718CBB2BD007FDE22 /* GooglePlayGames.framework */; };
-		49D7687A18CBB2BD007FDE22 /* GooglePlayGames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49D7687818CBB2BD007FDE22 /* GooglePlayGames.bundle */; };
 		49D7687E18CBB364007FDE22 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7687D18CBB364007FDE22 /* libc++.dylib */; };
 		49F3E1EC1793C62C003DBEF5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E1EB1793C62C003DBEF5 /* QuartzCore.framework */; };
 		49F3E1EE1793C634003DBEF5 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49F3E1ED1793C634003DBEF5 /* CoreText.framework */; };
+		4B39A370196493C400938057 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B39A36F196493C400938057 /* CoreTelephony.framework */; };
+		4B6096D8194FB87C006B70E1 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B6096D7194FB87C006B70E1 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28372D5C196CABE000EAACE9 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../Libraries/GoogleOpenSource.framework; sourceTree = "<group>"; };
+		28372D5D196CABE000EAACE9 /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
+		28372D5E196CABE000EAACE9 /* GooglePlayGames.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlayGames.framework; path = ../Libraries/GooglePlayGames.framework; sourceTree = "<group>"; };
+		28372D5F196CABE000EAACE9 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = ../Libraries/GooglePlus.bundle; sourceTree = "<group>"; };
+		28372D60196CABE000EAACE9 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../Libraries/GooglePlus.framework; sourceTree = "<group>"; };
 		494FF775173DBB430099295C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4979D93418A557E400D773E7 /* allTheStarsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = allTheStarsIcon.png; path = Artwork/allTheStarsIcon.png; sourceTree = "<group>"; };
 		4979D93518A557E400D773E7 /* allTheStarsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "allTheStarsIcon@2x.png"; path = "Artwork/allTheStarsIcon@2x.png"; sourceTree = "<group>"; };
@@ -56,8 +64,6 @@
 		4979D93B18A557EE00D773E7 /* gplus_signin_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gplus_signin_normal@2x.png"; path = "Artwork/gplus_signin_normal@2x.png"; sourceTree = "<group>"; };
 		4979D93C18A557EE00D773E7 /* gplus_signin_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gplus_signin_pressed.png; path = Artwork/gplus_signin_pressed.png; sourceTree = "<group>"; };
 		4979D93D18A557EE00D773E7 /* gplus_signin_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gplus_signin_pressed@2x.png"; path = "Artwork/gplus_signin_pressed@2x.png"; sourceTree = "<group>"; };
-		4979D94618A5580400D773E7 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../Libraries/GooglePlus.framework; sourceTree = "<group>"; };
-		4979D94718A5580400D773E7 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../Libraries/GoogleOpenSource.framework; sourceTree = "<group>"; };
 		4979D94C18A5581700D773E7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "Artwork/Default-568h@2x.png"; sourceTree = "<group>"; };
 		4979D94D18A5581700D773E7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Artwork/Default.png; sourceTree = "<group>"; };
 		4979D94E18A5581700D773E7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Artwork/Default@2x.png"; sourceTree = "<group>"; };
@@ -87,12 +93,12 @@
 		49C3C73718122A4B00EA0C93 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		49C3C73918122A5100EA0C93 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		49C3C73B18122A5700EA0C93 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		49D7687718CBB2BD007FDE22 /* GooglePlayGames.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlayGames.framework; path = ../Libraries/GooglePlayGames.framework; sourceTree = "<group>"; };
-		49D7687818CBB2BD007FDE22 /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
 		49D7687B18CBB35A007FDE22 /* libc++.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.1.dylib"; path = "usr/lib/libc++.1.dylib"; sourceTree = SDKROOT; };
 		49D7687D18CBB364007FDE22 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		49F3E1EB1793C62C003DBEF5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		49F3E1ED1793C634003DBEF5 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		4B39A36F196493C400938057 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		4B6096D7194FB87C006B70E1 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,21 +106,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B39A370196493C400938057 /* CoreTelephony.framework in Frameworks */,
+				4B6096D8194FB87C006B70E1 /* libz.dylib in Frameworks */,
 				49D7687E18CBB364007FDE22 /* libc++.dylib in Frameworks */,
 				4979D95318A558EC00D773E7 /* AddressBook.framework in Frameworks */,
 				49C3C73C18122A5700EA0C93 /* MediaPlayer.framework in Frameworks */,
 				49C3C73A18122A5100EA0C93 /* AssetsLibrary.framework in Frameworks */,
 				49C3C73818122A4B00EA0C93 /* CoreLocation.framework in Frameworks */,
 				49C3C73618122A4700EA0C93 /* CoreMotion.framework in Frameworks */,
-				49D7687918CBB2BD007FDE22 /* GooglePlayGames.framework in Frameworks */,
 				49F3E1EE1793C634003DBEF5 /* CoreText.framework in Frameworks */,
 				49F3E1EC1793C62C003DBEF5 /* QuartzCore.framework in Frameworks */,
 				499E31681739DEE0003CFF53 /* SystemConfiguration.framework in Frameworks */,
 				499E31661739DEDA003CFF53 /* Security.framework in Frameworks */,
 				499E31641739DED6003CFF53 /* CoreData.framework in Frameworks */,
-				4979D94A18A5580400D773E7 /* GooglePlus.framework in Frameworks */,
-				4979D94B18A5580400D773E7 /* GoogleOpenSource.framework in Frameworks */,
+				28372D61196CABE000EAACE9 /* GoogleOpenSource.framework in Frameworks */,
 				499E31291739DABB003CFF53 /* UIKit.framework in Frameworks */,
+				28372D65196CABE000EAACE9 /* GooglePlus.framework in Frameworks */,
+				28372D63196CABE000EAACE9 /* GooglePlayGames.framework in Frameworks */,
 				499E312B1739DABB003CFF53 /* Foundation.framework in Frameworks */,
 				499E312D1739DABB003CFF53 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -159,15 +167,18 @@
 		499E31271739DABB003CFF53 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28372D5C196CABE000EAACE9 /* GoogleOpenSource.framework */,
+				28372D5D196CABE000EAACE9 /* GooglePlayGames.bundle */,
+				28372D5E196CABE000EAACE9 /* GooglePlayGames.framework */,
+				28372D5F196CABE000EAACE9 /* GooglePlus.bundle */,
+				28372D60196CABE000EAACE9 /* GooglePlus.framework */,
+				4B39A36F196493C400938057 /* CoreTelephony.framework */,
+				4B6096D7194FB87C006B70E1 /* libz.dylib */,
 				49D7687D18CBB364007FDE22 /* libc++.dylib */,
 				49D7687B18CBB35A007FDE22 /* libc++.1.dylib */,
-				49D7687718CBB2BD007FDE22 /* GooglePlayGames.framework */,
-				49D7687818CBB2BD007FDE22 /* GooglePlayGames.bundle */,
 				4979D95218A558EC00D773E7 /* AddressBook.framework */,
 				49F3E1ED1793C634003DBEF5 /* CoreText.framework */,
 				49F3E1EB1793C62C003DBEF5 /* QuartzCore.framework */,
-				4979D94618A5580400D773E7 /* GooglePlus.framework */,
-				4979D94718A5580400D773E7 /* GoogleOpenSource.framework */,
 				49C3C73B18122A5700EA0C93 /* MediaPlayer.framework */,
 				49C3C73918122A5100EA0C93 /* AssetsLibrary.framework */,
 				49C3C73718122A4B00EA0C93 /* CoreLocation.framework */,
@@ -270,18 +281,19 @@
 				4979D94018A557EE00D773E7 /* gplus_signin_normal.png in Resources */,
 				499E31331739DABB003CFF53 /* InfoPlist.strings in Resources */,
 				4979D93618A557E400D773E7 /* allTheStarsIcon.png in Resources */,
-				49D7687A18CBB2BD007FDE22 /* GooglePlayGames.bundle in Resources */,
 				4979D94218A557EE00D773E7 /* gplus_signin_pressed.png in Resources */,
 				4979D93E18A557EE00D773E7 /* gplus_signin_disabled.png in Resources */,
 				4979D94318A557EE00D773E7 /* gplus_signin_pressed@2x.png in Resources */,
 				4979D94118A557EE00D773E7 /* gplus_signin_normal@2x.png in Resources */,
 				499E31451739DABB003CFF53 /* GCATViewController_iPhone.xib in Resources */,
+				28372D64196CABE000EAACE9 /* GooglePlus.bundle in Resources */,
 				4979D94F18A5581700D773E7 /* Default-568h@2x.png in Resources */,
 				4979D93718A557E400D773E7 /* allTheStarsIcon@2x.png in Resources */,
 				4979D95018A5581700D773E7 /* Default.png in Resources */,
 				4979D95118A5581700D773E7 /* Default@2x.png in Resources */,
 				494FF777173DBB430099295C /* README.md in Resources */,
 				4979D93F18A557EE00D773E7 /* gplus_signin_disabled@2x.png in Resources */,
+				28372D62196CABE000EAACE9 /* GooglePlayGames.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,6 +399,9 @@
 					"$(inherited)",
 					"$(SRCROOT)/CollectAllTheStars",
 					"$(SRCROOT)/../Libraries",
+					"$(PROJECT_DIR)/Libraries",
+					/Users/hakuro/Google,
+					"Drive/Documents/0714/ios-samples/Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollectAllTheStars/CollectAllTheStars-Prefix.pch";
@@ -405,6 +420,9 @@
 					"$(inherited)",
 					"$(SRCROOT)/CollectAllTheStars",
 					"$(SRCROOT)/../Libraries",
+					"$(PROJECT_DIR)/Libraries",
+					/Users/hakuro/Google,
+					"Drive/Documents/0714/ios-samples/Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollectAllTheStars/CollectAllTheStars-Prefix.pch";
