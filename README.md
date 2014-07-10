@@ -2,15 +2,15 @@ Google Play game services - iOS Samples
 =======================================
 Copyright (C) 2014 Google Inc.
 
-This project contains two sample applications that demonstrate some basic uses of 
-Google Play game services. 
+This project contains two sample applications that demonstrate some basic use cases for 
+Google Play Game Services. 
 
-* **Type-a-Number Challenge**. Demonstrates sign-in, leaderboards, achievements, 
-creating Interactive Posts to brag about one's score, showing a list people in the
+* **Type-a-Number Challenge**: Demonstrates sign-in, leaderboards, achievements, 
+creating Interactive Posts to brag about one's score, showing a list of people in the
 user's circles, and making calls to the  Management API to reset scores or achievements.
-* **Collect All the Stars**. Demonstrates sign-in and cloud save.
-* **Button-Clicker 2000**. Demonstrates real-time multiplayer using invites or quickmatch
-* **TBMP Skeleton**. Demonstrates asynchronous turn-based multiplayer using invites or quickmatch
+* **Collect All the Stars**: Demonstrates sign-in and cloud save.
+* **Button-Clicker 2000**: Demonstrates real-time multiplayer using invites or quickmatch
+* **TBMP Skeleton**: Demonstrates asynchronous turn-based multiplayer using invites or quickmatch
 
 In addition, there is a shared `Libraries` folder that contains all of the 
 frameworks and bundles required to run these applications. Each application 
