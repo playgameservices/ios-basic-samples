@@ -8,9 +8,9 @@ folder:
 
 After the libraries have been extracted, the folder should appear as follows:
 
-ios-samples/Libraries
-ios-samples/Libraries/GoogleOpenSource.framework
-ios-samples/Libraries/GooglePlayGames.bundle
-ios-samples/Libraries/GooglePlayGames.framework
-ios-samples/Libraries/GooglePlus.bundle
-ios-samples/Libraries/GooglePlus.framework
+- ios-samples/Libraries
+- ios-samples/Libraries/GoogleOpenSource.framework
+- ios-samples/Libraries/GooglePlayGames.bundle
+- ios-samples/Libraries/GooglePlayGames.framework
+- ios-samples/Libraries/GooglePlus.bundle
+- ios-samples/Libraries/GooglePlus.framework
