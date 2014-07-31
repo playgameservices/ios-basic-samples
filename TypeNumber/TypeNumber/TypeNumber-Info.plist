@@ -35,8 +35,6 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>GPGApplicationID</key>
-	<string>1234567890</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

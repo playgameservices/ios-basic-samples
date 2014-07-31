@@ -292,7 +292,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     if ([match.pendingParticipant.participantId isEqualToString:match.localParticipantId]) {
       NSString *messageToShow = [NSString
           stringWithFormat:@"%@ just invited you to a game. " @"Would you like to play now?",
-          invitingParticipant.player.name];
+          invitingParticipant.player.displayName];
       [[[UIAlertView alloc] initWithTitle:@"You've been invited!"
                                   message:messageToShow
                                  delegate:self
@@ -314,7 +314,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     if ([match.pendingParticipant.participantId isEqualToString:match.localParticipantId]) {
       NSString *messageToShow = [NSString stringWithFormat:
               @"%@ just took their turn in a match. " @"Would you like to jump to that game now?",
-          participant.player.name];
+          participant.player.displayName];
       [[[UIAlertView alloc] initWithTitle:@"It's your turn!"
                                   message:messageToShow
                                  delegate:self
@@ -337,7 +337,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
       NSString *messageToShow = [NSString stringWithFormat:
                                  @"%@ just finished a game you were in. "
                                  @"Want to see the results?",
-                                 participant.player.name];
+                                 participant.player.displayName];
       [[[UIAlertView alloc] initWithTitle:@"Game over, man!"
                                   message:messageToShow
                                  delegate:self
@@ -416,8 +416,8 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   // Let's bring up a UIAlert. Because we can.
   NSString *matchInfo =
       [NSString stringWithFormat:@"Created by %@. Last turn by %@ on %@",
-          match.creationParticipant.player.name,
-          match.lastUpdateParticipant.player.name,
+          match.creationParticipant.player.displayName,
+          match.lastUpdateParticipant.player.displayName,
        [NSDate dateWithTimeIntervalSince1970:match.lastUpdateTimestamp / 1000]];
 
   [[[UIAlertView alloc] initWithTitle:@"Match info"

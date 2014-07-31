@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2859593F198AC7030071670D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2859593E198AC7030071670D /* CoreTelephony.framework */; };
+		28595941198AC7510071670D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28595940198AC7510071670D /* libz.dylib */; };
 		493BA8FE18B544E7001E775C /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493BA8FD18B544E7001E775C /* AdminViewController.m */; };
 		49CF0E2818B3D4EB00CEA887 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CF0E2718B3D4EB00CEA887 /* Foundation.framework */; };
 		49CF0E2A18B3D4EB00CEA887 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CF0E2918B3D4EB00CEA887 /* CoreGraphics.framework */; };
@@ -83,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2859593E198AC7030071670D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		28595940198AC7510071670D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		493BA8FC18B544E7001E775C /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
 		493BA8FD18B544E7001E775C /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
 		49CF0E2418B3D4EB00CEA887 /* TypeNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +169,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28595941198AC7510071670D /* libz.dylib in Frameworks */,
+				2859593F198AC7030071670D /* CoreTelephony.framework in Frameworks */,
 				49D7688418CBB587007FDE22 /* libc++.dylib in Frameworks */,
 				49CF0E2C18B3D4EB00CEA887 /* UIKit.framework in Frameworks */,
 				49CF0EBB18B3D6C300CEA887 /* CoreData.framework in Frameworks */,
@@ -220,6 +226,8 @@
 		49CF0E2618B3D4EB00CEA887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28595940198AC7510071670D /* libz.dylib */,
+				2859593E198AC7030071670D /* CoreTelephony.framework */,
 				49D7688318CBB587007FDE22 /* libc++.dylib */,
 				49D7687F18CBB55D007FDE22 /* GooglePlayGames.framework */,
 				49D7688018CBB55D007FDE22 /* GooglePlayGames.bundle */,

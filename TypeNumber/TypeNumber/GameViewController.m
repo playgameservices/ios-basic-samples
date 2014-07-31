@@ -176,7 +176,7 @@
   // There are lots of ways to encode this. I'm going to go for url-encoded JSON, which is
   // pretty well established and has nice library support.
   
-  NSString *playerName = [[[[[GPGManager sharedInstance] applicationModel] player] localPlayer] name];
+  NSString *playerName = [[[[[GPGManager sharedInstance] applicationModel] player] localPlayer] displayName];
 
   NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                               [NSNumber numberWithInt:self.difficulty], @"difficulty",
