@@ -77,7 +77,7 @@ all client IDs, achievement IDs and leaderboard IDs to your own
   your application.
     * Again, you will be using the Bundle ID that you created in Step 1.
     * You can leave the App Store ID blank for testing purposes.
-5. Make a note of your client ID and application ID as described in the
+5. Make a note of your client ID as described in the
   documentation
 6. Create your own Achievements and Leaderboards as described in the
   [Achievements](https://developers.google.com/games/services/common/concepts/achievements)
@@ -114,8 +114,6 @@ all client IDs, achievement IDs and leaderboard IDs to your own
       corresponding leaderboards that you created:
         * `LEAD_EASY`
         * `LEAD_HARD`
-9. Go to your TypeNumber-info.plist file and replace the `GPGApplication` value with
-  the actual Applicaton ID of your game.
 
 That's it! Your application should be ready to run! 
 
