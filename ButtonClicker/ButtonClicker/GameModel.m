@@ -131,7 +131,7 @@ static const double kTotalGameTime = 20.0;
 - (void)refreshPlayerSet {
   [[[MPManager sharedInstance] roomToTrack]
       enumerateParticipantsUsingBlock:^(GPGRealTimeParticipant *nextPlayer) {
-          NSLog(@"I have participant %@ with status %d", nextPlayer.displayName, nextPlayer.status);
+          NSLog(@"I have participant %@ with status %ld", nextPlayer.displayName, nextPlayer.status);
           if (nextPlayer.status == GPGRealTimeParticipantStatusLeft) {
             ((ButtonClickerPlayer *)[self.allPlayers objectForKey:nextPlayer.participantId])
                 .scoreIsFinal = YES;

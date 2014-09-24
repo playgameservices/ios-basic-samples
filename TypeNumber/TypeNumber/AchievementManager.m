@@ -26,9 +26,8 @@
 
 -(void)unlockAchievement:(NSString *)achievementId;
 {
-
   GPGAchievement *unlockMe = [GPGAchievement achievementWithId:achievementId];
-  
+
   [unlockMe unlockAchievementWithCompletionHandler:^(BOOL newlyUnlocked, NSError *error) {
     if (error) {
       NSLog(@"Received an error attempting to unlock an achievement %@: %@", unlockMe, error);
@@ -38,13 +37,10 @@
 
 -(void)makeIncrementalProgress:(NSString *)achievementId withSteps:(NSInteger)progressAmount
 {
-  
-  NSLog(@"Your progress amount is %i",progressAmount);
-  
-  GPGAchievement *incrementMe = [GPGAchievement achievementWithId:achievementId];
-  
+  NSLog(@"Your progress amount is %i", (int32_t)progressAmount );
 
-  
+  GPGAchievement *incrementMe = [GPGAchievement achievementWithId:achievementId];
+
   [incrementMe incrementAchievementNumSteps:progressAmount completionHandler:^(BOOL newlyUnlocked, int currentSteps, NSError *error) {
     if (error) {
       NSLog(@"Received an error attempting to increment achievement %@: %@",incrementMe, error);
@@ -64,13 +60,13 @@
   } else if (score == 9999) {
     [self unlockAchievement:ACH_COCKY];
   }
-  
+
 }
 
 -(BOOL)isPrime:(int)checkMe
 {
   if (checkMe == 1) return NO;
-  
+
   int checkMax = floor(sqrt(checkMe));
   for (int i =2; i<=checkMax; i++) {
     if (checkMe % i == 0) return NO;

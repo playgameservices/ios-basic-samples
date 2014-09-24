@@ -39,13 +39,11 @@
 
 
 - (void)startQuickMatchGameWithTotalPlayers:(int)totalPlayers {
-  if (![[GPGManager sharedInstance] hasAuthorizer]) {
+  if (![GPGManager sharedInstance].isSignedIn) {
     [self requestSignIn];
     return;
   }
-
   [[MPManager sharedInstance] startQuickMatchGameWithTotalPlayers:totalPlayers];
-
 }
 
 - (IBAction)quickFourPlayerWasPressed:(id)sender {
@@ -57,7 +55,7 @@
 }
 
 - (IBAction)inviteFriendsWasPressed:(id)sender {
-  if (![[GPGManager sharedInstance] hasAuthorizer]) {
+  if (![GPGManager sharedInstance].isSignedIn) {
     [self requestSignIn];
     return;
   }
@@ -67,12 +65,6 @@
 
 - (IBAction)viewIncomingInvitesWasPressed:(id)sender {
   [[MPManager sharedInstance] showIncomingInvitesScreen];
-}
-
-- (void)showInviteViewController:(UIViewController *)vcToShow {
-  NSLog(@"Okay! Lobby is ready to show invite VC!");
-  [self presentViewController:vcToShow animated:YES completion:nil];
-
 }
 
 - (void)multiPlayerGameWasCanceled {
@@ -96,7 +88,6 @@
   }
 }
 
-
 # pragma mark - Sign in methods
 
 - (void)requestSignIn {
@@ -118,69 +109,30 @@
   } else {
     [[GPPSignIn sharedInstance] authenticate];
   }
-
-}
-
-
-- (void)startGoogleGamesSignIn {
-  // The GPPSignIn object has an auth token now. Pass it to the GPGManager.
-  [[GPGManager sharedInstance] signIn:[GPPSignIn sharedInstance]
-                   reauthorizeHandler:^(BOOL requiresKeychainWipe, NSError *error) {
-      // If you hit this, auth has failed and you need to authenticate.
-      // Most likely you can refresh behind the scenes
-      if (requiresKeychainWipe) {
-        [[GPPSignIn sharedInstance] signOut];
-      }
-      [[GPPSignIn sharedInstance] authenticate];
-  }];
-  
-  // Let's also ask if it's okay to send push notifciations
-  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert)];
-
-  
-}
-
-- (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error {
-  NSLog(@"Finished with auth.");
-  _currentlySigningIn = NO;
-
-  if (error == nil && auth) {
-    NSLog(@"Success signing in to Google! Auth object is %@", auth);
-    [self startGoogleGamesSignIn];
-    
-  } else {
-    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@", error, auth);
-  }
-  [self refreshButtons];
 }
 
 - (void)refreshButtons {
-  // Two different types of sign-in now! This asks whether or not we've received an auth token
-  BOOL signedIn = [GPGManager sharedInstance].hasAuthorizer;
+  BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
   self.signInButton.hidden = signedIn;
   self.signOutButton.hidden = !signedIn;
   self.signInButton.enabled = !_currentlySigningIn;
 
-
-  // But then the following checks whether or not we've finished signing in to game services
-  BOOL gamesSignedIn = [GPGManager sharedInstance].signedIn;
   // Let's check out our incoming invites
   [self.incomingInvitesButton setTitle:@"Incoming Invites" forState:UIControlStateNormal];
   self.incomingInvitesButton.enabled = NO;
-  if (gamesSignedIn) {
+  if (signedIn) {
     [[MPManager sharedInstance] numberOfInvitesAwaitingResponse:^(int numberOfInvites) {
       [self.incomingInvitesButton setTitle:[NSString stringWithFormat:@"Incoming Invites (%d)", numberOfInvites] forState:UIControlStateNormal];
       self.incomingInvitesButton.enabled = (numberOfInvites > 0);
     }];
   }
-  self.quickMatchTwoPlayerButton.enabled = gamesSignedIn;
-  self.quickMatchFourPlayerButton.enabled = gamesSignedIn;
-  self.inviteFriendsButton.enabled = gamesSignedIn;
+  self.quickMatchTwoPlayerButton.enabled = signedIn;
+  self.quickMatchFourPlayerButton.enabled = signedIn;
+  self.inviteFriendsButton.enabled = signedIn;
 }
 
 - (IBAction)signInButtonWasPressed:(id)sender {
-  [[GPPSignIn sharedInstance] authenticate];
+  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:NO];
 }
 
 - (IBAction)signOutButtonWasPressed:(id)sender {
@@ -195,6 +147,12 @@
     NSLog(@"***Error signing in! %@", [error localizedDescription]);
   }
   [self refreshButtons];
+
+  // Let's also ask if it's okay to send push notifciations
+  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert)];
+
+  _currentlySigningIn = NO;
 }
 
 - (void)didFinishGamesSignOutWithError:(NSError *)error {
@@ -202,6 +160,8 @@
     NSLog(@"***Error signing out! %@", [error localizedDescription]);
   }
   [self refreshButtons];
+
+  _currentlySigningIn = NO;
 }
 
 #pragma mark - Lifecycle methods
@@ -213,17 +173,11 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  GPPSignIn *signIn = [GPPSignIn sharedInstance];
-  signIn.clientID = CLIENT_ID;
-  signIn.scopes = [NSArray arrayWithObjects:@"https://www.googleapis.com/auth/games", nil];
-  signIn.language = [NSLocale preferredLanguages][0];
-  signIn.delegate = self;
-  signIn.shouldFetchGoogleUserID = YES;
 
   [GPGManager sharedInstance].statusDelegate = self;
   [[MPManager sharedInstance] setLobbyDelegate:self];
 
-  _currentlySigningIn = [[GPPSignIn sharedInstance] trySilentAuthentication];
+  _currentlySigningIn =   [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 }
 
 - (void)didReceiveMemoryWarning {

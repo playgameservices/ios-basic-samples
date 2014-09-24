@@ -18,5 +18,7 @@
 //  limitations under the License.
 //
 
-// We can also add our ClientID here
-#define CLIENT_ID @"123456789012.apps.googleusercontent.com";
+// Update the following value with your Client ID,
+// Refer https://developers.google.com/games/services/console/enabling#d_gather_credentials_for_authentication_and_authorization for more information
+//
+#define CLIENT_ID @"REPLACE_ME"

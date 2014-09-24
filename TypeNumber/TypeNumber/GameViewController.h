@@ -21,7 +21,7 @@
 #import "GameModel.h"
 
 
-@interface GameViewController : UIViewController <UITextFieldDelegate, GPGLeaderboardControllerDelegate>
+@interface GameViewController : UIViewController <UITextFieldDelegate, GPGLauncherDelegate>
 
 @property (nonatomic) TNDifficultyLevel difficulty;
 @property (nonatomic, copy) NSDictionary *incomingChallenge;

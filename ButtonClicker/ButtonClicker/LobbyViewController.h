@@ -20,6 +20,6 @@
 #import <UIKit/UIKit.h>
 #import <GooglePlus/GooglePlus.h>
 
-@interface LobbyViewController : UIViewController <GPPSignInDelegate>
+@interface LobbyViewController : UIViewController <GPGStatusDelegate>
 
 @end
