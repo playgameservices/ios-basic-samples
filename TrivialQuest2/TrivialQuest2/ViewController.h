@@ -19,6 +19,7 @@
 
 #import <UIKit/UIKit.h>
 #import <GooglePlus/GooglePlus.h>
+#import <GooglePlayGames/GooglePlayGames.h>
 @class GPPSignInButton;
 
 

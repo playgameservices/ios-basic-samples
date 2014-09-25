@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28595947198AC9440071670D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28595946198AC9440071670D /* CoreTelephony.framework */; };
+		28595949198AC94B0071670D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28595948198AC94B0071670D /* libz.dylib */; };
 		49D7689C18CBCAB3007FDE22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7689B18CBCAB3007FDE22 /* Foundation.framework */; };
 		49D7689E18CBCAB3007FDE22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7689D18CBCAB3007FDE22 /* CoreGraphics.framework */; };
 		49D768A018CBCAB3007FDE22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7689F18CBCAB3007FDE22 /* UIKit.framework */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		28595946198AC9440071670D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		28595948198AC94B0071670D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		49D7689818CBCAB3007FDE22 /* TBMPSkeleton.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TBMPSkeleton.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49D7689B18CBCAB3007FDE22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		49D7689D18CBCAB3007FDE22 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -99,6 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28595949198AC94B0071670D /* libz.dylib in Frameworks */,
+				28595947198AC9440071670D /* CoreTelephony.framework in Frameworks */,
 				49D768F918CBCD16007FDE22 /* AddressBook.framework in Frameworks */,
 				49D768F718CBCD0D007FDE22 /* AssetsLibrary.framework in Frameworks */,
 				49D768F518CBCD01007FDE22 /* CoreData.framework in Frameworks */,
@@ -154,6 +160,8 @@
 		49D7689A18CBCAB3007FDE22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28595948198AC94B0071670D /* libz.dylib */,
+				28595946198AC9440071670D /* CoreTelephony.framework */,
 				49D768F818CBCD16007FDE22 /* AddressBook.framework */,
 				49D768F618CBCD0D007FDE22 /* AssetsLibrary.framework */,
 				49D768F418CBCD01007FDE22 /* CoreData.framework */,
