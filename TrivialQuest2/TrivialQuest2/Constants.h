@@ -18,8 +18,9 @@
 #ifndef TrivialQuest2_Constants_h
 #define TrivialQuest2_Constants_h
 
-
-// Specify your ClientID from the Google Play Services console here.
+// Update the following value with your Client ID,
+// Refer https://developers.google.com/games/services/console/enabling#d_gather_credentials_for_authentication_and_authorization
+// for more information
 #define CLIENT_ID @"ReplaceMe"
 
 // Replace the strings with your event identifiers.
@@ -27,6 +28,5 @@
 #define GREEN_MONSTER_EVENT_ID @"ReplaceMe"
 #define RED_MONSTER_EVENT_ID @"ReplaceMe"
 #define YELLOW_MONSTER_EVENT_ID @"ReplaceMe"
-
 
 #endif

@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.example.${PRODUCT_NAME:rfc1034identifier}.dev</string>
+	<string>com.example.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -26,17 +26,15 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.example.TBMPSkeleton.dev</string>
+			<string>com.example.TBMPSkeleton</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.example.TBMPSkeleton.dev</string>
+				<string>com.example.TBMPSkeleton</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>GPGApplicationID</key>
-	<string>1234567890</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>

@@ -19,7 +19,7 @@
 #import "ViewController.h"
 #import "Constants.h"
 
-@interface ViewController()<GPPSignInDelegate, GPGStatusDelegate>
+@interface ViewController()<GPGStatusDelegate>
 
 @end
 
@@ -28,41 +28,12 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+
   NSLog(@"Init");
-    
-  // Trigger Google Sign-In with the games scopes.
-  GPPSignIn *signIn = [GPPSignIn sharedInstance];
-  // The client ID comes from the Play Games Services console and is
-  // specified in constants.h for this application.
-  signIn.clientID = CLIENT_ID;
-  signIn.scopes = [NSArray arrayWithObjects:
-                   @"https://www.googleapis.com/auth/games",
-                   @"https://www.googleapis.com/auth/appstate",
-                   nil];
-  signIn.language = [[NSLocale preferredLanguages] objectAtIndex:0];
-  signIn.delegate = self;
-  signIn.shouldFetchGoogleUserID = YES;
-  signIn.shouldFetchGooglePlusUser = YES;
-  [signIn trySilentAuthentication];
-        
-  [self refreshInterfaceBasedOnSignIn];
-
   [GPGManager sharedInstance].statusDelegate = self;
-}
+  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 
-/** Authorizes the Google Play Games manager with the credentials from Google+ Sign in. */
--(void)startGoogleGamesSignIn
-{
-  // Our GPPSignIn object has an auth token now. Pass it to the GPGManager.
-  [[GPGManager sharedInstance] signIn:[GPPSignIn sharedInstance]
-                   reauthorizeHandler:^(BOOL requiresKeychainWipe, NSError *error) {
-      // If we hit this, auth has failed and we need to authenticate.
-      // Most likely we can refresh behind the scenes
-      if (requiresKeychainWipe) {
-        [[GPPSignIn sharedInstance] signOut];
-      }
-      [[GPPSignIn sharedInstance] authenticate];
-  }];
+  [self refreshButtons];
 }
 
 /** Show the Quest Chooser */
@@ -76,7 +47,7 @@
   NSArray* events = [NSArray arrayWithObjects:  BLUE_MONSTER_EVENT_ID, GREEN_MONSTER_EVENT_ID,
                      RED_MONSTER_EVENT_ID, YELLOW_MONSTER_EVENT_ID, nil];
   NSArray* labels = [NSArray arrayWithObjects: @"Blue", @"Green", @"Red", @"Yellow", nil];
-  
+
   for (int i=0; i < 4; i++){
     [GPGEvent eventForId:events[i] completionHandler:^(GPGEvent *event, NSError *error) {
       if (event){
@@ -108,7 +79,7 @@
  */
 - (IBAction)attackGreen:(id)sender {
   NSLog(@"Attacked a green monster.");
-  
+
   [GPGEvent eventForId:GREEN_MONSTER_EVENT_ID
      completionHandler:^(GPGEvent *event, NSError *error) {
        if (event){
@@ -159,10 +130,10 @@
  *  @param error A message (if any) for the error returned from sign in.
  */
 - (void)didFinishGamesSignInWithError:(NSError *)error {
-    if (error) {
-      NSLog(@"ERROR during sign in: %@", [error localizedDescription]);
-    }
-    [self refreshInterfaceBasedOnSignIn];
+  if (error) {
+    NSLog(@"ERROR during sign in: %@", [error localizedDescription]);
+  }
+  [self refreshButtons];
 }
 
 /** Error handler for Play Games Services sign out.
@@ -172,7 +143,7 @@
   if (error) {
     NSLog(@"ERROR during sign out: %@", [error localizedDescription]);
   }
-  [self refreshInterfaceBasedOnSignIn];
+  [self refreshButtons];
 }
 
 /** Performs any events before the user is signed in for Google+.
@@ -180,6 +151,7 @@
  */
 - (IBAction)signInClicked:(id)sender {
   NSLog(@"Signing the user in...");
+  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:NO];
 }
 
 /** Signs the user out of Google+ and shows the Sign in button.
@@ -188,24 +160,7 @@
 - (IBAction)signOutUser:(id)sender {
   NSLog(@"Signing the user out.");
   [[GPPSignIn sharedInstance] signOut];
-  [self refreshInterfaceBasedOnSignIn];
-}
-
-/** Handler for when the authorization flow completes.
- *  @param error The error (if any) returned from the authorization flow.
- */
-- (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error
-{
-  NSLog(@"Finished with auth.");
-  if (error.code == 0 && auth) {
-    NSLog(@"Success signing in to Google! Auth object is %@", auth);
-                    
-    // Tell your GPGManager that you're ready to go.
-    [self startGoogleGamesSignIn];
-  } else {
-    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@",error,auth);
-  }
-  [self refreshInterfaceBasedOnSignIn];
+  [self refreshButtons];
 }
 
 - (void)didReceiveMemoryWarning
@@ -215,29 +170,17 @@
 }
 
 /** Updates UI components after the user sign-in status changes. */
--(void)refreshInterfaceBasedOnSignIn {
-  if ([[GPPSignIn sharedInstance] authentication]) {
-    // The user is signed in.
-    self.signInButton.hidden = YES;
-    self.signOutButton.hidden = NO;
-    self.attackBlueButton.hidden = NO;
-    self.attackGreenButton.hidden = NO;
-    self.attackRedButton.hidden = NO;
-    self.attackYellowButton.hidden = NO;
-    self.showQuestsButton.hidden = NO;
-    self.showEventsButton.hidden = NO;
-    NSLog(@"UI set to signed in.");
-  } else {
-    self.signInButton.hidden = NO;
-    self.signOutButton.hidden = YES;
-    self.attackBlueButton.hidden = YES;
-    self.attackGreenButton.hidden = YES;
-    self.attackRedButton.hidden = YES;
-    self.attackYellowButton.hidden = YES;
-    self.showQuestsButton.hidden = YES;
-    self.showEventsButton.hidden = YES;
-    NSLog(@"UI set to not signed in.");
-  }
+-(void)refreshButtons {
+  BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
+  // The user is signed in.
+  self.signInButton.hidden = signedIn;
+  self.signOutButton.hidden = !signedIn;
+  self.attackBlueButton.hidden = !signedIn;
+  self.attackGreenButton.hidden = !signedIn;
+  self.attackRedButton.hidden = !signedIn;
+  self.attackYellowButton.hidden = !signedIn;
+  self.showQuestsButton.hidden = !signedIn;
+  self.showEventsButton.hidden = !signedIn;
 }
 
 @end

@@ -254,23 +254,6 @@
 
 }
 
-
-- (void)viewDidUnload
-{
-  [self setPlayerMessage:nil];
-  [self setTitleLabel:nil];
-  [self setFinalScoreLabel:nil];
-  [self setScoreRequestTextField:nil];
-  [self setBigActionButton:nil];
-  [self setSeeHighScoresButton:nil];
-  [self setBragButton:nil];
-  [self setHighScoreLabel:nil];
-  [self setIncomingChallengeLabel:nil];
-  [self setWaitingForHighScore:nil];
-  [super viewDidUnload];
-  // Release any retained subviews of the main view.
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
   return (interfaceOrientation == UIInterfaceOrientationPortrait);

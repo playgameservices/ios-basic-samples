@@ -56,7 +56,7 @@
                                 self.peopleListButton, self.adminButton];
   for (UIButton *flipMe in buttonsToManage) {
     flipMe.enabled = signedIn;
-    flipMe.hidden = ! signedIn;
+    flipMe.hidden = !signedIn;
   }
   
   [self.signingIn stopAnimating];
@@ -214,21 +214,6 @@
   [appDelegate setChallengeReceivedHandler:^{
     [self refreshInterface];
   }];
-}
-
-- (void)viewDidUnload
-{
-  [self setAchButton:nil];
-  [self setLeadsButton:nil];
-  [self setEasyButton:nil];
-  [self setHardButton:nil];
-  [self setSignInButton:nil];
-  [self setSignOutButton:nil];
-  [self setPeopleListButton:nil];
-  [self setSigningIn:nil];
-  [self setGameIcons:nil];
-  [super viewDidUnload];
-   // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
