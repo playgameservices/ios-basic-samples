@@ -82,6 +82,8 @@
   // This would also be a good time to jump directly into our game
   // if we got here from a deep link
   if (signedIn) {
+    self.currentlySigningIn = NO;
+    [self.signingIn stopAnimating];
     NSDictionary *deepLinkParams = [appDelegate.deepLinkParams copy];
     if (deepLinkParams && [deepLinkParams objectForKey:@"difficulty"]) {
       // So we don't jump muliple times
