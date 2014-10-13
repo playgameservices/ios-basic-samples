@@ -17,7 +17,8 @@
 //  limitations under the License.
 //
 
-// We can also add our ClientID here
+// Update the following value with your Client ID,
+// Refer https://developers.google.com/games/services/console/enabling#d_gather_credentials_for_authentication_and_authorization for more information
 #define CLIENT_ID @"1234567890.apps.googleusercontent.com"
 
 // We'll define our leaderboards

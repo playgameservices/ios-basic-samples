@@ -83,13 +83,10 @@
 
 }
 
-
-
 - (NSString *)formatScore:(int)playerScore isFinal:(BOOL)isFinal {
   NSString *returnMe = [NSString stringWithFormat:@"%03d %@", playerScore, (isFinal) ? @"*" : @""];
   return returnMe;
 }
-
 
 - (void)safelyLeaveRoom {
   [[MPManager sharedInstance] leaveRoom];
@@ -97,7 +94,6 @@
 }
 
 - (void)updateInterface {
-
   self.timeLeftLabel.text = [NSString stringWithFormat:@":%02d", (int) round(self.model.timeLeft)];
   NSArray *scores = [self.model getListOfPlayersSortedByScore];
 

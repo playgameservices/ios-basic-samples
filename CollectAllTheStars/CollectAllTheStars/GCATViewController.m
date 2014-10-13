@@ -25,7 +25,7 @@
 #import "GCATModel.h"
 
 @interface GCATViewController () <GPGStatusDelegate, UIPickerViewDelegate,
-    GPGSnapshotListLauncherDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
+GPGSnapshotListLauncherDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
 @property (nonatomic) BOOL currentlySigningIn;
 @property (nonatomic) int currentWorld;
 @property (nonatomic) int pickerSelectedRow;
@@ -68,9 +68,9 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 # pragma mark - Sign-in functions
 -(void)startGoogleGamesSignIn
 {
-    // Without this line, you will get an error code: GPGServiceMethodFailedError.
+  // Without this line, you will get an error code: GPGServiceMethodFailedError.
   [GPGManager sharedInstance].snapshotsEnabled = YES;
-    // This is the updated way to sign in and does not require reauthorize.
+  // This is the updated way to sign in and does not require reauthorize.
   [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:false];
 }
 
@@ -81,7 +81,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
   } else {
     NSLog(@"Finished with games sign in!");
 
-   [self loadFromTheCloud];
+    [self loadFromTheCloud];
 
   }
   self.currentlySigningIn = NO;
@@ -97,11 +97,11 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
   [self refreshButtons];
 }
 
-  // Refresh our buttons depending on whether or not the user has signed in to
-  // Play Games
+// Refresh our buttons depending on whether or not the user has signed in to
+// Play Games
 -(void)refreshButtons
 {
-  BOOL signedIn = [[GPGManager sharedInstance] isSignedIn];
+  BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
   for (UIButton *hideMe in self.levelButtons) {
     hideMe.hidden = !signedIn;
   }
@@ -113,9 +113,9 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
   self.loadButton.hidden = !signedIn;
   self.saveButton.hidden = !signedIn;
   self.listSnapshotsButton.hidden = !signedIn;
-  
-    // Don't enable the sign in button if we're trying to sign the user in
-    // already.
+
+  // Don't enable the sign in button if we're trying to sign the user in
+  // already.
   if (self.currentlySigningIn) {
     self.signInButton.enabled = NO;
     [self.signInIndicator startAnimating];
@@ -124,9 +124,9 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
     self.signInButton.enabled = YES;
     [self.signInIndicator stopAnimating];
     self.signInLabel.text = @"Please Sign-In To Begin";
-    
+
   }
-    // Consider showing a "Loading" animation here as well.
+  // Consider showing a "Loading" animation here as well.
 }
 
 - (IBAction)signInWasPressed:(id)sender {
@@ -141,9 +141,6 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 - (IBAction)listSavesWasPressed:(id)sender {
   [[GPGLauncherController sharedInstance] presentSnapshotList];
 }
-
-
-
 
 /** Called when the user picks a snapshot. */
 - (void)snapshotListLauncherDidTapSnapshotMetadata:(GPGSnapshotMetadata *)snapshot {
@@ -167,11 +164,11 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
   NSLog(@"New snapshot selected");
 }
 
-  // In a real game, we'd probably want to save and load behind the scenes.
-  // Here we're calling these explicitly through buttons so you can try out
-  // different scenarios.
+// In a real game, we'd probably want to save and load behind the scenes.
+// Here we're calling these explicitly through buttons so you can try out
+// different scenarios.
 -(void)saveToTheCloud {
-  
+
   [self.view bringSubviewToFront:self.savingIndicator];
   [self.savingIndicator startAnimating];
   self.loadButton.enabled = NO;
@@ -182,7 +179,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 }
 
 - (void)loadFromTheCloud {
-  
+
   [self.view bringSubviewToFront:self.loadingIndicator];
   [self.loadingIndicator startAnimating];
   self.loadButton.enabled = NO;
@@ -222,7 +219,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
   unichar whitestar = 0x2606;
   NSString *emptyStar = [NSString stringWithCharacters:&whitestar length:1];
 
-  
+
   for (int i=0; i<[self.levelButtons count]; i++) {
     int level = i+1;
     int starCount = [self.gameModel getStarsForWorld:self.currentWorld andLevel:level];
@@ -234,7 +231,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
     buttonToUpdate.titleLabel.textAlignment = NSTextAlignmentCenter;
     [buttonToUpdate setTitle:buttonText forState:UIControlStateNormal];
   }
-  self.worldLabel.text = [NSString stringWithFormat:@"World %d",self.currentWorld];  
+  self.worldLabel.text = [NSString stringWithFormat:@"World %d",self.currentWorld];
 }
 
 // Manual load to current snapshot.
@@ -280,7 +277,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
   pickerView.delegate = self;
   pickerView.showsSelectionIndicator = YES;    // note this is default to NO
   [pickerView selectRow:self.currentWorld - 1 inComponent:0 animated:YES];
-  
+
   [menu addSubview:pickerView];
   [menu showInView:self.view];
   [menu setBounds:CGRectMake(0,0,320, 700)];
@@ -296,8 +293,8 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 }
 
 - (UIImage *) takeScreenshot {
-    // Parts taken from:
-    //    http://stackoverflow.com/questions/12687909/ios-screenshot-part-of-the-screen
+  // Parts taken from:
+  //    http://stackoverflow.com/questions/12687909/ios-screenshot-part-of-the-screen
   UIGraphicsBeginImageContext(self.view.bounds.size);
   [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
   UIImage *sourceImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -306,7 +303,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
   [sourceImage drawAtPoint:CGPointMake(0, -160)];
   UIImage *croppedImage = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();
-  
+
   return croppedImage;
 }
 
@@ -318,23 +315,22 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 {
   [super viewDidLoad];
   self.levelButtons = [NSArray arrayWithObjects:self.level1Button,
-                        self.level2Button, self.level3Button,
-                        self.level4Button, self.level5Button,
-                        self.level6Button, self.level7Button,
-                        self.level8Button, self.level9Button,
-                        self.level10Button, self.level11Button,
-                        self.level12Button, nil];
+                       self.level2Button, self.level3Button,
+                       self.level4Button, self.level5Button,
+                       self.level6Button, self.level7Button,
+                       self.level8Button, self.level9Button,
+                       self.level10Button, self.level11Button,
+                       self.level12Button, nil];
   self.currentWorld = 1;
   self.gameModel = [[GCATModel alloc] init];
   [self.gameModel setViewController: self];
-  
+
   [GPGManager sharedInstance].snapshotsEnabled = YES;
   [GPGManager sharedInstance].statusDelegate = self;
   self.currentlySigningIn  = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
   [self refreshButtons];
 
 }
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -345,8 +341,8 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 @end

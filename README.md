@@ -11,6 +11,7 @@ user's circles, and making calls to the  Management API to reset scores or achie
 * **Collect All the Stars**: Demonstrates sign-in and cloud save.
 * **Button-Clicker 2000**: Demonstrates real-time multiplayer using invites or quickmatch
 * **TBMP Skeleton**: Demonstrates asynchronous turn-based multiplayer using invites or quickmatch
+* **TrivialQuest2**: Demonstrates the use of the Events and Quests features
 
 In addition, there is a shared `Libraries` folder that contains all of the 
 frameworks and bundles required to run these applications. Each application 

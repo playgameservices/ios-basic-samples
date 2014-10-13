@@ -23,8 +23,10 @@
 #import "LobbyViewController.h"
 #import <GooglePlus/GooglePlus.h>
 
-@interface LobbyViewController ()<GPPSignInDelegate, GPGTurnBasedMatchViewControllerDelegate,
-                                  GPGPeoplePickerViewControllerDelegate, UIAlertViewDelegate,
+@interface LobbyViewController ()<GPGTurnBasedMatchListLauncherDelegate,
+                                  GPGTurnBasedMatchDelegate,
+                                  GPGPlayerPickerLauncherDelegate,
+                                  UIAlertViewDelegate,
                                   GPGStatusDelegate> {
   BOOL _tryingSilentSignin;
 }
@@ -34,7 +36,6 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
   LobbyAlertYouveBeenInvited,
   LobbyAlertGameOver
 };
-
 
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *signOutButton;
@@ -47,77 +48,30 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
 @property (nonatomic) BOOL justCameFromMatchVC;
 @end
 
-static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn";
-static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
-
 @implementation LobbyViewController
 
-
 # pragma mark - Sign in stuff
-- (void)startGoogleGamesSignIn {
-  NSLog(@"Starting google games signin");
-  // The GPPSignIn object has an auth token now. Pass it to the GPGManager.
-  [[GPGManager sharedInstance] signIn:[GPPSignIn sharedInstance]
-                   reauthorizeHandler:^(BOOL requiresKeychainWipe, NSError *error) {
-    // If you hit this, auth has failed and you need to authenticate.
-    // Most likely you can refresh behind the scenes
-    if (requiresKeychainWipe) {
-      [[GPPSignIn sharedInstance] signOut];
-    }
-    [[GPPSignIn sharedInstance] authenticate];
-  }];
-
-  // Register for push notifications
-  NSLog(@"Registering for push notifications");
-  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert |
-    UIRemoteNotificationTypeSound)];
-}
-
-- (void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error {
-  NSLog(@"Finished with auth.");
-  _tryingSilentSignin = NO;
-  if (error == nil && auth) {
-    NSLog(@"Success signing in to Google! Auth object is %@", auth);
-    [self startGoogleGamesSignIn];
-  } else {
-    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@", [error localizedDescription],
-          auth);
-    if ([error code] == kErrorCodeFromUserDecliningSignIn) {
-      // We'll assume the user clicked cancel? Wish there were a better way.
-      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDeclinedGooglePreviously];
-      [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-  }
-  [self refreshButtons];
-
-
-}
 
 -(void)refreshButtons
 {
-  // Step 1: Do we have our auth token from G+?
-  BOOL signedIn = [[GPGManager sharedInstance] hasAuthorizer];
-  NSLog(@"Refreshing our buttons. Has authorizer is %@", (signedIn) ? @"Yes" : @"No");
+  BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
   self.signInButton.hidden = signedIn;
   self.signOutButton.hidden = !signedIn;
   // Don't enable the sign in button if we're trying to sign the user in
   // already.
   self.signInButton.enabled = !_tryingSilentSignin;
 
-  // Step 2: Are we completely signed in to Game services?
-  BOOL signedInToGames = [GPGManager sharedInstance].signedIn;
   NSLog(@"Signed in to games services is %@", (signedIn) ? @"Yes" : @"No");
-  self.quickMatchButton.enabled = signedInToGames;
-  self.inviteFriendsButton.enabled = signedInToGames;
-  self.viewMyMatchesButton.enabled = signedInToGames;
-  if (signedInToGames) {
+  self.quickMatchButton.enabled = signedIn;
+  self.inviteFriendsButton.enabled = signedIn;
+  self.viewMyMatchesButton.enabled = signedIn;
+  if (signedIn) {
     [self refreshPendingGames];
   }
 }
 
 - (IBAction)signInWasClicked:(id)sender {
-  [[GPPSignIn sharedInstance] authenticate];
+  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:NO];
 }
 
 - (IBAction)signOutWasClicked:(id)sender {
@@ -132,6 +86,14 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     NSLog(@"***ERROR signing in to Google Play Games %@", [error localizedDescription]);
   }
   [self refreshButtons];
+
+  // Register for push notifications
+  NSLog(@"Registering for push notifications");
+  [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+   (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert |
+    UIRemoteNotificationTypeSound)];
+
+  _tryingSilentSignin = NO;
 }
 
 - (void)didFinishGamesSignOutWithError:(NSError *)error {
@@ -139,21 +101,15 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     NSLog(@"***ERROR signing out from Google Play Games %@", [error localizedDescription]);
   }
   [self refreshButtons];
+  _tryingSilentSignin = NO;
 }
 
 # pragma mark - Matchmaking methods
 
-
 - (IBAction)inviteMyFriends:(id)sender {
-
   // This can be a 2-4 player game
-  GPGPeoplePickerViewController *findFriendsVC = [[GPGPeoplePickerViewController alloc] init];
-  findFriendsVC.minPlayersToPick = 1;
-  findFriendsVC.maxPlayersToPick = 3;
-
-  findFriendsVC.peoplePickerDelegate = self;
-  [self presentViewController:findFriendsVC animated:YES completion:nil];
-
+  [GPGLauncherController sharedInstance].playerPickerLauncherDelegate = self;
+  [[GPGLauncherController sharedInstance] presentPlayerPicker];
 }
 
 - (IBAction)quickMatchWasPressed:(id)sender {
@@ -171,11 +127,9 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 }
 
 - (IBAction)seeMyMatches:(id)sender {
-  GPGTurnBasedMatchViewController *matchViewController =
-      [[GPGTurnBasedMatchViewController alloc] init];
-  matchViewController.matchDelegate = self;
   self.justCameFromMatchVC = YES;
-  [self presentViewController:matchViewController animated:YES completion:nil];
+  [GPGLauncherController sharedInstance].turnBasedMatchListLauncherDelegate = self;
+  [[GPGLauncherController sharedInstance] presentTurnBasedMatchList];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -195,22 +149,27 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   [self performSegueWithIdentifier:@"segueToGamePlay" sender:self];
 }
 
-# pragma mark PeoplePickerViewControllerDelegate methods
+# pragma mark GPGPlayerPickerLauncherDelegate methods
+- (int)minPlayersForPlayerPickerLauncher {
+  return 1;
+}
 
-- (void)peoplePickerViewController:(GPGPeoplePickerViewController *)viewController
-                     didPickPeople:(NSArray *)people
-               autoPickPlayerCount:(int)autoPickPlayerCount {
+- (int)maxPlayersForPlayerPickerLauncher {
+  return 3;
+}
 
-  [self dismissViewControllerAnimated:YES completion:nil];
-  for (NSString *nextPlayerId in people) {
+- (void)playerPickerLauncherDidPickPlayers:(NSArray *)players
+                       autoPickPlayerCount:(int)autoPickPlayerCount {
+  if (players == NULL) return;
+
+  for (NSString *nextPlayerId in players) {
     NSLog(@"This is who we picked %@", nextPlayerId);
   }
 
   GPGMultiplayerConfig *matchConfigForCreation = [[GPGMultiplayerConfig alloc] init];
-  matchConfigForCreation.invitedPlayerIds = people;
+  matchConfigForCreation.invitedPlayerIds = players;
   matchConfigForCreation.minAutoMatchingPlayers = autoPickPlayerCount;
   matchConfigForCreation.maxAutoMatchingPlayers = autoPickPlayerCount;
-
 
   [GPGTurnBasedMatch createMatchWithConfig:matchConfigForCreation completionHandler:^(GPGTurnBasedMatch *match, NSError *error) {
     if (error) {
@@ -219,61 +178,34 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
       [self takeTurnInMatch:match];
     }
   }];
-
-}
-
-- (void)peoplePickerViewControllerDidCancel:(GPGPeoplePickerViewController *)controller {
-  [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
-- (void)updateNumberOfGamesNeedingAttention {
-  NSInteger invitedGamesCount = [[GPGManager sharedInstance].applicationModel.turnBased
-                                 matchesForUserMatchStatus:GPGTurnBasedUserMatchStatusInvited].count;
-  NSInteger myTurnGamesCount = [[GPGManager sharedInstance].applicationModel.turnBased
-                                matchesForUserMatchStatus:GPGTurnBasedUserMatchStatusTurn].count;
-  NSInteger gamesToRespondTo = invitedGamesCount + myTurnGamesCount;
-
-  NSString *buttonText;
-  if (gamesToRespondTo > 0) {
-    buttonText = [NSString stringWithFormat:@"All my matches (%ld)", (long) gamesToRespondTo];
-  } else {
-    buttonText = @"All my matches";
-  }
-  // If this were a real app, I might use a library to add a nice badge to my button instead.
-  [self.viewMyMatchesButton setTitle:buttonText forState:UIControlStateNormal];
-
 }
 
 - (void)refreshPendingGames {
-  // If we just came from our TurnBasedMatchViewController, it might be safer to reload this
-  // data when refreshing. However, if we just got here from our TBMVC, all that data has
-  // just been loaded, and the reloadDataForKey step is unnecessary.
-
-  if (!self.justCameFromMatchVC) {
-    // Perform a network call
-    [[GPGManager sharedInstance].applicationModel reloadDataForKey:GPGModelAllMatchesKey completionHandler:^(NSError *error) {
-      [self updateNumberOfGamesNeedingAttention];
-     }];
-  } else {
-    // Skip the network call!
-    [self updateNumberOfGamesNeedingAttention];
-  }
+  [GPGTurnBasedMatch allMatchesWithCompletionHandler:^(NSArray *matches, NSError *error){
+    NSInteger gamesToRespondTo = 0;
+    for (GPGTurnBasedMatch* match in matches )
+    {
+      if (match.status == GPGTurnBasedUserMatchStatusInvited
+          ||match.status == GPGTurnBasedUserMatchStatusTurn)
+        gamesToRespondTo++;
+    }
+    NSString *buttonText;
+    if (gamesToRespondTo > 0) {
+      buttonText = [NSString stringWithFormat:@"All my matches (%ld)", (long) gamesToRespondTo];
+    } else {
+      buttonText = @"All my matches";
+    }
+    // If this were a real app, I might use a library to add a nice badge to my button instead.
+    [self.viewMyMatchesButton setTitle:buttonText forState:UIControlStateNormal];
+  }];
   self.justCameFromMatchVC = NO;
 }
 
-- (NSInteger)numberOfGamesNeedingPlayersAttention {
-  NSInteger __block gamesToRespondTo;
-  [[GPGManager sharedInstance].applicationModel reloadDataForKey:GPGModelAllMatchesKey completionHandler:^(NSError *error) {
-    GPGTurnBasedModel *turnModel = [GPGManager sharedInstance].applicationModel.turnBased;
-    NSInteger invitedGamesCount = [turnModel matchesForUserMatchStatus:GPGTurnBasedUserMatchStatusInvited].count;
-    NSInteger myTurnGamesCount = [turnModel matchesForUserMatchStatus:GPGTurnBasedUserMatchStatusTurn].count;
-    gamesToRespondTo = invitedGamesCount + myTurnGamesCount;
-
-  }];
-  return gamesToRespondTo;
+#pragma mark - GPGLauncherDelegate
+- (void)launcherDismissed {
+  // In the case of launching from a push notification, |matchToLoad_| is not nil.
+  // If the user dismissed launcher manually, |matchToLoad_| isn't needed any more.
 }
-
 
 # pragma mark GPGTurnBasedMatchDelegate methods
 
@@ -288,17 +220,17 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 
 
     GPGTurnBasedParticipant *invitingParticipant =
-        [match participantForId:match.lastUpdateParticipant.participantId];
+    [match participantForId:match.lastUpdateParticipant.participantId];
     if ([match.pendingParticipant.participantId isEqualToString:match.localParticipantId]) {
       NSString *messageToShow = [NSString
-          stringWithFormat:@"%@ just invited you to a game. " @"Would you like to play now?",
-          invitingParticipant.player.displayName];
+                                 stringWithFormat:@"%@ just invited you to a game. " @"Would you like to play now?",
+                                 invitingParticipant.player.displayName];
       [[[UIAlertView alloc] initWithTitle:@"You've been invited!"
                                   message:messageToShow
                                  delegate:self
                         cancelButtonTitle:@"Not now"
                         otherButtonTitles:@"Sure!",
-          nil] show];
+        nil] show];
       self.matchFromNotification = match;
       self.lobbyAlertType = LobbyAlertYouveBeenInvited;
     }
@@ -313,14 +245,14 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   if (fromPushNotification) {
     if ([match.pendingParticipant.participantId isEqualToString:match.localParticipantId]) {
       NSString *messageToShow = [NSString stringWithFormat:
-              @"%@ just took their turn in a match. " @"Would you like to jump to that game now?",
-          participant.player.displayName];
+                                 @"%@ just took their turn in a match.\nWould you like to jump to that game now?",
+                                 participant.player.displayName];
       [[[UIAlertView alloc] initWithTitle:@"It's your turn!"
                                   message:messageToShow
                                  delegate:self
                         cancelButtonTitle:@"No"
                         otherButtonTitles:@"Sure!",
-          nil] show];
+        nil] show];
       self.matchFromNotification = match;
       self.lobbyAlertType = LobbyAlertItsYourTurn;
     }
@@ -334,18 +266,18 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 // In next version, this will change to have a fromPushNotification boolean as well
 - (void)matchEnded:(GPGTurnBasedMatch *)match participant:(GPGTurnBasedParticipant *)participant fromPushNotification:(BOOL)fromPushNotification {
   if (fromPushNotification) {
-      NSString *messageToShow = [NSString stringWithFormat:
-                                 @"%@ just finished a game you were in. "
-                                 @"Want to see the results?",
-                                 participant.player.displayName];
-      [[[UIAlertView alloc] initWithTitle:@"Game over, man!"
-                                  message:messageToShow
-                                 delegate:self
-                        cancelButtonTitle:@"No"
-                        otherButtonTitles:@"Sure!",
-        nil] show];
-      self.matchFromNotification = match;
-      self.lobbyAlertType = LobbyAlertGameOver;
+    NSString *messageToShow = [NSString stringWithFormat:
+                               @"%@ just finished a game you were in. "
+                               @"Want to see the results?",
+                               participant.player.displayName];
+    [[[UIAlertView alloc] initWithTitle:@"Game over, man!"
+                                message:messageToShow
+                               delegate:self
+                      cancelButtonTitle:@"No"
+                      otherButtonTitles:@"Sure!",
+      nil] show];
+    self.matchFromNotification = match;
+    self.lobbyAlertType = LobbyAlertGameOver;
   }
   [self refreshPendingGames];
 }
@@ -354,8 +286,6 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   NSLog(@"Match has ended!");
   [self refreshPendingGames];
 }
-
-
 
 // This would be called if something weird happens. For instance, you call take turn while offline
 // then, when you come back online, it turns out the state of the match had changed and the player's
@@ -383,7 +313,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
       // Great! Let's join the match and then take a turn
       [self.matchFromNotification joinWithCompletionHandler:^(NSError *error) {
         if (error) {
-            NSLog(@"Error joining a match: %@", [error localizedDescription]);
+          NSLog(@"Error joining a match: %@", [error localizedDescription]);
         } else {
           [self takeTurnInMatch:self.matchFromNotification];
         }
@@ -392,45 +322,45 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   }
 }
 
-# pragma mark TurnBasedRoomControllerDelegate methods
+#pragma mark - GPGTurnBasedMatchListLauncherDelegate
 
+- (void)turnBasedMatchListLauncherDidSelectMatch:(GPGTurnBasedMatch *)match {
+  NSLog(@"Clicking turnBasedMatchListLauncherDidSelectMatch");
 
-- (void)turnBasedMatchViewController:(GPGTurnBasedMatchViewController *)controller
-                didTakeTurnWithMatch:(GPGTurnBasedMatch *)match {
-  NSLog(@"Clicking didTakeTurnWithMathc");
-  // Indicates that yes, I want to take my turn in this game
-  [self dismissViewControllerAnimated:YES completion:nil];
-  [self takeTurnInMatch:match];
-}
+  NSString *matchInfo;
+  switch (match.userMatchStatus)
+  {
+    case GPGTurnBasedUserMatchStatusTurn:         //My turn
+      [self takeTurnInMatch:match];
+      break;
+    case GPGTurnBasedUserMatchStatusAwaitingTurn: //Their turn
+      [self viewMatchNotMyTurn:match];
+      break;
+    case GPGTurnBasedUserMatchStatusInvited:
+      // This might be a good time to bring up an alert sheet or a dialog box that shows you something
+      // about the match. Or we could just take a turn as if the player had clicked the takeTurn button.
+      // It's really up to you.
 
-- (void)turnBasedMatchViewController:(GPGTurnBasedMatchViewController *)controller
-                   didTapMyTurnMatch:(GPGTurnBasedMatch *)match {
-  // This is used when a user clicks elsewhere in the match view controller that's NOT the
-  // crossed-swords "Take turn" button.
-  NSLog(@"Clicking didTapMyTurnMatch");
-
-  // This might be a good time to bring up an alert sheet, or a dialog box that shows you something
-  // about the match. Or we could just take a turn as if the player had clicked the takeTurn button.
-  // It's really up to you.
-
-  // Let's bring up a UIAlert. Because we can.
-  NSString *matchInfo =
+      // Let's bring up a UIAlert. Because we can.
+      matchInfo =
       [NSString stringWithFormat:@"Created by %@. Last turn by %@ on %@",
-          match.creationParticipant.player.displayName,
-          match.lastUpdateParticipant.player.displayName,
+       match.creationParticipant.player.displayName,
+       match.lastUpdateParticipant.player.displayName,
        [NSDate dateWithTimeIntervalSince1970:match.lastUpdateTimestamp / 1000]];
 
-  [[[UIAlertView alloc] initWithTitle:@"Match info"
-                              message:matchInfo
-                             delegate:nil
-                    cancelButtonTitle:@"Okay"
-                    otherButtonTitles:nil] show];
-
+      [[[UIAlertView alloc] initWithTitle:@"Match info"
+                                  message:matchInfo
+                                 delegate:nil
+                        cancelButtonTitle:@"Okay"
+                        otherButtonTitles:nil] show];
+      break;
+    case GPGTurnBasedUserMatchStatusMatchCompleted: //Completed match
+      [self viewMatchNotMyTurn:match];
+      break;
+  }
 }
 
-
-- (void)turnBasedMatchViewController:(GPGTurnBasedMatchViewController *)controller
-                        didJoinMatch:(GPGTurnBasedMatch *)match {
+- (void)turnBasedMatchListLauncherDidJoinMatch:(GPGTurnBasedMatch *)match {
   NSLog(@"Did join match called");
   // Indicates that yes, I do want to play this game I was invited to. In this case, we'll
   // just jump right into a turn
@@ -438,36 +368,15 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   [self takeTurnInMatch:match];
 }
 
-- (void)turnBasedMatchViewController:(GPGTurnBasedMatchViewController *)controller
-                     didDeclineMatch:(GPGTurnBasedMatch *)match {
-    NSLog(@"Did decline match called. No further action required.");
+- (void)turnBasedMatchListLauncherDidDeclineMatch:(GPGTurnBasedMatch *)match {
+  NSLog(@"Did decline match called. No further action required.");
 }
 
-- (void)turnBasedMatchViewController:(GPGTurnBasedMatchViewController *)controller
-                          didRematch:(GPGTurnBasedMatch *)match {
+- (void)turnBasedMatchListLauncherDidRematch:(GPGTurnBasedMatch *)match {
   NSLog(@"Did rematch called.");
   // This really looks like we're just creating a new match.
   [self dismissViewControllerAnimated:YES completion:nil];
   [self takeTurnInMatch:match];
-}
-
-
-- (void)turnBasedMatchViewController:(GPGTurnBasedMatchViewController *)controller
-                didTapTheirTurnMatch:(GPGTurnBasedMatch *)match {
-  [self dismissViewControllerAnimated:YES completion:nil];
-  [self viewMatchNotMyTurn:match];
-}
-
-- (void)turnBasedMatchViewController:(GPGTurnBasedMatchViewController *)controller
-                didTapCompletedMatch:(GPGTurnBasedMatch *)match {
-  [self dismissViewControllerAnimated:YES completion:nil];
-  [self viewMatchNotMyTurn:match];
-}
-
-
-- (void)turnBasedMatchViewControllerDidFinish:(GPGTurnBasedMatchViewController *)controller {
-  NSLog(@"Match VC did finish called");
-  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 # pragma mark - Lifecycle methods
@@ -475,30 +384,10 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-  GPPSignIn *signIn = [GPPSignIn sharedInstance];
-  // You set kClientID in a previous step
-  signIn.clientID = CLIENT_ID;
-  signIn.scopes = [NSArray arrayWithObjects:
-                   @"https://www.googleapis.com/auth/games",
-                   nil];
-  signIn.language = [[NSLocale preferredLanguages] objectAtIndex:0];
-  signIn.delegate = self;
-  signIn.shouldFetchGoogleUserID =YES;
 
   [GPGManager sharedInstance].statusDelegate = self;
 
-  _tryingSilentSignin = [signIn trySilentAuthentication];
-
-  if (!_tryingSilentSignin) {
-    // Have we tried signing the user in before?
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kDeclinedGooglePreviously]) {
-      // They've said no previously. Let's just show the sign in button
-    } else {
-      [[GPPSignIn sharedInstance] authenticate];
-    }
-
-  }
+  _tryingSilentSignin = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -510,8 +399,8 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+  [super didReceiveMemoryWarning];
+  // Dispose of any resources that can be recreated.
 }
 
 
