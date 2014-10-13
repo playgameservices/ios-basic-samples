@@ -67,21 +67,14 @@
   self.signOutButton.hidden = !signedIn;
   self.signOutButton.enabled = signedIn;
   AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-  
-  // This catches the case where we're not signed in, but the service is in the
-  // process of signing us in.
-  if (self.currentlySigningIn) {
-    self.signInButton.enabled = false;
-    self.signInButton.alpha = 0.4;
-    [self.signingIn startAnimating];
-  } else {
-    self.signInButton.enabled = true;
-    self.signInButton.alpha = 1.0;
-  }
-  
+
+  self.signInButton.enabled = true;
+  self.signInButton.alpha = 1.0;
+
   // This would also be a good time to jump directly into our game
   // if we got here from a deep link
   if (signedIn) {
+    self.currentlySigningIn = NO;
     NSDictionary *deepLinkParams = [appDelegate.deepLinkParams copy];
     if (deepLinkParams && [deepLinkParams objectForKey:@"difficulty"]) {
       // So we don't jump muliple times
@@ -89,8 +82,14 @@
       appDelegate.deepLinkParams = nil;
       [self setDifficultyAndStartGame:[(NSNumber *)[deepLinkParams objectForKey:@"difficulty"] intValue]];
     }
+  // This catches the case where we're not signed in, but the service is in the
+  // process of signing us in.
+  } else if (self.currentlySigningIn) {
+    self.signInButton.enabled = false;
+    self.signInButton.alpha = 0.4;
+    [self.signingIn startAnimating];
   }
-
+  
 }
 
 - (void)didFinishGamesSignInWithError:(NSError *)error {
