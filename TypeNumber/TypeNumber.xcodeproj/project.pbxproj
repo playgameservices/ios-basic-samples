@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2859593F198AC7030071670D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2859593E198AC7030071670D /* CoreTelephony.framework */; };
 		28595941198AC7510071670D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28595940198AC7510071670D /* libz.dylib */; };
+		286BF74F1A5CBA3400CACE79 /* gpg.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 286BF74D1A5CBA3400CACE79 /* gpg.bundle */; };
+		286BF7501A5CBA3400CACE79 /* gpg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286BF74E1A5CBA3400CACE79 /* gpg.framework */; };
 		493BA8FE18B544E7001E775C /* AdminViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 493BA8FD18B544E7001E775C /* AdminViewController.m */; };
 		49CF0E2818B3D4EB00CEA887 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CF0E2718B3D4EB00CEA887 /* Foundation.framework */; };
 		49CF0E2A18B3D4EB00CEA887 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CF0E2918B3D4EB00CEA887 /* CoreGraphics.framework */; };
@@ -69,8 +71,6 @@
 		49CF0EBB18B3D6C300CEA887 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49CF0EBA18B3D6C300CEA887 /* CoreData.framework */; };
 		49CF0EBD18B3D6F800CEA887 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CF0EBC18B3D6F800CEA887 /* MainStoryboard_iPhone.storyboard */; };
 		49CF0EBF18B3DE1800CEA887 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CF0EBE18B3DE1800CEA887 /* MainStoryboard_iPad.storyboard */; };
-		49D7688118CBB55D007FDE22 /* GooglePlayGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7687F18CBB55D007FDE22 /* GooglePlayGames.framework */; };
-		49D7688218CBB55D007FDE22 /* GooglePlayGames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49D7688018CBB55D007FDE22 /* GooglePlayGames.bundle */; };
 		49D7688418CBB587007FDE22 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7688318CBB587007FDE22 /* libc++.dylib */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +87,8 @@
 /* Begin PBXFileReference section */
 		2859593E198AC7030071670D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		28595940198AC7510071670D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		286BF74D1A5CBA3400CACE79 /* gpg.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = gpg.bundle; path = ../Libraries/gpg.bundle; sourceTree = "<group>"; };
+		286BF74E1A5CBA3400CACE79 /* gpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gpg.framework; path = ../Libraries/gpg.framework; sourceTree = "<group>"; };
 		493BA8FC18B544E7001E775C /* AdminViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdminViewController.h; sourceTree = "<group>"; };
 		493BA8FD18B544E7001E775C /* AdminViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdminViewController.m; sourceTree = "<group>"; };
 		49CF0E2418B3D4EB00CEA887 /* TypeNumber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeNumber.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,8 +161,6 @@
 		49CF0EBA18B3D6C300CEA887 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		49CF0EBC18B3D6F800CEA887 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard_iPhone.storyboard; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		49CF0EBE18B3DE1800CEA887 /* MainStoryboard_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MainStoryboard_iPad.storyboard; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		49D7687F18CBB55D007FDE22 /* GooglePlayGames.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlayGames.framework; path = ../Libraries/GooglePlayGames.framework; sourceTree = "<group>"; };
-		49D7688018CBB55D007FDE22 /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
 		49D7688318CBB587007FDE22 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -169,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				286BF7501A5CBA3400CACE79 /* gpg.framework in Frameworks */,
 				28595941198AC7510071670D /* libz.dylib in Frameworks */,
 				2859593F198AC7030071670D /* CoreTelephony.framework in Frameworks */,
 				49D7688418CBB587007FDE22 /* libc++.dylib in Frameworks */,
@@ -177,7 +178,6 @@
 				49CF0EB918B3D6BD00CEA887 /* Security.framework in Frameworks */,
 				49CF0EB718B3D6B800CEA887 /* SystemConfiguration.framework in Frameworks */,
 				49CF0EB518B3D6A800CEA887 /* QuartzCore.framework in Frameworks */,
-				49D7688118CBB55D007FDE22 /* GooglePlayGames.framework in Frameworks */,
 				49CF0EB318B3D6A200CEA887 /* CoreText.framework in Frameworks */,
 				49CF0EB118B3D69C00CEA887 /* CoreLocation.framework in Frameworks */,
 				49CF0EAF18B3D69500CEA887 /* CoreMotion.framework in Frameworks */,
@@ -226,11 +226,11 @@
 		49CF0E2618B3D4EB00CEA887 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				286BF74D1A5CBA3400CACE79 /* gpg.bundle */,
+				286BF74E1A5CBA3400CACE79 /* gpg.framework */,
 				28595940198AC7510071670D /* libz.dylib */,
 				2859593E198AC7030071670D /* CoreTelephony.framework */,
 				49D7688318CBB587007FDE22 /* libc++.dylib */,
-				49D7687F18CBB55D007FDE22 /* GooglePlayGames.framework */,
-				49D7688018CBB55D007FDE22 /* GooglePlayGames.bundle */,
 				49CF0EBA18B3D6C300CEA887 /* CoreData.framework */,
 				49CF0EB818B3D6BD00CEA887 /* Security.framework */,
 				49CF0EB618B3D6B800CEA887 /* SystemConfiguration.framework */,
@@ -434,6 +434,7 @@
 				49CF0E3A18B3D4EB00CEA887 /* Images.xcassets in Resources */,
 				49CF0E8F18B3D59400CEA887 /* games_controller_ipad@2x.png in Resources */,
 				49CF0E9818B3D59400CEA887 /* icon_typeanumber_small.png in Resources */,
+				286BF74F1A5CBA3400CACE79 /* gpg.bundle in Resources */,
 				49CF0E9418B3D59400CEA887 /* gplus_signin_pressed.png in Resources */,
 				49CF0E8A18B3D59400CEA887 /* Default-Portrait~ipad.png in Resources */,
 				49CF0E9918B3D59400CEA887 /* icon_typeanumber_small@2x.png in Resources */,
@@ -448,7 +449,6 @@
 				49CF0E9A18B3D59400CEA887 /* leaderboard_icon.png in Resources */,
 				49CF0E9C18B3D59400CEA887 /* leaderboard_icon_ipad.png in Resources */,
 				49CF0E8B18B3D59400CEA887 /* Default.png in Resources */,
-				49D7688218CBB55D007FDE22 /* GooglePlayGames.bundle in Resources */,
 				49CF0E9618B3D59400CEA887 /* icon_typeanumber_ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
