@@ -22,6 +22,7 @@
 #import "GameViewController.h"
 #import "LobbyViewController.h"
 #import <GooglePlus/GooglePlus.h>
+#import <GooglePlayGames/GooglePlayGames.h>
 
 @interface LobbyViewController ()<GPGTurnBasedMatchListLauncherDelegate,
                                   GPGTurnBasedMatchDelegate,
@@ -37,6 +38,7 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
   LobbyAlertGameOver
 };
 
+@property (nonatomic, weak) id <UIPageViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
 @property (weak, nonatomic) IBOutlet UIButton *signOutButton;
 @property (weak, nonatomic) IBOutlet UIButton *quickMatchButton;

@@ -20,17 +20,16 @@
 #import "AppDelegate.h"
 #import "LobbyViewController.h"
 #import <GooglePlus/GooglePlus.h>
-
+#import <GooglePlayGames/GooglePlayGames.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
   for (UIViewController *nextVc in [(UINavigationController *)self.window.rootViewController childViewControllers]) {
     if ([nextVc class] == [LobbyViewController class]) {
       NSLog(@"Found our lobby view controller!");
-      [GPGManager sharedInstance].turnBasedMatchDelegate = (LobbyViewController *)nextVc;
+      [GPGManager sharedInstance].turnBasedMatchDelegate = (id<GPGTurnBasedMatchDelegate>)nextVc;
       break;
     }
   }
