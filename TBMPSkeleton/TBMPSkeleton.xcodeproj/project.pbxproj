@@ -17,7 +17,6 @@
 		49D768AC18CBCAB3007FDE22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D768AB18CBCAB3007FDE22 /* AppDelegate.m */; };
 		49D768AF18CBCAB3007FDE22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49D768AD18CBCAB3007FDE22 /* Main.storyboard */; };
 		49D768B418CBCAB3007FDE22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49D768B318CBCAB3007FDE22 /* Images.xcassets */; };
-		49D768BB18CBCAB3007FDE22 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D768BA18CBCAB3007FDE22 /* XCTest.framework */; };
 		49D768BC18CBCAB3007FDE22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7689B18CBCAB3007FDE22 /* Foundation.framework */; };
 		49D768BD18CBCAB3007FDE22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7689F18CBCAB3007FDE22 /* UIKit.framework */; };
 		49D768C518CBCAB3007FDE22 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49D768C318CBCAB3007FDE22 /* InfoPlist.strings */; };
@@ -69,7 +68,6 @@
 		49D768AE18CBCAB3007FDE22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49D768B318CBCAB3007FDE22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		49D768B918CBCAB3007FDE22 /* TBMPSkeletonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TBMPSkeletonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		49D768BA18CBCAB3007FDE22 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		49D768C218CBCAB3007FDE22 /* TBMPSkeletonTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TBMPSkeletonTests-Info.plist"; sourceTree = "<group>"; };
 		49D768C418CBCAB3007FDE22 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		49D768C618CBCAB3007FDE22 /* TBMPSkeletonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBMPSkeletonTests.m; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49D768BB18CBCAB3007FDE22 /* XCTest.framework in Frameworks */,
 				49D768BD18CBCAB3007FDE22 /* UIKit.framework in Frameworks */,
 				49D768BC18CBCAB3007FDE22 /* Foundation.framework in Frameworks */,
 			);
@@ -181,7 +178,6 @@
 				49D7689B18CBCAB3007FDE22 /* Foundation.framework */,
 				49D7689D18CBCAB3007FDE22 /* CoreGraphics.framework */,
 				49D7689F18CBCAB3007FDE22 /* UIKit.framework */,
-				49D768BA18CBCAB3007FDE22 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
