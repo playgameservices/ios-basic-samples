@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 #import <UIKit/UIKit.h>
+#import <GooglePlayGames/GooglePlayGames.h>
 
 @interface GameViewController : UIViewController
 

@@ -22,7 +22,7 @@ of this game used UTF16 strings, so we had to as well.)
 most of the logic for determining who the next player is, setting game results,
 submitting a turn, finishing a match, or leaving a match entirely.
 
-* `LobbyViewController` contains methods that handle sign-in and create real-time
+* `LobbyViewController` contains methods that handle sign-in and create turn-based
 mutliplayer games, either through invites (using the PeoplePickerVC) or through
 automatching.
 
@@ -54,14 +54,12 @@ your Xcode project. To follow this process, perform the following steps:
   application.
     * Again, you will be using the Bundle ID that you created in Step 1.
     * You can leave your App Store ID blank for testing purposes.
- 	* Don't forget to turn on the "Turn-based multiplayer" switch!
+    * Don't forget to turn on the "Turn-based multiplayer" switch!
 5. If you want to try out receiving invites and "it's your turn" notifications, you will
   need to get an APNS certificate from iTunes Connect and upload it to the developer console
   as well. Please review our documentation for instructions on how to do this.
-6. Make a note of your client ID and application ID as described in the
-  documentation
-7. Once that's done, open up your `Constants.h` file, and replace the `CLIENT_ID` value
-  with your own OAuth2.0 client ID.
+6. Copy your iOS application's OAuth 2.0 client ID from step 4 and paste it
+  into `Constants.h` file by replacing the example value with your own.
 
 That's it! Your application should be ready to run!  Give it a try, and add some word typing
 excitement to your evening!
