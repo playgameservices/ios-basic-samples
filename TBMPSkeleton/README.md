@@ -35,14 +35,17 @@ To run TBMP Skeleton on your own device, you will need to create
 your own version of the game in the Play Console and copy over some information to
 your Xcode project. To follow this process, perform the following steps:
 
-1. Open up your TBMP Skeleton project settings. Select the "TBMP Skeleton" target and,
+1. If you haven't already, download the Google Play Games Services SDK and the
+   Google+ iOS SDK from the [Google Play Games Services downloads page](1).
+   Unzip the files into the Libraries folder of your samples directory.
+2. Open up your TBMP Skeleton project settings. Select the "TBMP Skeleton" target and,
   on the "Summary" tab, change the Bundle Identifier from `com.example.TBMPSkeleton` to
   something appropriate for your Provisioning Profile. (It will probably look like
   `com.<your_company>.TBMPSkeleton`)
-2. Click the "Info" tab and go down to the bottom where you see "URL Types". Expand
+3. Click the "Info" tab and go down to the bottom where you see "URL Types". Expand
   this and change the "Identifier" and "URL Schemes" from `com.example.TBMPSkeleton` to
   the name you used in Step 1.
-3. Create your own application in the Play Console, as described in our [Developer
+4. Create your own application in the Play Console, as described in our [Developer
   Documentation](https://developers.google.com/games/services/console/enabling). Make
   sure you follow the "iOS" instructions for creating your client ID and linking
   your application.
@@ -52,12 +55,12 @@ your Xcode project. To follow this process, perform the following steps:
     * Again, you will be using the Bundle ID that you created in Step 1.
     * You can leave your App Store ID blank for testing purposes.
  	* Don't forget to turn on the "Turn-based multiplayer" switch!
-4. If you want to try out receiving invites and "it's your turn" notifications, you will
+5. If you want to try out receiving invites and "it's your turn" notifications, you will
   need to get an APNS certificate from iTunes Connect and upload it to the developer console
   as well. Please review our documentation for instructions on how to do this.
-5. Make a note of your client ID and application ID as described in the
+6. Make a note of your client ID and application ID as described in the
   documentation
-6. Once that's done, open up your `Constants.h` file, and replace the `CLIENT_ID` value
+7. Once that's done, open up your `Constants.h` file, and replace the `CLIENT_ID` value
   with your own OAuth2.0 client ID.
 
 That's it! Your application should be ready to run!  Give it a try, and add some word typing
@@ -68,3 +71,5 @@ excitement to your evening!
 * We should probably add some icons and other supporting graphics.
 * Right now, I reload the entire set of match data when in the refreshPendingGames call.
 In reality, we should only do that when we make that call from a push notification.
+
+(1) https://developers.google.com/games/services/downloads/
