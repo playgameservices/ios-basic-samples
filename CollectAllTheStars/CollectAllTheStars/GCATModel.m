@@ -100,7 +100,7 @@ return self;
 - (void)readCurrentSnapshot {
   [self.currentSnapshotMetadata readWithCompletionHandler:^(NSData *data, NSError *error) {
     if (!error) {
-      NSLog(@"Successfully read %d blocks", data.length);
+      NSLog(@"Successfully read %d blocks", (int) data.length);
       self.inventory = [GCATStarInventory starInventoryFromCloudData:data];
       [self.screenViewController allDoneWithCloud];
 

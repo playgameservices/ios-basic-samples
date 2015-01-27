@@ -20,5 +20,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LobbyViewController : UIViewController
-
+  @property (nonatomic, weak) id <UIPageViewControllerDelegate> delegate;
 @end

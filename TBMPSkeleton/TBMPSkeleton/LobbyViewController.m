@@ -22,6 +22,7 @@
 #import "GameViewController.h"
 #import "LobbyViewController.h"
 #import <GooglePlus/GooglePlus.h>
+#import <GooglePlayGames/GooglePlayGames.h>
 
 @interface LobbyViewController ()<GPGTurnBasedMatchListLauncherDelegate,
                                   GPGTurnBasedMatchDelegate,

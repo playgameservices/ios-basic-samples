@@ -72,6 +72,8 @@
 		49D7688118CBB55D007FDE22 /* GooglePlayGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7687F18CBB55D007FDE22 /* GooglePlayGames.framework */; };
 		49D7688218CBB55D007FDE22 /* GooglePlayGames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49D7688018CBB55D007FDE22 /* GooglePlayGames.bundle */; };
 		49D7688418CBB587007FDE22 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7688318CBB587007FDE22 /* libc++.dylib */; };
+		4B3DE7F619B7BD77007A1202 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3DE7F519B7BD77007A1202 /* libz.dylib */; };
+		4B3DE7F819B7BD7D007A1202 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B3DE7F719B7BD7D007A1202 /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +164,8 @@
 		49D7687F18CBB55D007FDE22 /* GooglePlayGames.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlayGames.framework; path = ../Libraries/GooglePlayGames.framework; sourceTree = "<group>"; };
 		49D7688018CBB55D007FDE22 /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
 		49D7688318CBB587007FDE22 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		4B3DE7F519B7BD77007A1202 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		4B3DE7F719B7BD7D007A1202 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
