@@ -14,11 +14,11 @@ user's circles, and making calls to the  Management API to reset scores or achie
 * **TrivialQuest2**: Demonstrates Events and Quests
 
 The shared `Libraries` folder contains the frameworks and bundles required to
-run these applications. Each application contains references to this folder
-instead of containing separate frameworks and bundles for each project. Before
+run these applications. Each application references this folder instead of
+having separate frameworks and bundles for each project. Before
 you build the samples, download the Google Play Games Services SDK and the
 Google+ iOS SDK from the [Google Play Games Services downloads page](https://developers.google.com/games/services/downloads/).
-and unzip the files into the **Libraries** folder of your samples directory.
+and unzip the files into the `Libraries` folder of your samples directory.
 
 **Note:** These samples are compatible with their corresponding applications in
 the Android samples. This means that you can play some levels on Collect All the Stars

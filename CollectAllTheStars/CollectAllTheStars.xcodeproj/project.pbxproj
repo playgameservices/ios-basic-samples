@@ -398,17 +398,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/CollectAllTheStars",
-					"$(SRCROOT)/../Libraries",
-					"$(PROJECT_DIR)/Libraries",
-					/Users/hakuro/Google,
-					"Drive/Documents/0714/ios-samples/Libraries",
+					"$(SRCROOT)/../Libraries"
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollectAllTheStars/CollectAllTheStars-Prefix.pch";
 				INFOPLIST_FILE = "CollectAllTheStars/CollectAllTheStars-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -419,17 +417,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/CollectAllTheStars",
-					"$(SRCROOT)/../Libraries",
-					"$(PROJECT_DIR)/Libraries",
-					/Users/hakuro/Google,
-					"Drive/Documents/0714/ios-samples/Libraries",
+					"$(SRCROOT)/../Libraries"
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollectAllTheStars/CollectAllTheStars-Prefix.pch";
 				INFOPLIST_FILE = "CollectAllTheStars/CollectAllTheStars-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
