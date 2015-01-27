@@ -26,7 +26,6 @@
 @interface GCATAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 @property (strong, nonatomic) GCATViewController *viewController;
 
 @end
