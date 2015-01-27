@@ -19,13 +19,9 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MPLobbyDelegate <GPGRealTimeRoomDelegate>
-
-
+@protocol MPLobbyDelegate <GPGRealTimeRoomDelegate, GPGLauncherDelegate>
 - (void)readyToStartMultiPlayerGame;
 - (void)multiPlayerGameWasCanceled;
-- (void)showInviteViewController:(UIViewController *)vcToShow;
-
 @end
 
 @protocol MPGameDelegate

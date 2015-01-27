@@ -31,18 +31,18 @@ static const NSString * turnCounterKey = @"turnCounter";
 
   NSError *errorToCatch;
 
-  // The Android version uses UTF16 encoding. This makes sure we're comptible with them.
+  // The Android version uses UTF8 encoding. This makes sure we're comptible with them.
   NSData *jsonifiedData = [NSJSONSerialization dataWithJSONObject:myRepresentation options:0 error:&errorToCatch];
   NSString *tempConversion = [[NSString alloc] initWithData:jsonifiedData encoding:NSUTF8StringEncoding];
-  NSData *convertedTo16Data = [tempConversion dataUsingEncoding:NSUTF16StringEncoding allowLossyConversion:YES];
+  NSData *convertedTo8Data = [tempConversion dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
 
 
   if (errorToCatch) {
     NSLog(@"Error trying to convert data %@",[errorToCatch localizedDescription]);
   }
 
-  NSLog(@"My data is this %@", [[NSString alloc] initWithData:convertedTo16Data encoding:NSUTF16StringEncoding]);
-  return convertedTo16Data;
+  NSLog(@"My data is this %@", [[NSString alloc] initWithData:convertedTo8Data encoding:NSUTF8StringEncoding]);
+  return convertedTo8Data;
 }
 
 - (id)initWitDataFromGPG:(NSData *)data {

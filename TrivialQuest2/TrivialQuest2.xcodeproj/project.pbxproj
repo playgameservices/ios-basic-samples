@@ -480,17 +480,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/class/ios-samples/Libraries",
-					"/Users/class/TQ2-ios/Libraries",
-					"/Users/class/TT-samples",
-					"-",
-					"ios/TQ2-ios/Libraries",
-					"/Users/class/tt-samples-ios/TQ2-ios/Libraries",
-					"/Users/class/tt-samples-ios/tested-working/TQ2-ios/Libraries",
-					/Users/hakuro/Google,
-					"Drive/Documents/0714/ios-samples/Libraries",
-					/Users/hakuro/Google,
-					"Drive/Documents/0714/ios-samples/Libraries",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(SRCROOT)/../Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";
@@ -511,17 +503,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/class/ios-samples/Libraries",
-					"/Users/class/TQ2-ios/Libraries",
-					"/Users/class/TT-samples",
-					"-",
-					"ios/TQ2-ios/Libraries",
-					"/Users/class/tt-samples-ios/TQ2-ios/Libraries",
-					"/Users/class/tt-samples-ios/tested-working/TQ2-ios/Libraries",
-					/Users/hakuro/Google,
-					"Drive/Documents/0714/ios-samples/Libraries",
-					/Users/hakuro/Google,
-					"Drive/Documents/0714/ios-samples/Libraries",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(SRCROOT)/../Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";

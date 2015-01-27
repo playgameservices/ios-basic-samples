@@ -19,6 +19,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LobbyViewController : UIViewController <GPGTurnBasedMatchDelegate>
+@interface LobbyViewController : UIViewController
 
 @end

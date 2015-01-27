@@ -23,7 +23,7 @@
 #import "GameViewController.h"
 #import "InitViewController.h"
 
-@interface InitViewController () <GPPSignInDelegate, GPGStatusDelegate>
+@interface InitViewController () <GPGStatusDelegate, GPGStatusDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *achButton;
 @property (weak, nonatomic) IBOutlet UIButton *adminButton;
 @property (weak, nonatomic) IBOutlet UIButton *leadsButton;
@@ -41,69 +41,13 @@
 @property (nonatomic, strong) GPGLeaderboard *testLeaderboard;
 @end
 
-static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn";
-static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
-
-
 @implementation InitViewController
 
 #pragma mark - Google+ sign-in elements
 
-
--(void)initializeSignIn
-{
-  GPPSignIn *signIn = [GPPSignIn sharedInstance];
-  
-  signIn.clientID = CLIENT_ID;
-  signIn.scopes = [NSArray arrayWithObjects:
-                   @"https://www.googleapis.com/auth/games",
-                   nil];
-  signIn.language = [[NSLocale preferredLanguages] objectAtIndex:0];
-  signIn.delegate=self;
-  signIn.shouldFetchGoogleUserID =YES;
-  [GPGManager sharedInstance].statusDelegate = self;
-}
-
--(void)startGoogleGamesSignIn
-{
-  // Our GPPSignIn object has an auth token now. Pass it to the GPGManager.
-  [[GPGManager sharedInstance] signIn:[GPPSignIn sharedInstance] reauthorizeHandler:^(BOOL requiresKeychainWipe, NSError *error) {
-    // If we hit this, auth has failed and we need to authenticate.
-    // Most likely we can refresh behind the scenes
-    if (requiresKeychainWipe) {
-      [[GPPSignIn sharedInstance] signOut];
-    }
-    [[GPPSignIn sharedInstance] authenticate];
-  }];
-}
-
--(void)finishedWithAuth:(GTMOAuth2Authentication *)auth error:(NSError *)error
-{
-  self.currentlySigningIn = NO;
-  
-  if (error.code == 0 && auth) {
-    NSLog(@"Success signing in to Google! Auth is %@", auth);
-    // Tell our GPGManager that we're ready to go.
-    [self startGoogleGamesSignIn];
-  } else {
-    NSLog(@"Failed to log into Google\n\tError=%@\n\tAuthObj=%@", [error localizedDescription],
-          auth);
-    if ([error code] == kErrorCodeFromUserDecliningSignIn) {
-      // This error code is actually pretty vague, but we can generally assume it's because
-      // the user clicked cancel. Let's to the right thing and remember this choice.
-      [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kDeclinedGooglePreviously];
-      [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-  }
-  [self refreshInterface];
-}
-
-
 -(void)refreshInterface
 {
-  
-  BOOL hasAuthToken = [GPGManager sharedInstance].hasAuthorizer;
-  BOOL gamesSignInComplete = [GPGManager sharedInstance].isSignedIn;
+  BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
 
   // We update most of our game interface when game services sign-in is totally complete. In an
   // actual game, you probably will want to allow basic gameplay even if the user isn't signed
@@ -111,35 +55,26 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
   NSArray *buttonsToManage = @[self.achButton, self.leadsButton, self.easyButton, self.hardButton,
                                 self.peopleListButton, self.adminButton];
   for (UIButton *flipMe in buttonsToManage) {
-    flipMe.enabled = gamesSignInComplete;
-    flipMe.hidden = ! gamesSignInComplete;
+    flipMe.enabled = signedIn;
+    flipMe.hidden = !signedIn;
   }
   
   [self.signingIn stopAnimating];
-  self.gameIcons.hidden = !gamesSignInComplete;
+  self.gameIcons.hidden = !signedIn;
 
-  // But we update our sign-in and sign out buttons as soon as we have a valid auth token
-  // (which happens a little bit earlier.)
-  self.signInButton.hidden = (hasAuthToken);
-  self.signInButton.enabled = !hasAuthToken;
-  self.signOutButton.hidden = !hasAuthToken;
-  self.signOutButton.enabled = hasAuthToken;
+  self.signInButton.hidden = signedIn;
+  self.signInButton.enabled = !signedIn;
+  self.signOutButton.hidden = !signedIn;
+  self.signOutButton.enabled = signedIn;
   AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-  
-  // This catches the case where we're not signed in, but the service is in the
-  // process of signing us in.
-  if (self.currentlySigningIn) {
-    self.signInButton.enabled = false;
-    self.signInButton.alpha = 0.4;
-    [self.signingIn startAnimating];
-  } else {
-    self.signInButton.enabled = true;
-    self.signInButton.alpha = 1.0;
-  }
-  
+
+  self.signInButton.enabled = true;
+  self.signInButton.alpha = 1.0;
+
   // This would also be a good time to jump directly into our game
   // if we got here from a deep link
-  if (gamesSignInComplete) {
+  if (signedIn) {
+    self.currentlySigningIn = NO;
     NSDictionary *deepLinkParams = [appDelegate.deepLinkParams copy];
     if (deepLinkParams && [deepLinkParams objectForKey:@"difficulty"]) {
       // So we don't jump muliple times
@@ -147,8 +82,14 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
       appDelegate.deepLinkParams = nil;
       [self setDifficultyAndStartGame:[(NSNumber *)[deepLinkParams objectForKey:@"difficulty"] intValue]];
     }
+  // This catches the case where we're not signed in, but the service is in the
+  // process of signing us in.
+  } else if (self.currentlySigningIn) {
+    self.signInButton.enabled = false;
+    self.signInButton.alpha = 0.4;
+    [self.signingIn startAnimating];
   }
-
+  
 }
 
 - (void)didFinishGamesSignInWithError:(NSError *)error {
@@ -156,6 +97,7 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     NSLog(@"ERROR during sign in: %@", [error localizedDescription]);
   }
   [self refreshInterface];
+  self.currentlySigningIn = NO;
 }
 
 - (void)didFinishGamesSignOutWithError:(NSError *)error {
@@ -163,10 +105,11 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     NSLog(@"ERROR during sign out: %@", [error localizedDescription]);
   }
   [self refreshInterface];
+  self.currentlySigningIn = NO;
 }
 
 - (IBAction)signInClicked:(id)sender {
-  [[GPPSignIn sharedInstance] authenticate];
+  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:NO];
 }
 
 - (IBAction)signOutClicked:(id)sender {
@@ -191,15 +134,15 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
     }
   }
 }
+
 - (IBAction)testButtonClicked:(id)sender {
   self.testLeaderboard = [GPGLeaderboard leaderboardWithId:LEAD_EASY];
   [self.testLeaderboard  loadScoresWithCompletionHandler:^(NSArray *scores, NSError *error) {
     NSLog(@"In the callback");
     for (GPGScore *nextScore in scores) {
-      NSLog(@"Player %@ has a score of %@", nextScore.displayName, nextScore.formattedScore);
+      NSLog(@"Player %@ has a score of %@", nextScore.player.displayName, nextScore.formattedScore);
     }
   }];
-  
 }
 
 - (IBAction)testAdminButtonClicked:(UIButton *)sender {
@@ -210,7 +153,6 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
       NSLog(@"Done! Restart the app to view your new data");
     }
   }];
-
 }
 
 - (IBAction)peopleListButtonClicked:(UIButton *)sender {
@@ -227,33 +169,15 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 
 # pragma mark - Achievement handling
 
--(void)achievementViewControllerDidFinish:(GPGAchievementController *)viewController
-{
-  [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)showAchievements:(UIButton *)sender {
-  GPGAchievementController *achController = [[GPGAchievementController alloc] init];
-  achController.achievementDelegate = self;
-  [self presentViewController:achController animated:YES completion:nil];
-  
+  [[GPGLauncherController sharedInstance] presentAchievementList];
 }
 
 # pragma mark - Leaderboards handling
 
--(void)leaderboardsViewControllerDidFinish:(GPGLeaderboardsController *)viewController
-{
-  [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)showAllLeaderboards:(UIButton *)sender {
-  
-  GPGLeaderboardsController *allLeadsController = [[GPGLeaderboardsController alloc] init];
-  allLeadsController.leaderboardsDelegate = self;
-  [self presentViewController:allLeadsController animated:YES completion:nil];
+  [[GPGLauncherController sharedInstance] presentLeaderboardList];
 }
-
-
 
 # pragma mark - Standard lifecycle functions
 
@@ -281,42 +205,14 @@ static NSInteger const kErrorCodeFromUserDecliningSignIn = -1;
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  [self initializeSignIn];
-  self.currentlySigningIn  = [[GPPSignIn sharedInstance] trySilentAuthentication];
 
-  if (!self.currentlySigningIn) {
-    // Have we tried signing the user in before?
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kDeclinedGooglePreviously]) {
-      // They've said no previously. Let's just show the sign in button
-    } else {
-      // In this case, we will just send the user to a sign-in screen right away.
-      // You may want to show an alert or bring up a button instead, depending on your situation.
-      [[GPPSignIn sharedInstance] authenticate];
-    }
-  }
+  [GPGManager sharedInstance].statusDelegate = self;
+  self.currentlySigningIn  =   [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 
   AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
   [appDelegate setChallengeReceivedHandler:^{
     [self refreshInterface];
   }];
-  
-
-}
-
-- (void)viewDidUnload
-{
-  [self setAchButton:nil];
-  [self setLeadsButton:nil];
-  [self setEasyButton:nil];
-  [self setHardButton:nil];
-  [self setSignInButton:nil];
-  [self setSignOutButton:nil];
-  [self setPeopleListButton:nil];
-  [self setSigningIn:nil];
-  [self setGameIcons:nil];
-  [super viewDidUnload];
-   // Release any retained subviews of the main view.
-  
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

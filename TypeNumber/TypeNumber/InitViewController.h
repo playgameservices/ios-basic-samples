@@ -19,6 +19,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InitViewController : UIViewController <GPGAchievementControllerDelegate, GPGLeaderboardsControllerDelegate>
-
+@interface InitViewController : UIViewController
 @end
