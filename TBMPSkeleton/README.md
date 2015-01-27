@@ -36,7 +36,7 @@ your own version of the game in the Play Console and copy over some information 
 your Xcode project. To follow this process, perform the following steps:
 
 1. If you haven't already, download the Google Play Games Services SDK and the
-   Google+ iOS SDK from the [Google Play Games Services downloads page](1).
+   Google+ iOS SDK from the [Google Play Games Services downloads page](https://developers.google.com/games/services/downloads/).
    Unzip the files into the Libraries folder of your samples directory.
 2. Open up your TBMP Skeleton project settings. Select the "TBMP Skeleton" target and,
   on the "Summary" tab, change the Bundle Identifier from `com.example.TBMPSkeleton` to
@@ -71,5 +71,3 @@ excitement to your evening!
 * We should probably add some icons and other supporting graphics.
 * Right now, I reload the entire set of match data when in the refreshPendingGames call.
 In reality, we should only do that when we make that call from a push notification.
-
-(1) https://developers.google.com/games/services/downloads/
