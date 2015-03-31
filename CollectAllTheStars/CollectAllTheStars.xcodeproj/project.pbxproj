@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		28372D61196CABE000EAACE9 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28372D5C196CABE000EAACE9 /* GoogleOpenSource.framework */; };
+		28372D62196CABE000EAACE9 /* GooglePlayGames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28372D5D196CABE000EAACE9 /* GooglePlayGames.bundle */; };
+		28372D63196CABE000EAACE9 /* GooglePlayGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28372D5E196CABE000EAACE9 /* GooglePlayGames.framework */; };
 		28372D64196CABE000EAACE9 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28372D5F196CABE000EAACE9 /* GooglePlus.bundle */; };
 		28372D65196CABE000EAACE9 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28372D60196CABE000EAACE9 /* GooglePlus.framework */; };
-		286BF7431A5CB88C00CACE79 /* gpg.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 286BF7411A5CB88C00CACE79 /* gpg.bundle */; };
-		286BF7441A5CB88C00CACE79 /* gpg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286BF7421A5CB88C00CACE79 /* gpg.framework */; };
 		494FF777173DBB430099295C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 494FF775173DBB430099295C /* README.md */; };
 		4979D93618A557E400D773E7 /* allTheStarsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D93418A557E400D773E7 /* allTheStarsIcon.png */; };
 		4979D93718A557E400D773E7 /* allTheStarsIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4979D93518A557E400D773E7 /* allTheStarsIcon@2x.png */; };
@@ -51,10 +51,10 @@
 
 /* Begin PBXFileReference section */
 		28372D5C196CABE000EAACE9 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../Libraries/GoogleOpenSource.framework; sourceTree = "<group>"; };
+		28372D5D196CABE000EAACE9 /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
+		28372D5E196CABE000EAACE9 /* GooglePlayGames.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlayGames.framework; path = ../Libraries/GooglePlayGames.framework; sourceTree = "<group>"; };
 		28372D5F196CABE000EAACE9 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = ../Libraries/GooglePlus.bundle; sourceTree = "<group>"; };
 		28372D60196CABE000EAACE9 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../Libraries/GooglePlus.framework; sourceTree = "<group>"; };
-		286BF7411A5CB88C00CACE79 /* gpg.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = gpg.bundle; path = ../Libraries/gpg.bundle; sourceTree = "<group>"; };
-		286BF7421A5CB88C00CACE79 /* gpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gpg.framework; path = ../Libraries/gpg.framework; sourceTree = "<group>"; };
 		494FF775173DBB430099295C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4979D93418A557E400D773E7 /* allTheStarsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = allTheStarsIcon.png; path = Artwork/allTheStarsIcon.png; sourceTree = "<group>"; };
 		4979D93518A557E400D773E7 /* allTheStarsIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "allTheStarsIcon@2x.png"; path = "Artwork/allTheStarsIcon@2x.png"; sourceTree = "<group>"; };
@@ -106,7 +106,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				286BF7441A5CB88C00CACE79 /* gpg.framework in Frameworks */,
 				4B39A370196493C400938057 /* CoreTelephony.framework in Frameworks */,
 				4B6096D8194FB87C006B70E1 /* libz.dylib in Frameworks */,
 				49D7687E18CBB364007FDE22 /* libc++.dylib in Frameworks */,
@@ -123,6 +122,7 @@
 				28372D61196CABE000EAACE9 /* GoogleOpenSource.framework in Frameworks */,
 				499E31291739DABB003CFF53 /* UIKit.framework in Frameworks */,
 				28372D65196CABE000EAACE9 /* GooglePlus.framework in Frameworks */,
+				28372D63196CABE000EAACE9 /* GooglePlayGames.framework in Frameworks */,
 				499E312B1739DABB003CFF53 /* Foundation.framework in Frameworks */,
 				499E312D1739DABB003CFF53 /* CoreGraphics.framework in Frameworks */,
 			);
@@ -167,9 +167,9 @@
 		499E31271739DABB003CFF53 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				286BF7411A5CB88C00CACE79 /* gpg.bundle */,
-				286BF7421A5CB88C00CACE79 /* gpg.framework */,
 				28372D5C196CABE000EAACE9 /* GoogleOpenSource.framework */,
+				28372D5D196CABE000EAACE9 /* GooglePlayGames.bundle */,
+				28372D5E196CABE000EAACE9 /* GooglePlayGames.framework */,
 				28372D5F196CABE000EAACE9 /* GooglePlus.bundle */,
 				28372D60196CABE000EAACE9 /* GooglePlus.framework */,
 				4B39A36F196493C400938057 /* CoreTelephony.framework */,
@@ -278,7 +278,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				286BF7431A5CB88C00CACE79 /* gpg.bundle in Resources */,
 				4979D94018A557EE00D773E7 /* gplus_signin_normal.png in Resources */,
 				499E31331739DABB003CFF53 /* InfoPlist.strings in Resources */,
 				4979D93618A557E400D773E7 /* allTheStarsIcon.png in Resources */,
@@ -294,6 +293,7 @@
 				4979D95118A5581700D773E7 /* Default@2x.png in Resources */,
 				494FF777173DBB430099295C /* README.md in Resources */,
 				4979D93F18A557EE00D773E7 /* gplus_signin_disabled@2x.png in Resources */,
+				28372D62196CABE000EAACE9 /* GooglePlayGames.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +400,8 @@
 					"$(SRCROOT)/CollectAllTheStars",
 					"$(SRCROOT)/../Libraries",
 					"$(PROJECT_DIR)/Libraries",
+					/Users/hakuro/Google,
+					"Drive/Documents/0714/ios-samples/Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollectAllTheStars/CollectAllTheStars-Prefix.pch";
@@ -420,6 +422,8 @@
 					"$(SRCROOT)/CollectAllTheStars",
 					"$(SRCROOT)/../Libraries",
 					"$(PROJECT_DIR)/Libraries",
+					/Users/hakuro/Google,
+					"Drive/Documents/0714/ios-samples/Libraries",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CollectAllTheStars/CollectAllTheStars-Prefix.pch";

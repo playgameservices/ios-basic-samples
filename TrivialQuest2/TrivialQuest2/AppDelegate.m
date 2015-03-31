@@ -19,7 +19,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import <gpg/GooglePlayGames.h>
+#import <GooglePlayGames/GooglePlayGames.h>
 #import <GooglePlus/GooglePlus.h>
 
 @interface AppDelegate ()<GPGQuestDelegate, GPGQuestListLauncherDelegate, GPGLauncherDelegate>

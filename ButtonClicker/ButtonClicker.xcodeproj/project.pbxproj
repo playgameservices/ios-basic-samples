@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		28595943198AC8C30071670D /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28595942198AC8C30071670D /* CoreTelephony.framework */; };
 		28595945198AC8D10071670D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28595944198AC8D10071670D /* libz.dylib */; };
-		286BF73F1A5CB79900CACE79 /* gpg.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 286BF73D1A5CB79900CACE79 /* gpg.bundle */; };
-		286BF7401A5CB79900CACE79 /* gpg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 286BF73E1A5CB79900CACE79 /* gpg.framework */; };
 		491B8C361865084E0061D71C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 491B8C351865084E0061D71C /* AddressBook.framework */; };
 		49439A591858DFA700A6DCF3 /* MPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 49439A581858DFA700A6DCF3 /* MPManager.m */; };
 		494EB07F185F7C9400A93A4B /* ButtonClickerPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 494EB07E185F7C9400A93A4B /* ButtonClickerPlayer.m */; };
@@ -26,6 +24,8 @@
 		49701A4B185788EA00A19EBE /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 49701A4A185788EA00A19EBE /* libc++.dylib */; };
 		4995C54B18626F29008537F7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4995C54A18626F29008537F7 /* README.md */; };
 		49D7688A18CBBBB5007FDE22 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7688518CBBBB5007FDE22 /* GoogleOpenSource.framework */; };
+		49D7688B18CBBBB5007FDE22 /* GooglePlayGames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49D7688618CBBBB5007FDE22 /* GooglePlayGames.bundle */; };
+		49D7688C18CBBBB5007FDE22 /* GooglePlayGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7688718CBBBB5007FDE22 /* GooglePlayGames.framework */; };
 		49D7688D18CBBBB5007FDE22 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 49D7688818CBBBB5007FDE22 /* GooglePlus.bundle */; };
 		49D7688E18CBBBB5007FDE22 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D7688918CBBBB5007FDE22 /* GooglePlus.framework */; };
 		49D8179D18567206008B9FD9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49D8179C18567206008B9FD9 /* Foundation.framework */; };
@@ -59,8 +59,6 @@
 /* Begin PBXFileReference section */
 		28595942198AC8C30071670D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		28595944198AC8D10071670D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		286BF73D1A5CB79900CACE79 /* gpg.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = gpg.bundle; path = ../Libraries/gpg.bundle; sourceTree = "<group>"; };
-		286BF73E1A5CB79900CACE79 /* gpg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gpg.framework; path = ../Libraries/gpg.framework; sourceTree = "<group>"; };
 		491B8C351865084E0061D71C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		49439A571858DFA700A6DCF3 /* MPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPManager.h; sourceTree = "<group>"; };
 		49439A581858DFA700A6DCF3 /* MPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPManager.m; sourceTree = "<group>"; };
@@ -79,6 +77,8 @@
 		4995C54518626C85008537F7 /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		4995C54A18626F29008537F7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		49D7688518CBBBB5007FDE22 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../Libraries/GoogleOpenSource.framework; sourceTree = "<group>"; };
+		49D7688618CBBBB5007FDE22 /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
+		49D7688718CBBBB5007FDE22 /* GooglePlayGames.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlayGames.framework; path = ../Libraries/GooglePlayGames.framework; sourceTree = "<group>"; };
 		49D7688818CBBBB5007FDE22 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = ../Libraries/GooglePlus.bundle; sourceTree = "<group>"; };
 		49D7688918CBBBB5007FDE22 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../Libraries/GooglePlus.framework; sourceTree = "<group>"; };
 		49D8179918567206008B9FD9 /* ButtonClicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ButtonClicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,7 +111,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				286BF7401A5CB79900CACE79 /* gpg.framework in Frameworks */,
 				28595945198AC8D10071670D /* libz.dylib in Frameworks */,
 				28595943198AC8C30071670D /* CoreTelephony.framework in Frameworks */,
 				49D7688E18CBBBB5007FDE22 /* GooglePlus.framework in Frameworks */,
@@ -120,6 +119,7 @@
 				49701A491856BA9800A19EBE /* CoreLocation.framework in Frameworks */,
 				49701A471856BA6D00A19EBE /* SystemConfiguration.framework in Frameworks */,
 				49701A451856BA6500A19EBE /* Security.framework in Frameworks */,
+				49D7688C18CBBBB5007FDE22 /* GooglePlayGames.framework in Frameworks */,
 				49701A431856BA5F00A19EBE /* QuartzCore.framework in Frameworks */,
 				49701A411856BA5A00A19EBE /* MediaPlayer.framework in Frameworks */,
 				49701A3F1856BA5400A19EBE /* CoreText.framework in Frameworks */,
@@ -169,11 +169,11 @@
 		49D8179B18567206008B9FD9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				286BF73D1A5CB79900CACE79 /* gpg.bundle */,
-				286BF73E1A5CB79900CACE79 /* gpg.framework */,
 				28595944198AC8D10071670D /* libz.dylib */,
 				28595942198AC8C30071670D /* CoreTelephony.framework */,
 				49D7688518CBBBB5007FDE22 /* GoogleOpenSource.framework */,
+				49D7688618CBBBB5007FDE22 /* GooglePlayGames.bundle */,
+				49D7688718CBBBB5007FDE22 /* GooglePlayGames.framework */,
 				49D7688818CBBBB5007FDE22 /* GooglePlus.bundle */,
 				49D7688918CBBBB5007FDE22 /* GooglePlus.framework */,
 				491B8C351865084E0061D71C /* AddressBook.framework */,
@@ -325,8 +325,8 @@
 			files = (
 				4995C54B18626F29008537F7 /* README.md in Resources */,
 				49D817B518567206008B9FD9 /* Images.xcassets in Resources */,
-				286BF73F1A5CB79900CACE79 /* gpg.bundle in Resources */,
 				49D817A718567206008B9FD9 /* InfoPlist.strings in Resources */,
+				49D7688B18CBBBB5007FDE22 /* GooglePlayGames.bundle in Resources */,
 				49D7688D18CBBBB5007FDE22 /* GooglePlus.bundle in Resources */,
 				49D817B018567206008B9FD9 /* Main.storyboard in Resources */,
 			);
