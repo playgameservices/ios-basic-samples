@@ -51,15 +51,18 @@ own version of the game in the Play Console. Once you have done that, you will
 copy over your client ID to your own `Constants.h` file. To follow this process,
 perform the following steps:
 
-1. Open up your CollectAllTheStars project settings. Select the "CollectAllTheStars" target and,
+1. In a terminal window, change directories to the <CollectAllTheStars> directory which contains the Podfile 
+and add the cocoapod project to the workspace.  To do this run `pod update`.
+2. Open the CollectAllTheStars workspace: `open CollectAllTheStars.xcworkspace`.
+3. Open up your project settings. Select the "CollectAllTheStars" target and,
   on the "Summary" tab, change the Bundle Identifier to
   something appropriate for your Provisioning Profile. (It will probably look like
   com.<your_company>.CollectAllTheStars)
     * If you plan on only running this on an emulator, you can leave it as-is.
-2. Click the "Info" tab and go down to the bottom where you see "URL Types". Expand
+4. Click the "Info" tab and go down to the bottom where you see "URL Types". Expand
   this and change the "Identifier" and "URL Schemes" from `com.example.CollectAllTheStars` to
   whatever you used in Step 1.
-3. If you have already created this application in the Play Console (because you
+5. If you have already created this application in the Play Console (because you
   have created the Android or web version of the game, for example), you can
   skip steps 4 and 5 below. All you will need to do is...
     * Link the iOS version of your game, as described in the "Link Your Platform-
@@ -67,17 +70,17 @@ perform the following steps:
     * Create a separate client ID for the iOS version of the game, as described in
       the "Create a client ID" section of the [Console Documentation](https://developers.google.com/games/services/console/enabling).
         * Use the Bundle ID that you created in Step 1.
-4. Create your own application in the Play Console, as described in our [Developer
+6. Create your own application in the Play Console, as described in our [Developer
   Documentation](https://developers.google.com/games/services/console/enabling). Make
   sure you follow the "iOS" instructions for creating your client ID and linking
   your application.
     * Again, you will be using the Bundle ID that you created in Step 1.
     * You can leave your App Store ID blank for testing purposes.
-5. Make a note of your client ID and application ID as described in the
+7. Make a note of your client ID and application ID as described in the
   documentation
-6. Once that's done, open up your `Constants.h` file, and replace the `CLIENT_ID` value
+8. Once that's done, open up your `Constants.h` file, and replace the `CLIENT_ID` value
   with your own OAuth2.0 client ID.
-7. Go to your CollectAllTheStars-info.plist file and replace the `GPGApplication` value with
+9. Go to your CollectAllTheStars-info.plist file and replace the `GPGApplication` value with
   the actual Applicaton ID of your game.
 
 That's it! Your application should be ready to run! 
