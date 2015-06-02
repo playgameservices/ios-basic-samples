@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2859594C198ACA020071670D /* GooglePlayGames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2859594A198ACA020071670D /* GooglePlayGames.bundle */; };
-		2859594D198ACA020071670D /* GooglePlayGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2859594B198ACA020071670D /* GooglePlayGames.framework */; };
-		4B03F12F1953B59500B8E123 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B03F12A1953B59500B8E123 /* GoogleOpenSource.framework */; };
-		4B03F1321953B59500B8E123 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B03F12D1953B59500B8E123 /* GooglePlus.bundle */; };
-		4B03F1331953B59500B8E123 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B03F12E1953B59500B8E123 /* GooglePlus.framework */; };
 		4B12FE8A1953AE37005C894A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B12FE891953AE37005C894A /* libz.dylib */; };
 		4B5B77B21923127200963C75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B11923127200963C75 /* Foundation.framework */; };
 		4B5B77B41923127200963C75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B31923127200963C75 /* CoreGraphics.framework */; };
@@ -21,7 +16,6 @@
 		4B5B77C51923127200963C75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5B77C31923127200963C75 /* Main.storyboard */; };
 		4B5B77C81923127200963C75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B77C71923127200963C75 /* ViewController.m */; };
 		4B5B77CA1923127200963C75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B5B77C91923127200963C75 /* Images.xcassets */; };
-		4B5B77D11923127200963C75 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77D01923127200963C75 /* XCTest.framework */; };
 		4B5B77D21923127200963C75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B11923127200963C75 /* Foundation.framework */; };
 		4B5B77D31923127200963C75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B51923127200963C75 /* UIKit.framework */; };
 		4B5B77F1192316B200963C75 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77F0192316B200963C75 /* AddressBook.framework */; };
@@ -64,14 +58,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2859594A198ACA020071670D /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
-		2859594B198ACA020071670D /* GooglePlayGames.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlayGames.framework; path = ../Libraries/GooglePlayGames.framework; sourceTree = "<group>"; };
-		286812C3196B85D100F8D7EB /* TrivialQuest2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrivialQuest2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		286812C4196B85D100F8D7EB /* TrivialQuest2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrivialQuest2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B03F12A1953B59500B8E123 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../Libraries/GoogleOpenSource.framework; sourceTree = "<group>"; };
-		4B03F12B1953B59500B8E123 /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
-		4B03F12D1953B59500B8E123 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = ../Libraries/GooglePlus.bundle; sourceTree = "<group>"; };
-		4B03F12E1953B59500B8E123 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../Libraries/GooglePlus.framework; sourceTree = "<group>"; };
 		4B12FE891953AE37005C894A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4B5B77B11923127200963C75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4B5B77B31923127200963C75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,7 +72,6 @@
 		4B5B77C61923127200963C75 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4B5B77C71923127200963C75 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4B5B77C91923127200963C75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4B5B77D01923127200963C75 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4B5B77F0192316B200963C75 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		4B5B77F2192316B800963C75 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		4B5B77F4192316C000963C75 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -128,9 +113,6 @@
 				4B5B7801192316F000963C75 /* Security.framework in Frameworks */,
 				4B5B77FF192316E900963C75 /* QuartzCore.framework in Frameworks */,
 				4B5B77FD192316E100963C75 /* MediaPlayer.framework in Frameworks */,
-				4B03F1331953B59500B8E123 /* GooglePlus.framework in Frameworks */,
-				4B03F12F1953B59500B8E123 /* GoogleOpenSource.framework in Frameworks */,
-				2859594D198ACA020071670D /* GooglePlayGames.framework in Frameworks */,
 				4B5B77FB192316D900963C75 /* CoreText.framework in Frameworks */,
 				4B5B77F9192316D300963C75 /* CoreMotion.framework in Frameworks */,
 				4B5B77F7192316CC00963C75 /* CoreLocation.framework in Frameworks */,
@@ -147,7 +129,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B5B77D11923127200963C75 /* XCTest.framework in Frameworks */,
 				4B5B77D31923127200963C75 /* UIKit.framework in Frameworks */,
 				4B5B77D21923127200963C75 /* Foundation.framework in Frameworks */,
 			);
@@ -161,21 +142,13 @@
 			children = (
 				4B5B77B71923127200963C75 /* TrivialQuest2 */,
 				4B5B77B01923127200963C75 /* Frameworks */,
-				286812C3196B85D100F8D7EB /* TrivialQuest2.app */,
-				286812C4196B85D100F8D7EB /* TrivialQuest2Tests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
 		4B5B77B01923127200963C75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2859594A198ACA020071670D /* GooglePlayGames.bundle */,
-				2859594B198ACA020071670D /* GooglePlayGames.framework */,
 				4BB43533196499CB00A470AD /* CoreTelephony.framework */,
-				4B03F12A1953B59500B8E123 /* GoogleOpenSource.framework */,
-				4B03F12B1953B59500B8E123 /* GooglePlayGames.bundle */,
-				4B03F12D1953B59500B8E123 /* GooglePlus.bundle */,
-				4B03F12E1953B59500B8E123 /* GooglePlus.framework */,
 				4B12FE891953AE37005C894A /* libz.dylib */,
 				4B5B7804192316FE00963C75 /* libc++.dylib */,
 				4B5B7802192316F800963C75 /* SystemConfiguration.framework */,
@@ -191,7 +164,6 @@
 				4B5B77B11923127200963C75 /* Foundation.framework */,
 				4B5B77B31923127200963C75 /* CoreGraphics.framework */,
 				4B5B77B51923127200963C75 /* UIKit.framework */,
-				4B5B77D01923127200963C75 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -261,7 +233,6 @@
 			);
 			name = TrivialQuest2;
 			productName = TrivialQuest2;
-			productReference = 286812C3196B85D100F8D7EB /* TrivialQuest2.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4B5B77CE1923127200963C75 /* TrivialQuest2Tests */ = {
@@ -279,7 +250,6 @@
 			);
 			name = TrivialQuest2Tests;
 			productName = TrivialQuest2Tests;
-			productReference = 286812C4196B85D100F8D7EB /* TrivialQuest2Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -339,8 +309,6 @@
 				4B5B782D192326E700963C75 /* games_controller_ipad@2x.png in Resources */,
 				4B5B77C51923127200963C75 /* Main.storyboard in Resources */,
 				4B5B782F192326E700963C75 /* gplus_signin_disabled@2x.png in Resources */,
-				4B03F1321953B59500B8E123 /* GooglePlus.bundle in Resources */,
-				2859594C198ACA020071670D /* GooglePlayGames.bundle in Resources */,
 				4B5B7823192326E700963C75 /* achievement_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -488,7 +456,7 @@
 				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";
 				INFOPLIST_FILE = "TrivialQuest2/TrivialQuest2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -511,7 +479,7 @@
 				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";
 				INFOPLIST_FILE = "TrivialQuest2/TrivialQuest2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
