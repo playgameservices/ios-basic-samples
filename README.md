@@ -13,12 +13,9 @@ user's circles, and making calls to the  Management API to reset scores or achie
 * **TBMP Skeleton**: Demonstrates asynchronous turn-based multiplayer using invites or quickmatch
 * **TrivialQuest2**: Demonstrates Events and Quests
 
-The shared `Libraries` folder contains the frameworks and bundles required to
-run these applications. Each application references this folder instead of
-having separate frameworks and bundles for each project. Before
-you build the samples, download the Google Play Games Services SDK and the
-Google+ iOS SDK from the [Google Play Games Services downloads page](https://developers.google.com/games/services/downloads/).
-and unzip the files into the `Libraries` folder of your samples directory.
+These samples are built using CocoaPods. Please refer to 
+[iOS QuickStart](https://developers.google.com/games/services/ios/quickstart#option_1_using_cocoapods)
+for instructions on installing and using CocoaPods.
 
 **Note:** These samples are compatible with their corresponding applications in
 the Android samples. This means that you can play some levels on Collect All the Stars
