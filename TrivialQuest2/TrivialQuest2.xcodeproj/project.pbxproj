@@ -16,8 +16,6 @@
 		4B5B77C51923127200963C75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5B77C31923127200963C75 /* Main.storyboard */; };
 		4B5B77C81923127200963C75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B77C71923127200963C75 /* ViewController.m */; };
 		4B5B77CA1923127200963C75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B5B77C91923127200963C75 /* Images.xcassets */; };
-		4B5B77D21923127200963C75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B11923127200963C75 /* Foundation.framework */; };
-		4B5B77D31923127200963C75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B51923127200963C75 /* UIKit.framework */; };
 		4B5B77F1192316B200963C75 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77F0192316B200963C75 /* AddressBook.framework */; };
 		4B5B77F3192316B800963C75 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77F2192316B800963C75 /* AssetsLibrary.framework */; };
 		4B5B77F5192316C000963C75 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77F4192316C000963C75 /* CoreData.framework */; };
@@ -45,21 +43,9 @@
 		4B5B7833192326E700963C75 /* gplus_signin_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B5B7819192326E700963C75 /* gplus_signin_pressed@2x.png */; };
 		4B8992CC193011A60043CDEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B77BD1923127200963C75 /* main.m */; };
 		4BB43534196499CB00A470AD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB43533196499CB00A470AD /* CoreTelephony.framework */; };
-		54DBA8D4B2E0F3F5EABFC801 /* libPods-TrivialQuest2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9CCFA0B3D2F4F86D1D84E58 /* libPods-TrivialQuest2.a */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4B5B77D41923127200963C75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4B5B77A61923127200963C75 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4B5B77AD1923127200963C75;
-			remoteInfo = TrivialQuest2;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		39273EAB0481BCBC487A7145 /* Pods-TrivialQuest2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrivialQuest2.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrivialQuest2/Pods-TrivialQuest2.release.xcconfig"; sourceTree = "<group>"; };
 		4B12FE891953AE37005C894A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4B5B77B11923127200963C75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4B5B77B31923127200963C75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,8 +87,6 @@
 		4B5B7818192326E700963C75 /* gplus_signin_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gplus_signin_pressed.png; sourceTree = "<group>"; };
 		4B5B7819192326E700963C75 /* gplus_signin_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gplus_signin_pressed@2x.png"; sourceTree = "<group>"; };
 		4BB43533196499CB00A470AD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		A1780784C409BBAD8FA28E12 /* Pods-TrivialQuest2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrivialQuest2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrivialQuest2/Pods-TrivialQuest2.debug.xcconfig"; sourceTree = "<group>"; };
-		D9CCFA0B3D2F4F86D1D84E58 /* libPods-TrivialQuest2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrivialQuest2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,16 +110,6 @@
 				4B5B77B41923127200963C75 /* CoreGraphics.framework in Frameworks */,
 				4B5B77B61923127200963C75 /* UIKit.framework in Frameworks */,
 				4B5B77B21923127200963C75 /* Foundation.framework in Frameworks */,
-				54DBA8D4B2E0F3F5EABFC801 /* libPods-TrivialQuest2.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4B5B77CC1923127200963C75 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B5B77D31923127200963C75 /* UIKit.framework in Frameworks */,
-				4B5B77D21923127200963C75 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +121,6 @@
 			children = (
 				4B5B77B71923127200963C75 /* TrivialQuest2 */,
 				4B5B77B01923127200963C75 /* Frameworks */,
-				ADF47580FBE781C1C0C34833 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,7 +143,6 @@
 				4B5B77B11923127200963C75 /* Foundation.framework */,
 				4B5B77B31923127200963C75 /* CoreGraphics.framework */,
 				4B5B77B51923127200963C75 /* UIKit.framework */,
-				D9CCFA0B3D2F4F86D1D84E58 /* libPods-TrivialQuest2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,15 +195,6 @@
 			path = Artwork;
 			sourceTree = "<group>";
 		};
-		ADF47580FBE781C1C0C34833 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A1780784C409BBAD8FA28E12 /* Pods-TrivialQuest2.debug.xcconfig */,
-				39273EAB0481BCBC487A7145 /* Pods-TrivialQuest2.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -253,23 +216,6 @@
 			productName = TrivialQuest2;
 			productType = "com.apple.product-type.application";
 		};
-		4B5B77CE1923127200963C75 /* TrivialQuest2Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4B5B77E31923127200963C75 /* Build configuration list for PBXNativeTarget "TrivialQuest2Tests" */;
-			buildPhases = (
-				4B5B77CB1923127200963C75 /* Sources */,
-				4B5B77CC1923127200963C75 /* Frameworks */,
-				4B5B77CD1923127200963C75 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4B5B77D51923127200963C75 /* PBXTargetDependency */,
-			);
-			name = TrivialQuest2Tests;
-			productName = TrivialQuest2Tests;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -281,9 +227,6 @@
 				TargetAttributes = {
 					4B5B77AD1923127200963C75 = {
 						DevelopmentTeam = EQHXZ8M8AV;
-					};
-					4B5B77CE1923127200963C75 = {
-						TestTargetID = 4B5B77AD1923127200963C75;
 					};
 				};
 			};
@@ -301,7 +244,6 @@
 			projectRoot = "";
 			targets = (
 				4B5B77AD1923127200963C75 /* TrivialQuest2 */,
-				4B5B77CE1923127200963C75 /* TrivialQuest2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -328,13 +270,6 @@
 				4B5B77C51923127200963C75 /* Main.storyboard in Resources */,
 				4B5B782F192326E700963C75 /* gplus_signin_disabled@2x.png in Resources */,
 				4B5B7823192326E700963C75 /* achievement_icon@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4B5B77CD1923127200963C75 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,22 +319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4B5B77CB1923127200963C75 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4B5B77D51923127200963C75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4B5B77AD1923127200963C75 /* TrivialQuest2 */;
-			targetProxy = 4B5B77D41923127200963C75 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4B5B77BA1923127200963C75 /* InfoPlist.strings */ = {
@@ -493,7 +413,6 @@
 		};
 		4B5B77E11923127200963C75 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1780784C409BBAD8FA28E12 /* Pods-TrivialQuest2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -517,7 +436,6 @@
 		};
 		4B5B77E21923127200963C75 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39273EAB0481BCBC487A7145 /* Pods-TrivialQuest2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -539,29 +457,6 @@
 			};
 			name = Release;
 		};
-		4B5B77E41923127200963C75 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TrivialQuest2.app/TrivialQuest2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "TrivialQuest2Tests/TrivialQuest2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -583,7 +478,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-
 /* End XCConfigurationList section */
 	};
 	rootObject = 4B5B77A61923127200963C75 /* Project object */;
