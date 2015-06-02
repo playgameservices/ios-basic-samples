@@ -37,7 +37,7 @@ might be of interest to developers:
 ## Running the sample application
 
 To run Trivial Quest on your own device, you will need to create
-your own version of the game in the Play Console and copy over some information to
+your own version of the game in the [Play Console](https://play.google.com/apps/publish) and copy over some information to
 your Xcode project. To follow this process, perform the following steps:
 
 1. In a terminal window, change directories to the <TrivialQuest2> directory that contains the Podfile 

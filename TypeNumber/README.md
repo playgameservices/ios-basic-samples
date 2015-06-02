@@ -50,7 +50,7 @@ this game on your own.
 ## Running the sample application
 
 To run the Type-a-Number Challenge on your own device, you will need to create
-your own version of the game in the Play Console. Once you have done that,
+your own version of the game in the [Play Console](https://play.google.com/apps/publish). Once you have done that,
 you will create achievements and leaderboards for this game, then copy over
 all client IDs, achievement IDs and leaderboard IDs to your own
 `Constants.h` file. To follow this process, perform the following steps:
