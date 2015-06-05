@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2859594C198ACA020071670D /* GooglePlayGames.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2859594A198ACA020071670D /* GooglePlayGames.bundle */; };
-		2859594D198ACA020071670D /* GooglePlayGames.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2859594B198ACA020071670D /* GooglePlayGames.framework */; };
-		4B03F12F1953B59500B8E123 /* GoogleOpenSource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B03F12A1953B59500B8E123 /* GoogleOpenSource.framework */; };
-		4B03F1321953B59500B8E123 /* GooglePlus.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B03F12D1953B59500B8E123 /* GooglePlus.bundle */; };
-		4B03F1331953B59500B8E123 /* GooglePlus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B03F12E1953B59500B8E123 /* GooglePlus.framework */; };
 		4B12FE8A1953AE37005C894A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B12FE891953AE37005C894A /* libz.dylib */; };
 		4B5B77B21923127200963C75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B11923127200963C75 /* Foundation.framework */; };
 		4B5B77B41923127200963C75 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B31923127200963C75 /* CoreGraphics.framework */; };
@@ -21,9 +16,6 @@
 		4B5B77C51923127200963C75 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B5B77C31923127200963C75 /* Main.storyboard */; };
 		4B5B77C81923127200963C75 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B77C71923127200963C75 /* ViewController.m */; };
 		4B5B77CA1923127200963C75 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B5B77C91923127200963C75 /* Images.xcassets */; };
-		4B5B77D11923127200963C75 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77D01923127200963C75 /* XCTest.framework */; };
-		4B5B77D21923127200963C75 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B11923127200963C75 /* Foundation.framework */; };
-		4B5B77D31923127200963C75 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77B51923127200963C75 /* UIKit.framework */; };
 		4B5B77F1192316B200963C75 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77F0192316B200963C75 /* AddressBook.framework */; };
 		4B5B77F3192316B800963C75 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77F2192316B800963C75 /* AssetsLibrary.framework */; };
 		4B5B77F5192316C000963C75 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B5B77F4192316C000963C75 /* CoreData.framework */; };
@@ -53,25 +45,7 @@
 		4BB43534196499CB00A470AD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB43533196499CB00A470AD /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4B5B77D41923127200963C75 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4B5B77A61923127200963C75 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4B5B77AD1923127200963C75;
-			remoteInfo = TrivialQuest2;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		2859594A198ACA020071670D /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
-		2859594B198ACA020071670D /* GooglePlayGames.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlayGames.framework; path = ../Libraries/GooglePlayGames.framework; sourceTree = "<group>"; };
-		286812C3196B85D100F8D7EB /* TrivialQuest2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrivialQuest2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		286812C4196B85D100F8D7EB /* TrivialQuest2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrivialQuest2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B03F12A1953B59500B8E123 /* GoogleOpenSource.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleOpenSource.framework; path = ../Libraries/GoogleOpenSource.framework; sourceTree = "<group>"; };
-		4B03F12B1953B59500B8E123 /* GooglePlayGames.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlayGames.bundle; path = ../Libraries/GooglePlayGames.bundle; sourceTree = "<group>"; };
-		4B03F12D1953B59500B8E123 /* GooglePlus.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GooglePlus.bundle; path = ../Libraries/GooglePlus.bundle; sourceTree = "<group>"; };
-		4B03F12E1953B59500B8E123 /* GooglePlus.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlus.framework; path = ../Libraries/GooglePlus.framework; sourceTree = "<group>"; };
 		4B12FE891953AE37005C894A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		4B5B77B11923127200963C75 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4B5B77B31923127200963C75 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -86,7 +60,6 @@
 		4B5B77C61923127200963C75 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		4B5B77C71923127200963C75 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4B5B77C91923127200963C75 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		4B5B77D01923127200963C75 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4B5B77F0192316B200963C75 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		4B5B77F2192316B800963C75 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		4B5B77F4192316C000963C75 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -128,9 +101,6 @@
 				4B5B7801192316F000963C75 /* Security.framework in Frameworks */,
 				4B5B77FF192316E900963C75 /* QuartzCore.framework in Frameworks */,
 				4B5B77FD192316E100963C75 /* MediaPlayer.framework in Frameworks */,
-				4B03F1331953B59500B8E123 /* GooglePlus.framework in Frameworks */,
-				4B03F12F1953B59500B8E123 /* GoogleOpenSource.framework in Frameworks */,
-				2859594D198ACA020071670D /* GooglePlayGames.framework in Frameworks */,
 				4B5B77FB192316D900963C75 /* CoreText.framework in Frameworks */,
 				4B5B77F9192316D300963C75 /* CoreMotion.framework in Frameworks */,
 				4B5B77F7192316CC00963C75 /* CoreLocation.framework in Frameworks */,
@@ -143,16 +113,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4B5B77CC1923127200963C75 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B5B77D11923127200963C75 /* XCTest.framework in Frameworks */,
-				4B5B77D31923127200963C75 /* UIKit.framework in Frameworks */,
-				4B5B77D21923127200963C75 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -161,21 +121,13 @@
 			children = (
 				4B5B77B71923127200963C75 /* TrivialQuest2 */,
 				4B5B77B01923127200963C75 /* Frameworks */,
-				286812C3196B85D100F8D7EB /* TrivialQuest2.app */,
-				286812C4196B85D100F8D7EB /* TrivialQuest2Tests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
 		4B5B77B01923127200963C75 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2859594A198ACA020071670D /* GooglePlayGames.bundle */,
-				2859594B198ACA020071670D /* GooglePlayGames.framework */,
 				4BB43533196499CB00A470AD /* CoreTelephony.framework */,
-				4B03F12A1953B59500B8E123 /* GoogleOpenSource.framework */,
-				4B03F12B1953B59500B8E123 /* GooglePlayGames.bundle */,
-				4B03F12D1953B59500B8E123 /* GooglePlus.bundle */,
-				4B03F12E1953B59500B8E123 /* GooglePlus.framework */,
 				4B12FE891953AE37005C894A /* libz.dylib */,
 				4B5B7804192316FE00963C75 /* libc++.dylib */,
 				4B5B7802192316F800963C75 /* SystemConfiguration.framework */,
@@ -191,7 +143,6 @@
 				4B5B77B11923127200963C75 /* Foundation.framework */,
 				4B5B77B31923127200963C75 /* CoreGraphics.framework */,
 				4B5B77B51923127200963C75 /* UIKit.framework */,
-				4B5B77D01923127200963C75 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -251,9 +202,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B5B77E01923127200963C75 /* Build configuration list for PBXNativeTarget "TrivialQuest2" */;
 			buildPhases = (
+				E097C02225A4F0057213344E /* Check Pods Manifest.lock */,
 				4B5B77AA1923127200963C75 /* Sources */,
 				4B5B77AB1923127200963C75 /* Frameworks */,
 				4B5B77AC1923127200963C75 /* Resources */,
+				AC76FBA5051BF05EB6196E99 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -261,26 +214,7 @@
 			);
 			name = TrivialQuest2;
 			productName = TrivialQuest2;
-			productReference = 286812C3196B85D100F8D7EB /* TrivialQuest2.app */;
 			productType = "com.apple.product-type.application";
-		};
-		4B5B77CE1923127200963C75 /* TrivialQuest2Tests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4B5B77E31923127200963C75 /* Build configuration list for PBXNativeTarget "TrivialQuest2Tests" */;
-			buildPhases = (
-				4B5B77CB1923127200963C75 /* Sources */,
-				4B5B77CC1923127200963C75 /* Frameworks */,
-				4B5B77CD1923127200963C75 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4B5B77D51923127200963C75 /* PBXTargetDependency */,
-			);
-			name = TrivialQuest2Tests;
-			productName = TrivialQuest2Tests;
-			productReference = 286812C4196B85D100F8D7EB /* TrivialQuest2Tests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -293,9 +227,6 @@
 				TargetAttributes = {
 					4B5B77AD1923127200963C75 = {
 						DevelopmentTeam = EQHXZ8M8AV;
-					};
-					4B5B77CE1923127200963C75 = {
-						TestTargetID = 4B5B77AD1923127200963C75;
 					};
 				};
 			};
@@ -313,7 +244,6 @@
 			projectRoot = "";
 			targets = (
 				4B5B77AD1923127200963C75 /* TrivialQuest2 */,
-				4B5B77CE1923127200963C75 /* TrivialQuest2Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -339,20 +269,44 @@
 				4B5B782D192326E700963C75 /* games_controller_ipad@2x.png in Resources */,
 				4B5B77C51923127200963C75 /* Main.storyboard in Resources */,
 				4B5B782F192326E700963C75 /* gplus_signin_disabled@2x.png in Resources */,
-				4B03F1321953B59500B8E123 /* GooglePlus.bundle in Resources */,
-				2859594C198ACA020071670D /* GooglePlayGames.bundle in Resources */,
 				4B5B7823192326E700963C75 /* achievement_icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4B5B77CD1923127200963C75 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AC76FBA5051BF05EB6196E99 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrivialQuest2/Pods-TrivialQuest2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
-/* End PBXResourcesBuildPhase section */
+		E097C02225A4F0057213344E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4B5B77AA1923127200963C75 /* Sources */ = {
@@ -365,22 +319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4B5B77CB1923127200963C75 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4B5B77D51923127200963C75 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4B5B77AD1923127200963C75 /* TrivialQuest2 */;
-			targetProxy = 4B5B77D41923127200963C75 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4B5B77BA1923127200963C75 /* InfoPlist.strings */ = {
@@ -488,7 +427,7 @@
 				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";
 				INFOPLIST_FILE = "TrivialQuest2/TrivialQuest2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -511,50 +450,10 @@
 				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";
 				INFOPLIST_FILE = "TrivialQuest2/TrivialQuest2-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		4B5B77E41923127200963C75 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TrivialQuest2.app/TrivialQuest2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "TrivialQuest2Tests/TrivialQuest2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		4B5B77E51923127200963C75 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TrivialQuest2.app/TrivialQuest2";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TrivialQuest2/TrivialQuest2-Prefix.pch";
-				INFOPLIST_FILE = "TrivialQuest2Tests/TrivialQuest2Tests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -575,15 +474,6 @@
 			buildConfigurations = (
 				4B5B77E11923127200963C75 /* Debug */,
 				4B5B77E21923127200963C75 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4B5B77E31923127200963C75 /* Build configuration list for PBXNativeTarget "TrivialQuest2Tests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4B5B77E41923127200963C75 /* Debug */,
-				4B5B77E51923127200963C75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
