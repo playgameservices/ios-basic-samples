@@ -41,6 +41,10 @@ To run Button Clicker 2000  on your own device, you will need to create
 your own version of the game in the Play Console and copy over some information to
 your Xcode project. To follow this process, perform the following steps:
 
+
+1. In a terminal window, change directories to the <ButtonClicker>> directory which contains the Podfile 
+and add the cocoapod project to the workspace.  To do this run `pod update`.
+2. Open the ButtonClicker workspace: `open ButtonClicker.xcworkspace`.
 1. Open up your Button Clicker project settings. Select the "Button Clicker" target and,
   on the "Summary" tab, change the Bundle Identifier from `com.example.ButtonClicker` to
   something appropriate for your Provisioning Profile. (It will probably look like

@@ -50,20 +50,23 @@ this game on your own.
 ## Running the sample application
 
 To run the Type-a-Number Challenge on your own device, you will need to create
-your own version of the game in the Play Console. Once you have done that,
+your own version of the game in the [Play Console](https://play.google.com/apps/publish). Once you have done that,
 you will create achievements and leaderboards for this game, then copy over
 all client IDs, achievement IDs and leaderboard IDs to your own
 `Constants.h` file. To follow this process, perform the following steps:
 
-1. Open up your TypeNumber project settings. Select the "TypeNumber" target and,
+1. In a terminal window, change directories to the <TypeNumber> directory that contains the Podfile 
+and add the cocoapod project to the workspace.  To do this run `pod update`.
+2. Open the TypeNumber workspace: `open TypeNumber.xcworkspace`.
+3. Open up your TypeNumber project settings. Select the "TypeNumber" target and,
   on the "Summary" tab, change the Bundle Identifier from `com.example.TypeNumber` to
   something appropriate for your Provisioning Profile. (It will probably look like
   `com.<your_company>.TypeNumber`)
     * If you plan on only running this on an emulator, you can leave it as-is.
-2. Click the "Info" tab and go down to the bottom where you see "URL Types". Expand
+4. Click the "Info" tab and go down to the bottom where you see "URL Types". Expand
   this and change the "Identifier" and "URL Schemes" from `com.example.TypeNumber` to
   whatever you used in Step 1.
-3. If you have already created this application in the Play Console (because you
+5. If you have already created this application in the Play Console (because you
   have created the Android or web version of the game, for example), you can
   skip steps 4 through 7 below. All you will need to do is...
     * Link the iOS version of your game, as described in the "Link Your Platform-
@@ -71,15 +74,15 @@ all client IDs, achievement IDs and leaderboard IDs to your own
     * Create a separate client ID for the iOS version of the game, as described in
       the "Create a client ID" section of the [Console Documentation](https://developers.google.com/games/services/console/enabling).
         * Use the Bundle ID that you created in Step 1.
-4. Create your own application in the Play Console, as described in our [Developer
+6. Create your own application in the Play Console, as described in our [Developer
   Documentation](https://developers.google.com/games/services/console/enabling). Make
   sure you follow the "iOS" instructions for creating your client ID and linking
   your application.
     * Again, you will be using the Bundle ID that you created in Step 1.
     * You can leave the App Store ID blank for testing purposes.
-5. Make a note of your client ID as described in the
+7. Make a note of your client ID as described in the
   documentation
-6. Create your own Achievements and Leaderboards as described in the
+8. Create your own Achievements and Leaderboards as described in the
   [Achievements](https://developers.google.com/games/services/common/concepts/achievements)
   and [Leaderbords](https://developers.google.com/games/services/common/concepts/leaderboards)
   documentation. You are free to create your own Achievements and Leaderboards,
@@ -94,10 +97,10 @@ all client IDs, achievement IDs and leaderboard IDs to your own
     * Leaderboards:
         * Hard mode
         * Easy mode
-7. Feel free to use any score value for your achievements (we tended to keep
+9. Feel free to use any score value for your achievements (we tended to keep
   them between 10 and 75 points per achievement). If you want placeholder icons,
   <http://lorempixel.com> is a great resource.
-8. Once that's done, you'll want to replace some of the constants defined in the
+10. Once that's done, you'll want to replace some of the constants defined in the
   application.
     * In the `Constants.h` file, replace the following constant with your OAuth2.0
       client ID:
