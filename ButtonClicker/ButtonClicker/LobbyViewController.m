@@ -22,7 +22,7 @@
 #import "Constants.h"
 
 @interface LobbyViewController ()<UIAlertViewDelegate, MPLobbyDelegate,
-                                  GPGStatusDelegate> {
+                                  GPGStatusDelegate, GIDSignInUIDelegate> {
   BOOL _currentlySigningIn;
 }
 @property (weak, nonatomic) IBOutlet UIButton *signInButton;
@@ -78,7 +78,7 @@
   if (![[self.navigationController.viewControllers lastObject] isEqual:self]) {
     return;
   }
-    
+
   if (self.presentedViewController != nil) {
     [self dismissViewControllerAnimated:YES completion:^{
         [self performSegueWithIdentifier:@"SegueToGame" sender:self];
@@ -107,7 +107,7 @@
   if (buttonIndex == 0) {
     // Okay, chose not to sign in. Their loss
   } else {
-    [[GPPSignIn sharedInstance] authenticate];
+    [[GIDSignIn sharedInstance] signIn];
   }
 }
 
@@ -176,8 +176,9 @@
 
   [GPGManager sharedInstance].statusDelegate = self;
   [[MPManager sharedInstance] setLobbyDelegate:self];
+  [GIDSignIn sharedInstance].uiDelegate = self;
 
-  _currentlySigningIn =   [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
+  _currentlySigningIn = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 }
 
 - (void)didReceiveMemoryWarning {

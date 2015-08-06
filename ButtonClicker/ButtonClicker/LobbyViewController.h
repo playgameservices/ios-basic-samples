@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 #import <UIKit/UIKit.h>
-#import <GooglePlus/GooglePlus.h>
+#import <GoogleSignIn.h>
 
 @interface LobbyViewController : UIViewController <GPGStatusDelegate>
 

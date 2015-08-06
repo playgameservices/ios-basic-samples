@@ -20,9 +20,8 @@
 #import "AppDelegate.h"
 #import "MPManager.h"
 #import "GameViewController.h"
-#import <GooglePlus/GooglePlus.h>
-
-
+#import <GoogleSignIn.h>
+#import "Constants.h"
 
 
 @implementation AppDelegate
@@ -49,14 +48,16 @@
     }
   }
 
-    return YES;
+  [GIDSignIn sharedInstance].clientID = CLIENT_ID;
+
+  return YES;
 }
 
 - (BOOL)application:(UIApplication *)application
               openURL:(NSURL *)url
     sourceApplication:(NSString *)sourceApplication
            annotation:(id)annotation {
-  return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+  return [[GIDSignIn sharedInstance] handleURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
@@ -67,7 +68,7 @@
   } else {
     // I might have other systems that would try to handle this notification
   }
-  
+
 }
 
 - (void)application:(UIApplication *)application
@@ -75,7 +76,7 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
   NSLog(@"Got deviceToken from APNS! %@", deviceToken);
   [[GPGManager sharedInstance] registerDeviceToken:deviceToken
                                     forEnvironment:GPGPushNotificationEnvironmentSandbox];
-  
+
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
