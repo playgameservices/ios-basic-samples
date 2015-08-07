@@ -1,7 +1,10 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '8.0'
+source  'sso://user/class/specs'
 
 target 'CollectAllTheStars' do
-    pod 'GooglePlayGames', '~> 4.4'
+    pod 'GooglePlayGames', '~> 5.0'
+    pod 'OpenSSL-Universal', '1.0.1.k'
+    pod 'google-plus-ios-sdk'
 end
 
