@@ -19,15 +19,15 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import <GooglePlayGames/GooglePlayGames.h>
-#import <GooglePlus/GooglePlus.h>
+#import <GooglePlayGames.h>
+#import <GoogleSignIn.h>
 
 @interface AppDelegate ()<GPGQuestDelegate, GPGQuestListLauncherDelegate, GPGLauncherDelegate>
 
 @end
 
 @implementation AppDelegate
-/** Handles the URL for Sign-In. 
+/** Handles the URL for Sign-In.
  *  @param application The app receiving the URL.
  *  @param url The URL passed to the app.
  *  @param sourceApplication The
@@ -37,7 +37,7 @@
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
     NSLog(@"URL received");
-    return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+    return [[GIDSignIn sharedInstance] handleURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -48,7 +48,7 @@
     // Override point for customization after application launch.
     return YES;
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
   // Sent when the application is about to move from active to inactive state. This can occur

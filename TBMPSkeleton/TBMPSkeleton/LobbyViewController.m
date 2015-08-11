@@ -21,14 +21,14 @@
 #import "GameData.h"
 #import "GameViewController.h"
 #import "LobbyViewController.h"
-#import <GooglePlus/GooglePlus.h>
-#import <GooglePlayGames/GooglePlayGames.h>
+#import <GoogleSignIn.h>
+#import <GooglePlayGames.h>
 
 @interface LobbyViewController ()<GPGTurnBasedMatchListLauncherDelegate,
                                   GPGTurnBasedMatchDelegate,
                                   GPGPlayerPickerLauncherDelegate,
                                   UIAlertViewDelegate,
-                                  GPGStatusDelegate> {
+                                  GPGStatusDelegate, GIDSignInUIDelegate> {
   BOOL _tryingSilentSignin;
 }
 
@@ -388,12 +388,16 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
 
   [GPGManager sharedInstance].statusDelegate = self;
 
-  _tryingSilentSignin = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
+  // FIXME: When the sign-in callback is working, add this line back.
+  //_tryingSilentSignin = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
+  _tryingSilentSignin = NO;
+  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
+  [GIDSignIn sharedInstance].uiDelegate = self;
   [self refreshButtons];
 }
 

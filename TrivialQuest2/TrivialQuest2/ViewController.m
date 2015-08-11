@@ -18,8 +18,9 @@
 //
 #import "ViewController.h"
 #import "Constants.h"
+#import "GoogleSignIn.h"
 
-@interface ViewController()<GPGStatusDelegate>
+@interface ViewController()<GPGStatusDelegate, GIDSignInUIDelegate>
 
 @end
 
@@ -30,6 +31,7 @@
   [super viewDidLoad];
 
   NSLog(@"Init");
+  [GIDSignIn sharedInstance].uiDelegate = self;
   [GPGManager sharedInstance].statusDelegate = self;
   [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 
@@ -159,7 +161,7 @@
  */
 - (IBAction)signOutUser:(id)sender {
   NSLog(@"Signing the user out.");
-  [[GPPSignIn sharedInstance] signOut];
+  [[GPGManager sharedInstance] signOut];
   [self refreshButtons];
 }
 

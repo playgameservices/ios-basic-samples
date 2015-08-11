@@ -19,8 +19,8 @@
 
 #import "AppDelegate.h"
 #import "LobbyViewController.h"
-#import <GooglePlus/GooglePlus.h>
-#import <GooglePlayGames/GooglePlayGames.h>
+#import <GoogleSignIn.h>
+#import <GooglePlayGames.h>
 
 @implementation AppDelegate
 
@@ -62,7 +62,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-  return [GPPURLHandler handleURL:url sourceApplication:sourceApplication annotation:annotation];
+  return [[GIDSignIn sharedInstance] handleURL:url sourceApplication:sourceApplication annotation:annotation];
 }
 
 - (void)application:(UIApplication *)application

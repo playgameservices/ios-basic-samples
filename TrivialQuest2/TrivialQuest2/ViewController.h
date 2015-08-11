@@ -19,11 +19,11 @@
 
 #import <UIKit/UIKit.h>
 #import <GooglePlus/GooglePlus.h>
-#import <GooglePlayGames/GooglePlayGames.h>
+#import <GooglePlayGames.h>
 @class GPPSignInButton;
 
 
-@interface ViewController : UIViewController 
+@interface ViewController : UIViewController
 
 // Sign in and Sign out buttons.
 @property(weak, nonatomic) IBOutlet GPPSignInButton *signInButton;
