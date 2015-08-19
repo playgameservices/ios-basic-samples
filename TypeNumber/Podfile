@@ -1,11 +1,12 @@
 # Uncomment this line to define a global platform for your project
 # platform :ios, '6.0'
+source  'sso://user/class/specs'
 
 target 'TypeNumber' do
-    pod 'GooglePlayGames', '~> 4.4'
+    pod 'GooglePlayGames', '~> 5.0'
 end
 
 target 'TypeNumberTests' do
-    pod 'GooglePlayGames', '~> 4.4'
+    pod 'GooglePlayGames', '~> 5.0'
 end
 

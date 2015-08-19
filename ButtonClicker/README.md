@@ -65,17 +65,15 @@ and add the cocoapod project to the workspace.  To do this run `pod update`.
 6. Make a note of your client ID and application ID as described in the
   documentation
 7. Click the "Info" tab and go down to the bottom where you see "URL Types".
-    You need to add 2 URL types.  In one URL type, specify a unique string in
-    the Identifier field, and specify your client ID in reversed order in the
-    URL Schemas field. For example, if your client ID for iOS is
-    CLIENT_ID_CODE.apps.googleusercontent.com, then specify
-    com.googleusercontent.apps.CLIENT_ID_CODE in the URL Schemas field.
-     In the other URL type, specify a unique string in the Identifier field,
-    and specify your app's bundle identifier in the URL Schemas field.
+  You need to add 2 URL types.  In one URL type, set `com.google.BundleId` in
+  the Identifier field, and specify your client ID in reversed order in the
+  URL Schemas field. For example, if your client ID for iOS is
+  `YOUR_CLIENT_ID.apps.googleusercontent.com`, then specify
+  `com.googleusercontent.apps.YOUR_CLIENT_ID` in the URL Schemas field.
+  In the other URL type, set `com.google.ReverseClientId` in the Identifier field,
+  and specify your app's bundle identifier in the URL Schemas field.
 8. Once that's done, open up your `Constants.h` file, and replace the `CLIENT_ID` value
   with your own OAuth2.0 client ID.
-9. Go to your ButtonClicker-info.plist file and replace the `GPGApplication` value with
-  the actual Applicaton ID of your game.
 
 That's it! Your application should be ready to run!  Give it a try, and add some button-clicking
 excitement to your evening!

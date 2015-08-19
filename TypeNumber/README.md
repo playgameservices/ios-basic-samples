@@ -55,7 +55,7 @@ you will create achievements and leaderboards for this game, then copy over
 all client IDs, achievement IDs and leaderboard IDs to your own
 `Constants.h` file. To follow this process, perform the following steps:
 
-1. In a terminal window, change directories to the <TypeNumber> directory that contains the Podfile 
+1. In a terminal window, change directories to the <TypeNumber> directory that contains the Podfile
 and add the cocoapod project to the workspace.  To do this run `pod update`.
 2. Open the TypeNumber workspace: `open TypeNumber.xcworkspace`.
 3. Open up your TypeNumber project settings. Select the "TypeNumber" target and,
@@ -63,10 +63,7 @@ and add the cocoapod project to the workspace.  To do this run `pod update`.
   something appropriate for your Provisioning Profile. (It will probably look like
   `com.<your_company>.TypeNumber`)
     * If you plan on only running this on an emulator, you can leave it as-is.
-4. Click the "Info" tab and go down to the bottom where you see "URL Types". Expand
-  this and change the "Identifier" and "URL Schemes" from `com.example.TypeNumber` to
-  whatever you used in Step 1.
-5. If you have already created this application in the Play Console (because you
+4. If you have already created this application in the Play Console (because you
   have created the Android or web version of the game, for example), you can
   skip steps 4 through 7 below. All you will need to do is...
     * Link the iOS version of your game, as described in the "Link Your Platform-
@@ -74,15 +71,15 @@ and add the cocoapod project to the workspace.  To do this run `pod update`.
     * Create a separate client ID for the iOS version of the game, as described in
       the "Create a client ID" section of the [Console Documentation](https://developers.google.com/games/services/console/enabling).
         * Use the Bundle ID that you created in Step 1.
-6. Create your own application in the Play Console, as described in our [Developer
+5. Create your own application in the Play Console, as described in our [Developer
   Documentation](https://developers.google.com/games/services/console/enabling). Make
   sure you follow the "iOS" instructions for creating your client ID and linking
   your application.
     * Again, you will be using the Bundle ID that you created in Step 1.
     * You can leave the App Store ID blank for testing purposes.
-7. Make a note of your client ID as described in the
+6. Make a note of your client ID as described in the
   documentation
-8. Create your own Achievements and Leaderboards as described in the
+7. Create your own Achievements and Leaderboards as described in the
   [Achievements](https://developers.google.com/games/services/common/concepts/achievements)
   and [Leaderbords](https://developers.google.com/games/services/common/concepts/leaderboards)
   documentation. You are free to create your own Achievements and Leaderboards,
@@ -97,9 +94,17 @@ and add the cocoapod project to the workspace.  To do this run `pod update`.
     * Leaderboards:
         * Hard mode
         * Easy mode
-9. Feel free to use any score value for your achievements (we tended to keep
+8. Feel free to use any score value for your achievements (we tended to keep
   them between 10 and 75 points per achievement). If you want placeholder icons,
   <http://lorempixel.com> is a great resource.
+9. In Xcode, Click the "Info" tab and go down to the bottom where you see "URL Types".
+  You need to add 2 URL types.  In one URL type, set `com.google.BundleId` in
+  the Identifier field, and specify your client ID in reversed order in the
+  URL Schemas field. For example, if your client ID for iOS is
+  `YOUR_CLIENT_ID.apps.googleusercontent.com`, then specify
+  `com.googleusercontent.apps.YOUR_CLIENT_ID` in the URL Schemas field.
+  In the other URL type, set `com.google.ReverseClientId` in the Identifier field,
+  and specify your app's bundle identifier in the URL Schemas field.
 10. Once that's done, you'll want to replace some of the constants defined in the
   application.
     * In the `Constants.h` file, replace the following constant with your OAuth2.0
@@ -118,11 +123,11 @@ and add the cocoapod project to the workspace.  To do this run `pod update`.
         * `LEAD_EASY`
         * `LEAD_HARD`
 
-That's it! Your application should be ready to run! 
+That's it! Your application should be ready to run!
 
 ## Known issues
 
 * Performance in the PeopleListTVC seems rather poor. I think it's something I'm
   doing wrong with loading the players' images.
-* iPad version isn't really designed for tablets. 
+* iPad version isn't really designed for tablets.
 * My art skills have much room for improvement. :)

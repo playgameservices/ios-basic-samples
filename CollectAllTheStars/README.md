@@ -51,7 +51,7 @@ own version of the game in the Play Console. Once you have done that, you will
 copy over your client ID to your own `Constants.h` file. To follow this process,
 perform the following steps:
 
-1. In a terminal window, change directories to the <CollectAllTheStars> directory which contains the Podfile 
+1. In a terminal window, change directories to the <CollectAllTheStars> directory which contains the Podfile
 and add the cocoapod project to the workspace.  To do this run `pod update`.
 2. Open the CollectAllTheStars workspace: `open CollectAllTheStars.xcworkspace`.
 3. Open up your project settings. Select the "CollectAllTheStars" target and,
@@ -78,12 +78,18 @@ and add the cocoapod project to the workspace.  To do this run `pod update`.
     * You can leave your App Store ID blank for testing purposes.
 7. Make a note of your client ID and application ID as described in the
   documentation
-8. Once that's done, open up your `Constants.h` file, and replace the `CLIENT_ID` value
-  with your own OAuth2.0 client ID.
-9. Go to your CollectAllTheStars-info.plist file and replace the `GPGApplication` value with
-  the actual Applicaton ID of your game.
+8. In Xcode, click the "Info" tab and go down to the bottom where you see
+  "URL Types". You need to add 2 URL types. In one URL type, set
+  `com.google.BundleId` in the Identifier field, and specify your client ID
+  in reversed order in the URL Schemas field. For example, if your client ID
+  for iOS is `YOUR_CLIENT_ID.apps.googleusercontent.com`, then specify
+  `com.googleusercontent.apps.YOUR_CLIENT_ID` in the URL Schemas field.
+  In the other URL type, set `com.google.ReverseClientId` in the Identifier field,
+  and specify your app's bundle identifier in the URL Schemas field.
+8. Once that's done, open up your `GCATConstants.h` file, and replace the
+  `CLIENT_ID` value with your own OAuth2.0 client ID.
 
-That's it! Your application should be ready to run! 
+That's it! Your application should be ready to run!
 
 ## Troubleshooting / Known Issues
 
