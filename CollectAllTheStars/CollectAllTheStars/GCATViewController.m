@@ -328,10 +328,8 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 
   [GPGManager sharedInstance].snapshotsEnabled = YES;
   [GPGManager sharedInstance].statusDelegate = self;
-
-  // FIXME: Disable button until signed in.
-  //self.currentlySigningIn  = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
-  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
+  
+  self.currentlySigningIn  = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 
   [self refreshButtons];
 

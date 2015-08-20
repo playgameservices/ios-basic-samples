@@ -22,8 +22,9 @@
 #import "GameModel.h"
 #import "GameViewController.h"
 #import "InitViewController.h"
+#import <GoogleSignIn.h>
 
-@interface InitViewController () <GPGStatusDelegate, GPGStatusDelegate>
+@interface InitViewController () <GPGStatusDelegate, GPGStatusDelegate, GIDSignInUIDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *achButton;
 @property (weak, nonatomic) IBOutlet UIButton *adminButton;
 @property (weak, nonatomic) IBOutlet UIButton *leadsButton;
@@ -48,6 +49,7 @@
 -(void)refreshInterface
 {
   BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
+  [GIDSignIn sharedInstance].uiDelegate = self;
 
   // We update most of our game interface when game services sign-in is totally complete. In an
   // actual game, you probably will want to allow basic gameplay even if the user isn't signed

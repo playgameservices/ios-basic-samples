@@ -178,7 +178,7 @@
   [[MPManager sharedInstance] setLobbyDelegate:self];
   [GIDSignIn sharedInstance].uiDelegate = self;
 
-  _currentlySigningIn = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
+  _currentlySigningIn = [[GPGManager sharedInstance] signInWithClientID :CLIENT_ID silently:YES];
 }
 
 - (void)didReceiveMemoryWarning {

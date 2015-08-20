@@ -388,10 +388,7 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
 
   [GPGManager sharedInstance].statusDelegate = self;
 
-  // FIXME: When the sign-in callback is working, add this line back.
-  //_tryingSilentSignin = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
-  _tryingSilentSignin = NO;
-  [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
+  _tryingSilentSignin = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
