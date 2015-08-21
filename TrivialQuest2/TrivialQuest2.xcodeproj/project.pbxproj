@@ -224,7 +224,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Google";
+				ORGANIZATIONNAME = Google;
 				TargetAttributes = {
 					4B5B77AD1923127200963C75 = {
 						DevelopmentTeam = EQHXZ8M8AV;
@@ -379,6 +379,27 @@
 			};
 			name = Release;
 		};
+		4B5D79D81B84F4AF00C066CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "$(SRCROOT)/TrivialQuest2/TrivialQuest2-Info.plist";
+				PRODUCT_NAME = TrivialQuest2;
+			};
+			name = Debug;
+		};
+		4B5D79D91B84F4AF00C066CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INFOPLIST_FILE = "$(SRCROOT)/TrivialQuest2/TrivialQuest2-Info.plist";
+				PRODUCT_NAME = TrivialQuest2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -394,8 +415,8 @@
 		4B5B77E01923127200963C75 /* Build configuration list for PBXNativeTarget "TrivialQuest2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4B5B77E11923127200963C75 /* Debug */,
-				4B5B77E21923127200963C75 /* Release */,
+				4B5D79D81B84F4AF00C066CD /* Debug */,
+				4B5D79D91B84F4AF00C066CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
