@@ -37,7 +37,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.example.CollectAllTheStars2</string>
+			<string>com.google.BundleId</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.example.CollectAllTheStars2</string>
@@ -47,7 +47,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>Reversed Client ID</string>
+			<string>com.google.ReverseClientId</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.YOUR_CLIENT_ID</string>
