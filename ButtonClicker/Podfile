@@ -1,6 +1,5 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '8.0'
-source  'sso://user/class/specs'
+platform :ios, '7.0'
 
 target 'ButtonClicker' do
     pod 'GooglePlayGames', '~> 5.0'
