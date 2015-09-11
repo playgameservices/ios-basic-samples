@@ -19,13 +19,14 @@
 //
 //
 
-#import <GooglePlus/GooglePlus.h>
+#import <GoogleSignIn.h>
 #import "GCATConstants.h"
 #import "GCATViewController.h"
 #import "GCATModel.h"
 
 @interface GCATViewController () <GPGStatusDelegate, UIPickerViewDelegate,
-GPGSnapshotListLauncherDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
+        GPGSnapshotListLauncherDelegate, UIPickerViewDataSource,
+        UIActionSheetDelegate, GIDSignInUIDelegate>
 @property (nonatomic) BOOL currentlySigningIn;
 @property (nonatomic) int currentWorld;
 @property (nonatomic) int pickerSelectedRow;
@@ -327,7 +328,9 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 
   [GPGManager sharedInstance].snapshotsEnabled = YES;
   [GPGManager sharedInstance].statusDelegate = self;
+  
   self.currentlySigningIn  = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
+
   [self refreshButtons];
 
 }
@@ -337,6 +340,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
   [super viewWillAppear:animated];
   [self refreshButtons];
   [self refreshStarDisplay];
+  [GIDSignIn sharedInstance].uiDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning

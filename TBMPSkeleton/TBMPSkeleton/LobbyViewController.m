@@ -21,14 +21,14 @@
 #import "GameData.h"
 #import "GameViewController.h"
 #import "LobbyViewController.h"
-#import <GooglePlus/GooglePlus.h>
-#import <GooglePlayGames/GooglePlayGames.h>
+#import <GoogleSignIn.h>
+#import <GooglePlayGames.h>
 
 @interface LobbyViewController ()<GPGTurnBasedMatchListLauncherDelegate,
                                   GPGTurnBasedMatchDelegate,
                                   GPGPlayerPickerLauncherDelegate,
                                   UIAlertViewDelegate,
-                                  GPGStatusDelegate> {
+                                  GPGStatusDelegate, GIDSignInUIDelegate> {
   BOOL _tryingSilentSignin;
 }
 
@@ -394,6 +394,7 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
 -(void)viewWillAppear:(BOOL)animated
 {
   [super viewWillAppear:animated];
+  [GIDSignIn sharedInstance].uiDelegate = self;
   [self refreshButtons];
 }
 

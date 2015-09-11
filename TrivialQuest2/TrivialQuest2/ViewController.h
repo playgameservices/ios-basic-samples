@@ -2,7 +2,6 @@
 //  ViewController.h
 //  TrivialQuest2
 //
-//  Created by Gus Class on 5/13/14.
 //  Copyright (c) 2014 Google. All rights reserved.
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -19,14 +18,14 @@
 
 #import <UIKit/UIKit.h>
 #import <GooglePlus/GooglePlus.h>
-#import <GooglePlayGames/GooglePlayGames.h>
-@class GPPSignInButton;
+#import <GooglePlayGames.h>
+@class GIDSignInButton;
 
 
-@interface ViewController : UIViewController 
+@interface ViewController : UIViewController
 
 // Sign in and Sign out buttons.
-@property(weak, nonatomic) IBOutlet GPPSignInButton *signInButton;
+@property(weak, nonatomic) IBOutlet GIDSignInButton *signInButton;
 @property(weak, nonatomic) IBOutlet UIButton *signOutButton;
 
 // Buttons used for events.

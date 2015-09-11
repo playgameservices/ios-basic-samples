@@ -2,7 +2,6 @@
 //  ViewController.m
 //  TrivialQuest2
 //
-//  Created by Gus Class on 5/13/14.
 //  Copyright (c) 2014 Google. All rights reserved.
 //  Licensed under the Apache License, Version 2.0 (the "License");
 //  you may not use this file except in compliance with the License.
@@ -18,8 +17,9 @@
 //
 #import "ViewController.h"
 #import "Constants.h"
+#import "GoogleSignIn.h"
 
-@interface ViewController()<GPGStatusDelegate>
+@interface ViewController()<GPGStatusDelegate, GIDSignInUIDelegate>
 
 @end
 
@@ -30,6 +30,7 @@
   [super viewDidLoad];
 
   NSLog(@"Init");
+  [GIDSignIn sharedInstance].uiDelegate = self;
   [GPGManager sharedInstance].statusDelegate = self;
   [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 
@@ -159,7 +160,7 @@
  */
 - (IBAction)signOutUser:(id)sender {
   NSLog(@"Signing the user out.");
-  [[GPPSignIn sharedInstance] signOut];
+  [[GPGManager sharedInstance] signOut];
   [self refreshButtons];
 }
 
