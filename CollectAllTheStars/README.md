@@ -93,4 +93,10 @@ That's it! Your application should be ready to run!
 
 ## Troubleshooting / Known Issues
 
-* This ain't the prettiest game you've ever played.
+If you are encountering 403 errors, you may need to manually enable the Drive 
+API from the
+[Google API Console] (https://console.developers.google.com/) or may need to
+enable the saved games feature from the
+[Play Games Developer Console](https://play.google.com/apps/publish).
+
+This ain't the prettiest game you've ever played.
