@@ -13,5 +13,5 @@
 #ifdef __OBJC__
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
-  #import <GooglePlayGames.h>
+  #import <gpg/GooglePlayGames.h>
 #endif

@@ -38,6 +38,8 @@
 		49D817C818567206008B9FD9 /* ButtonClickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D817C718567206008B9FD9 /* ButtonClickerTests.m */; };
 		49D817D51856818D008B9FD9 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D817D41856818D008B9FD9 /* GameViewController.m */; };
 		49D817D8185681C5008B9FD9 /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 49D817D7185681C5008B9FD9 /* GameModel.m */; };
+		511BF02B63C8DC6AF397E676 /* libPods-ButtonClickerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9700E83FF988CCAFDA285BD /* libPods-ButtonClickerTests.a */; };
+		C48BF9ABED5844C93D872776 /* libPods-ButtonClicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F04A2E8A7836B018DCEFB2 /* libPods-ButtonClicker.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19AD48F20434F34610E393C5 /* Pods-ButtonClicker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonClicker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ButtonClicker/Pods-ButtonClicker.debug.xcconfig"; sourceTree = "<group>"; };
 		28595942198AC8C30071670D /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		28595944198AC8D10071670D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		491B8C351865084E0061D71C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
@@ -92,6 +95,11 @@
 		49D817D41856818D008B9FD9 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		49D817D6185681C5008B9FD9 /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
 		49D817D7185681C5008B9FD9 /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
+		6D3605E93D6E76A38017378A /* Pods-ButtonClickerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonClickerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ButtonClickerTests/Pods-ButtonClickerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		86DA7CBD0E8163A599F0D427 /* Pods-ButtonClicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonClicker.release.xcconfig"; path = "Pods/Target Support Files/Pods-ButtonClicker/Pods-ButtonClicker.release.xcconfig"; sourceTree = "<group>"; };
+		AB2A4233A14E294046C755A6 /* Pods-ButtonClickerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ButtonClickerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ButtonClickerTests/Pods-ButtonClickerTests.release.xcconfig"; sourceTree = "<group>"; };
+		D8F04A2E8A7836B018DCEFB2 /* libPods-ButtonClicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ButtonClicker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9700E83FF988CCAFDA285BD /* libPods-ButtonClickerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ButtonClickerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +123,7 @@
 				49D8179F18567206008B9FD9 /* CoreGraphics.framework in Frameworks */,
 				49D817A118567206008B9FD9 /* UIKit.framework in Frameworks */,
 				49D8179D18567206008B9FD9 /* Foundation.framework in Frameworks */,
+				C48BF9ABED5844C93D872776 /* libPods-ButtonClicker.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +133,7 @@
 			files = (
 				49D817BE18567206008B9FD9 /* UIKit.framework in Frameworks */,
 				49D817BD18567206008B9FD9 /* Foundation.framework in Frameworks */,
+				511BF02B63C8DC6AF397E676 /* libPods-ButtonClickerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +148,7 @@
 				49D8179B18567206008B9FD9 /* Frameworks */,
 				49D8179A18567206008B9FD9 /* Products */,
 				4995C54A18626F29008537F7 /* README.md */,
+				D1FC66E6F9D234858E9B3447 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -169,6 +180,8 @@
 				49D8179C18567206008B9FD9 /* Foundation.framework */,
 				49D8179E18567206008B9FD9 /* CoreGraphics.framework */,
 				49D817A018567206008B9FD9 /* UIKit.framework */,
+				D8F04A2E8A7836B018DCEFB2 /* libPods-ButtonClicker.a */,
+				F9700E83FF988CCAFDA285BD /* libPods-ButtonClickerTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,6 +238,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D1FC66E6F9D234858E9B3447 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				19AD48F20434F34610E393C5 /* Pods-ButtonClicker.debug.xcconfig */,
+				86DA7CBD0E8163A599F0D427 /* Pods-ButtonClicker.release.xcconfig */,
+				6D3605E93D6E76A38017378A /* Pods-ButtonClickerTests.debug.xcconfig */,
+				AB2A4233A14E294046C755A6 /* Pods-ButtonClickerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -232,9 +256,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49D817CB18567206008B9FD9 /* Build configuration list for PBXNativeTarget "ButtonClicker" */;
 			buildPhases = (
+				402B6DD96B73FF0BE26CEE6D /* Check Pods Manifest.lock */,
 				49D8179518567206008B9FD9 /* Sources */,
 				49D8179618567206008B9FD9 /* Frameworks */,
 				49D8179718567206008B9FD9 /* Resources */,
+				80BEE4BECCA8C1011A25E449 /* Embed Pods Frameworks */,
+				07FED031177A66A97A221CB8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -249,9 +276,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49D817CE18567206008B9FD9 /* Build configuration list for PBXNativeTarget "ButtonClickerTests" */;
 			buildPhases = (
+				157EBED6FFD609FD0EFFE557 /* Check Pods Manifest.lock */,
 				49D817B618567206008B9FD9 /* Sources */,
 				49D817B718567206008B9FD9 /* Frameworks */,
 				49D817B818567206008B9FD9 /* Resources */,
+				ABBB9882EBF0D38E33512EAD /* Embed Pods Frameworks */,
+				2219172C308A5229990142C0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -317,6 +347,99 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07FED031177A66A97A221CB8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ButtonClicker/Pods-ButtonClicker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		157EBED6FFD609FD0EFFE557 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2219172C308A5229990142C0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ButtonClickerTests/Pods-ButtonClickerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		402B6DD96B73FF0BE26CEE6D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		80BEE4BECCA8C1011A25E449 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ButtonClicker/Pods-ButtonClicker-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABBB9882EBF0D38E33512EAD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ButtonClickerTests/Pods-ButtonClickerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		49D8179518567206008B9FD9 /* Sources */ = {
@@ -451,6 +574,7 @@
 		};
 		49D817CC18567206008B9FD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19AD48F20434F34610E393C5 /* Pods-ButtonClicker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -467,6 +591,7 @@
 		};
 		49D817CD18567206008B9FD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86DA7CBD0E8163A599F0D427 /* Pods-ButtonClicker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -483,6 +608,7 @@
 		};
 		49D817CF18567206008B9FD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D3605E93D6E76A38017378A /* Pods-ButtonClickerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ButtonClicker.app/ButtonClicker";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -506,6 +632,7 @@
 		};
 		49D817D018567206008B9FD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB2A4233A14E294046C755A6 /* Pods-ButtonClickerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ButtonClicker.app/ButtonClicker";
 				FRAMEWORK_SEARCH_PATHS = (
