@@ -48,8 +48,6 @@
     }
   }
 
-  [GIDSignIn sharedInstance].clientID = CLIENT_ID;
-
   return YES;
 }
 
