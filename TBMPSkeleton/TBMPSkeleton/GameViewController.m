@@ -19,7 +19,6 @@
 
 #import "GameViewController.h"
 #import "GameData.h"
-#import <GooglePlayGames.h>
 
 @interface GameViewController () <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UISwitch *leaveSwitch;

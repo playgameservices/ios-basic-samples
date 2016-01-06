@@ -22,7 +22,6 @@
 #import "GameViewController.h"
 #import "LobbyViewController.h"
 #import <GoogleSignIn.h>
-#import <GooglePlayGames.h>
 
 @interface LobbyViewController ()<GPGTurnBasedMatchListLauncherDelegate,
                                   GPGTurnBasedMatchDelegate,
