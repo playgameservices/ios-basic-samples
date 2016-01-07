@@ -33,16 +33,14 @@
 
 @implementation GameModel
 
--(AchievementManager *)achievementManager
-{
+-(AchievementManager *)achievementManager {
   if (_achievementManager == nil) {
     _achievementManager = [[AchievementManager alloc] init];
   }
   return _achievementManager;
 }
 
--(LeaderboardManager *)leaderboardManager
-{
+-(LeaderboardManager *)leaderboardManager {
   if (_leaderboardManager == nil) {
     _leaderboardManager = [[LeaderboardManager alloc] init];
   }
@@ -50,8 +48,7 @@
 }
 
 
--(int)requestScore:(int)score withDifficultyLevel:(TNDifficultyLevel)level
-{
+-(int)requestScore:(int)score withDifficultyLevel:(TNDifficultyLevel)level {
   // Manage any achievements that hinge on _requesting_ a score
   
   [self.achievementManager playerRequestedScore:score onDifficulty:level];
@@ -69,8 +66,7 @@
 //of having it passed in from the VC.
 -(void)gameOverWithScore:(int)score
       andDifficultyLevel:(TNDifficultyLevel)level
-   withCompletionHandler:(SubmitScoreCompletionHandler)handler
-{
+   withCompletionHandler:(SubmitScoreCompletionHandler)handler {
   // Manage any achievements that hinge on _receiving_ a score
   [self.achievementManager playerFinishedGameWithScore:score onDifficulty:level];
   

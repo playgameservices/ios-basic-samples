@@ -17,7 +17,9 @@
 //
 #import "ViewController.h"
 #import "Constants.h"
-#import "GoogleSignIn.h"
+#import <GoogleSignIn.h>
+#import "gpg/GooglePlayGames.h"
+
 
 @interface ViewController()<GPGStatusDelegate, GIDSignInUIDelegate>
 
@@ -25,8 +27,7 @@
 
 @implementation ViewController
 /** Initializes all of the Google services when the view loads and signs the user in. */
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
 
   NSLog(@"Init");
@@ -58,6 +59,7 @@
     }];
   }
 }
+
 /** Simulates attacking a "blue" monster in-game.
  *  @param sender A reference for the object sending the message.
  */
@@ -93,7 +95,6 @@
      }];
   NSLog(@"SENDER WAS %@", sender);
 }
-
 
 /** Simulates attacking a "red" monster in-game.
  *  @param sender A reference for the object sending the message.
@@ -164,8 +165,7 @@
   [self refreshButtons];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }

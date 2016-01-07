@@ -16,9 +16,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-
-#import <GooglePlus/GooglePlus.h>
-#import <GoogleOpenSource/GoogleOpenSource.h>
 #import "AppDelegate.h"
 #import "PeopleListTVC.h"
 
@@ -30,8 +27,7 @@
 
 @implementation PeopleListTVC
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
+- (id)initWithStyle:(UITableViewStyle)style {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
@@ -39,43 +35,14 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
 
-  GTLServicePlus* plusService = [[GPPSignIn sharedInstance] plusService];
-
-
-  // Let's just find my friends who have this app installed!
-  GTLQueryPlus *query = [GTLQueryPlus queryForPeopleListWithUserId:@"me"
-                                                        collection:@"connected"];
-  
-  query.maxResults = 20;
-  
-  
-  [plusService executeQuery:query
-          completionHandler:^(GTLServiceTicket *ticket,
-                              GTLPlusPeopleFeed *peopleFeed,
-                              NSError *error) {
-            if (error) {
-              NSLog(@"Error: %@", error);
-            } else {
-              // Get an array of people from GTLPlusPeopleFeed
-              NSLog(@"Query results: %@", peopleFeed);
-              if (peopleFeed.nextPageToken) {
-                NSLog(@"Wow! There's more than our maxResults here. That's a lot of people");
-              }
-              self.myPeeps = peopleFeed.items;
-              NSLog(@"People list is %@",self.myPeeps);
-              [self.tableView reloadData];
-            }
-          }
-   ];
+  // TODO (class): Replace deprecated features with app invites.
 
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
   self.myPeeps = nil;
@@ -83,37 +50,25 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [self.myPeeps count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-  static NSString *CellIdentifier = @"personCell";
-  GTLPlusPerson *personToShow = (GTLPlusPerson *)[self.myPeeps objectAtIndex:indexPath.row];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  // TODO (class): Replace deprecated feature for selecting bragging targets.
 
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personCell"];
   if (cell == nil) {
-    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"personCell"];
   }
-  if (personToShow.image) {
-    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:personToShow.image.url]]];
-  }
+  cell.textLabel.text = @"TBD";
 
-  NSLog(@"Person image is %@", personToShow.image.url);
-
-  cell.textLabel.text = personToShow.displayName;
-  
-  
-  
   return cell;
 }
 

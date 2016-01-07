@@ -17,8 +17,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GooglePlus/GooglePlus.h>
-#import <GooglePlayGames.h>
 @class GIDSignInButton;
 
 

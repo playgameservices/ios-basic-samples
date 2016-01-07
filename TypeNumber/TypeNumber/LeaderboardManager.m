@@ -23,15 +23,13 @@
 
 @implementation LeaderboardManager
 
-+(NSString *)getLeaderboardForDifficultyLevel:(TNDifficultyLevel)level
-{
++(NSString *)getLeaderboardForDifficultyLevel:(TNDifficultyLevel)level {
     return (level == TNDifficultyLevelEasy) ? LEAD_EASY : LEAD_HARD;
 }
 
 -(void)playerFinishedGameWithScore:(int)score
                       onDifficulty:(TNDifficultyLevel)level
-             withCompletionHandler:(SubmitScoreCompletionHandler)handler
-{
+             withCompletionHandler:(SubmitScoreCompletionHandler)handler {
   NSString *myLeaderboardId = [LeaderboardManager getLeaderboardForDifficultyLevel:level];
   self.scoreCompletionHandler = handler;
   
@@ -54,9 +52,7 @@
   
 }
 
-
--(void)dealloc
-{
+-(void)dealloc {
   self.scoreCompletionHandler = nil;
 }
 

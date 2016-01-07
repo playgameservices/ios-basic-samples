@@ -24,8 +24,7 @@
 @implementation AchievementManager
 
 
--(void)unlockAchievement:(NSString *)achievementId;
-{
+-(void)unlockAchievement:(NSString *)achievementId; {
   GPGAchievement *unlockMe = [GPGAchievement achievementWithId:achievementId];
 
   [unlockMe unlockAchievementWithCompletionHandler:^(BOOL newlyUnlocked, NSError *error) {
@@ -35,8 +34,7 @@
   }];
 }
 
--(void)makeIncrementalProgress:(NSString *)achievementId withSteps:(NSInteger)progressAmount
-{
+-(void)makeIncrementalProgress:(NSString *)achievementId withSteps:(NSInteger)progressAmount {
   NSLog(@"Your progress amount is %i", (int32_t)progressAmount );
 
   GPGAchievement *incrementMe = [GPGAchievement achievementWithId:achievementId];
@@ -53,18 +51,15 @@
 }
 
 
--(void)playerRequestedScore:(int)score onDifficulty:(TNDifficultyLevel)level
-{
+-(void)playerRequestedScore:(int)score onDifficulty:(TNDifficultyLevel)level {
   if (score == 0) {
     [self unlockAchievement:ACH_HUMBLE];
   } else if (score == 9999) {
     [self unlockAchievement:ACH_COCKY];
   }
-
 }
 
--(BOOL)isPrime:(int)checkMe
-{
+-(BOOL)isPrime:(int)checkMe {
   if (checkMe == 1) return NO;
 
   int checkMax = floor(sqrt(checkMe));
@@ -75,8 +70,7 @@
 }
 
 
--(void)playerFinishedGameWithScore:(int)score onDifficulty:(TNDifficultyLevel)level
-{
+-(void)playerFinishedGameWithScore:(int)score onDifficulty:(TNDifficultyLevel)level {
   if (score == 1337) {
     [self unlockAchievement:ACH_LEET];
   } else if ([self isPrime:score]) {

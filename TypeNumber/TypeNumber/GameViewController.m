@@ -16,15 +16,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-
-#import <GooglePlus/GooglePlus.h>
 #import <GoogleOpenSource/GTLBase64.h>
 #import "AppDelegate.h"
 #import "Constants.h"
 #import "GameViewController.h"
 #import "LeaderboardManager.h"
 
-@interface GameViewController () <GPPShareDelegate>
+@interface GameViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *playerMessage;
 @property (weak, nonatomic) IBOutlet UILabel *finalScoreLabel;
@@ -41,16 +39,14 @@
 
 @implementation GameViewController
 
--(GameModel *)gameModel
-{
+-(GameModel *)gameModel {
   if (_gameModel == nil) {
     _gameModel = [[GameModel alloc] init];
   }
   return _gameModel;
 }
 
--(void)reportOnHighScore:(GPGScoreReport *)scoreReport
-{
+-(void)reportOnHighScore:(GPGScoreReport *)scoreReport {
   [self.waitingForHighScore stopAnimating];
   if ([scoreReport isHighScoreForLocalPlayerThisWeek] && self.gameOver) {
     self.highScoreLabel.text = @"New high score for this week!";
@@ -73,8 +69,7 @@
 }
 
 
--(void)presentGameOverWithScore:(int)finalScore
-{
+-(void)presentGameOverWithScore:(int)finalScore {
   if (self.gameOver) {
     self.finalScoreLabel.text = [NSString stringWithFormat:@"%i",finalScore];
     self.finalScoreLabel.hidden = NO;
@@ -101,8 +96,7 @@
   }
 }
 
--(void)presentNewGame
-{
+-(void)presentNewGame {
   // Fix the title
   self.titleLabel.text = (self.difficulty == TNDifficultyLevelEasy) ? @"Type-a-Number: Easy" : @"Type-a-Number: Hard";
 
@@ -128,7 +122,6 @@
 
 }
 
-
 - (IBAction)bigButtonClicked:(id)sender {
   if (! self.gameOver) {
     NSNumberFormatter *nsnf = [[NSNumberFormatter alloc] init];
@@ -148,8 +141,6 @@
 }
 
 - (IBAction)bragButtonClicked:(id)sender {
-
-
   // Let's initiate a share object.
 
   NSString *difficultyString = (self.difficulty == TNDifficultyLevelEasy) ? @"Easy" : @"Hard";
@@ -178,21 +169,8 @@
     // assume we'll eventually have this working on the Type-a-number web sample
     NSURL *webLink = [NSURL URLWithString:[NSString stringWithFormat:@"%@?gamedata=%@", WEB_GAME_URL, encodedID]];
 
-
-    GPPShare *share = [GPPShare sharedInstance];
-    [GPPShare sharedInstance].delegate = self;
-
-    // Let's create the share dialog now!
-    id<GPPShareBuilder> shareDialog = [share nativeShareDialog];
-
-    //[shareDialog setPrefillText:prefillText];
-    [shareDialog setContentDeepLinkID:encodedID];
-    // This line is unused
-    [shareDialog setTitle:@"Oh yeah" description:@"You will never see this" thumbnailURL:nil];
-    [shareDialog setPrefillText:prefillText];
-    [shareDialog setURLToShare:webLink];
-    [shareDialog setCallToActionButtonWithLabel:@"PLAY" URL:webLink deepLinkID:encodedID];
-    [shareDialog open];
+    // TODO (class): share link
+    NSLog([NSString stringWithFormat:@"Share link %@ with annotation %@", webLink, prefillText]);
   }];
 }
 
@@ -202,9 +180,7 @@
   [[GPGLauncherController sharedInstance] presentLeaderboardWithLeaderboardId:targetLeaderboardId];
 }
 
-
 # pragma mark - TextField utility functions
-
 
 // Code to limit our text field to 4 characters. Thanks, stackoverflow!
 #define MAXLENGTH 4
@@ -222,15 +198,13 @@
 }
 
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   [self.scoreRequestTextField resignFirstResponder];
 }
 
 # pragma mark - Standard lifecycle stuff
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     // Custom initialization
@@ -238,8 +212,7 @@
   return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
   self.gameOver = NO;
   self.scoreRequestTextField.delegate = self;
@@ -247,15 +220,13 @@
   // Do any additional setup after loading the view.
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self presentNewGame];
 
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 

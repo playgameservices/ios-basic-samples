@@ -16,7 +16,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-#import <GooglePlus/GooglePlus.h>
 #import "AppDelegate.h"
 #import "Constants.h"
 #import "GameModel.h"
@@ -46,8 +45,7 @@
 
 #pragma mark - Google+ sign-in elements
 
--(void)refreshInterface
-{
+-(void)refreshInterface {
   BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
   [GIDSignIn sharedInstance].uiDelegate = self;
 
@@ -120,14 +118,12 @@
 
 # pragma mark - Picking difficulty level and transitioning
 
--(void)setDifficultyAndStartGame:(TNDifficultyLevel)level
-{
+-(void)setDifficultyAndStartGame:(TNDifficultyLevel)level {
   self.desiredDifficulty = level;
   [self performSegueWithIdentifier:@"playGame" sender:self];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   if ([segue.identifier isEqualToString:@"playGame"]) {
     ((GameViewController *)segue.destinationViewController).difficulty = self.desiredDifficulty;
     if (self.incomingChallenge) {
@@ -183,8 +179,7 @@
 
 # pragma mark - Standard lifecycle functions
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -192,20 +187,17 @@
     return self;
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
+-(void)viewDidAppear:(BOOL)animated {
   NSLog(@"In view did appear!");
   [super viewDidAppear:animated];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self refreshInterface];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
 
   [GPGManager sharedInstance].statusDelegate = self;
@@ -217,8 +209,7 @@
   }];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 

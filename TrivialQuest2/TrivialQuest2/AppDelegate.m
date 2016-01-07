@@ -18,8 +18,8 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import <GooglePlayGames.h>
 #import <GoogleSignIn.h>
+#import "gpg/GooglePlayGames.h"
 
 @interface AppDelegate ()<GPGQuestDelegate, GPGQuestListLauncherDelegate, GPGLauncherDelegate>
 
@@ -40,8 +40,7 @@
 }
 
 - (BOOL)application:(UIApplication *)application
-    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   [GPGLauncherController sharedInstance].launcherDelegate = self;
   [GPGLauncherController sharedInstance].questListLauncherDelegate = self;
     // Override point for customization after application launch.
@@ -51,8 +50,7 @@
 /** Message handler for when a user accepts a quest from the quest list.
  *  @param quest The quest that the user accepted.
  */
--(void)questListLauncherDidAcceptQuest:(GPGQuest *)quest
-{
+-(void)questListLauncherDidAcceptQuest:(GPGQuest *)quest {
   NSLog(@"The \"%@\" quest with id %@ has been accepted.", quest.name,
         quest.questId);
 }
@@ -66,13 +64,11 @@
   }];
 }
 
-
 /** Handler for when the Play Games quest picker is present.
  *  @param launcherController The controller that is managing the view.
  *  @return The ViewController with the launcher controller and this ViewController's View.
  */
-- (UIViewController *)presentingViewControllerForLauncher
-{
+- (UIViewController *)presentingViewControllerForLauncher {
   return self.window.rootViewController;
 }
 

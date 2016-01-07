@@ -18,11 +18,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GooglePlus/GooglePlus.h>
-
 typedef void(^ChallengeReceivedHandler)(void);
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, GPPDeepLinkDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, copy) ChallengeReceivedHandler challengeReceivedHandler;
