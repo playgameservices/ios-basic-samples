@@ -22,17 +22,12 @@
 #import "LeaderboardManager.h"
 
 @interface GameModel()
-
 @property (nonatomic, strong) AchievementManager *achievementManager;
 @property (nonatomic, strong) LeaderboardManager *leaderboardManager;
 @end
 
 
-
-// And our leaderboard IDs
-
 @implementation GameModel
-
 -(AchievementManager *)achievementManager {
   if (_achievementManager == nil) {
     _achievementManager = [[AchievementManager alloc] init];
@@ -47,12 +42,11 @@
   return _leaderboardManager;
 }
 
-
 -(int)requestScore:(int)score withDifficultyLevel:(TNDifficultyLevel)level {
   // Manage any achievements that hinge on _requesting_ a score
-  
+
   [self.achievementManager playerRequestedScore:score onDifficulty:level];
-  
+
   // Return the score based on the difficulty level
   if (level == TNDifficultyLevelEasy) {
     self.gameScore = score;
@@ -62,18 +56,17 @@
   return self.gameScore;
 }
 
-//TODO: I should probably just trust the model's gamescore here instead
-//of having it passed in from the VC.
+// Note: You should probably just trust the model's gamescore here instead
+// of having it passed in from the VC.
 -(void)gameOverWithScore:(int)score
       andDifficultyLevel:(TNDifficultyLevel)level
    withCompletionHandler:(SubmitScoreCompletionHandler)handler {
   // Manage any achievements that hinge on _receiving_ a score
   [self.achievementManager playerFinishedGameWithScore:score onDifficulty:level];
-  
+
   // And submit your final score to leaderboards
   NSLog(@"Trying to submit to leaderboard...");
   [self.leaderboardManager playerFinishedGameWithScore:score onDifficulty:level withCompletionHandler:handler];
-  
 }
 
 

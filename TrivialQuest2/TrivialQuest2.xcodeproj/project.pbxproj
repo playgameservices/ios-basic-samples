@@ -44,7 +44,6 @@
 		4B7D3CEF1C3DF55300C089F9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B7D3CEE1C3DF55300C089F9 /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
 		4B8992CC193011A60043CDEB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B5B77BD1923127200963C75 /* main.m */; };
 		4BB43534196499CB00A470AD /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB43533196499CB00A470AD /* CoreTelephony.framework */; };
-		7DC5451659E478D2568A24D8 /* libPods-TrivialQuest2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A487870B8E032865D994069C /* libPods-TrivialQuest2.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,9 +90,6 @@
 		4B5B7819192326E700963C75 /* gplus_signin_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gplus_signin_pressed@2x.png"; sourceTree = "<group>"; };
 		4B7D3CEE1C3DF55300C089F9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4BB43533196499CB00A470AD /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		4D2892DAF908A2528E6AFABE /* Pods-TrivialQuest2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrivialQuest2.release.xcconfig"; path = "Pods/Target Support Files/Pods-TrivialQuest2/Pods-TrivialQuest2.release.xcconfig"; sourceTree = "<group>"; };
-		A487870B8E032865D994069C /* libPods-TrivialQuest2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TrivialQuest2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8DF9FA3A90A595F600B0A07 /* Pods-TrivialQuest2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TrivialQuest2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TrivialQuest2/Pods-TrivialQuest2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,22 +113,12 @@
 				4B5B77B41923127200963C75 /* CoreGraphics.framework in Frameworks */,
 				4B5B77B61923127200963C75 /* UIKit.framework in Frameworks */,
 				4B5B77B21923127200963C75 /* Foundation.framework in Frameworks */,
-				7DC5451659E478D2568A24D8 /* libPods-TrivialQuest2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4696369FE21A9517C97EF642 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F8DF9FA3A90A595F600B0A07 /* Pods-TrivialQuest2.debug.xcconfig */,
-				4D2892DAF908A2528E6AFABE /* Pods-TrivialQuest2.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		4B5B77A51923127200963C75 = {
 			isa = PBXGroup;
 			children = (
@@ -140,7 +126,6 @@
 				4B5B77B71923127200963C75 /* TrivialQuest2 */,
 				4B5B77B01923127200963C75 /* Frameworks */,
 				286812C3196B85D100F8D7EB /* TrivialQuest2.app */,
-				4696369FE21A9517C97EF642 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,7 +148,6 @@
 				4B5B77B11923127200963C75 /* Foundation.framework */,
 				4B5B77B31923127200963C75 /* CoreGraphics.framework */,
 				4B5B77B51923127200963C75 /* UIKit.framework */,
-				A487870B8E032865D994069C /* libPods-TrivialQuest2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -223,12 +207,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4B5B77E01923127200963C75 /* Build configuration list for PBXNativeTarget "TrivialQuest2" */;
 			buildPhases = (
-				E20CC1D76823B8AD43FA518E /* Check Pods Manifest.lock */,
 				4B5B77AA1923127200963C75 /* Sources */,
 				4B5B77AB1923127200963C75 /* Frameworks */,
 				4B5B77AC1923127200963C75 /* Resources */,
-				17E63FFDA0F2CF534238D6A4 /* Embed Pods Frameworks */,
-				4A8959BC1FC53829715B6920 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,7 +226,7 @@
 		4B5B77A61923127200963C75 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Google;
 				TargetAttributes = {
 					4B5B77AD1923127200963C75 = {
@@ -299,54 +280,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		17E63FFDA0F2CF534238D6A4 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrivialQuest2/Pods-TrivialQuest2-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4A8959BC1FC53829715B6920 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TrivialQuest2/Pods-TrivialQuest2-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E20CC1D76823B8AD43FA518E /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		4B5B77AA1923127200963C75 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -396,8 +329,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -434,7 +367,6 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -452,14 +384,12 @@
 		};
 		4B5D79D81B84F4AF00C066CD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8DF9FA3A90A595F600B0A07 /* Pods-TrivialQuest2.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "$(SRCROOT)/TrivialQuest2/TrivialQuest2-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.TrivialQuest2;
 				PRODUCT_NAME = TrivialQuest2;
 				PROVISIONING_PROFILE = "";
 			};
@@ -467,13 +397,11 @@
 		};
 		4B5D79D91B84F4AF00C066CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D2892DAF908A2528E6AFABE /* Pods-TrivialQuest2.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = "$(SRCROOT)/TrivialQuest2/TrivialQuest2-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.TrivialQuest2;
 				PRODUCT_NAME = TrivialQuest2;
 				PROVISIONING_PROFILE = "";
 			};

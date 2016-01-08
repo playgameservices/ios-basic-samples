@@ -38,8 +38,7 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  // TODO (class): Replace deprecated features with app invites.
-
+  // Placeholder for social friend/invitation selector.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,8 +60,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  // TODO (class): Replace deprecated feature for selecting bragging targets.
-
+  // You could add a people picker here.
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"personCell"];
   if (cell == nil) {
     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"personCell"];

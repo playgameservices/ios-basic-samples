@@ -56,8 +56,7 @@ static const int TOO_MANY_LOOPS = 20;
 
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
@@ -84,7 +83,6 @@ static const int TOO_MANY_LOOPS = 20;
   if (foundIndex == NSNotFound)
     return nil;
   return [self.match.results objectAtIndex:foundIndex];
-
 }
 
 - (BOOL)isPlayerStillInGame:(GPGTurnBasedParticipant *)participantToCheck {
@@ -192,8 +190,7 @@ static const int TOO_MANY_LOOPS = 20;
   [self enableInterfaceIfMyTurn];
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
   [self.turnTextField resignFirstResponder];
 }
 
@@ -216,11 +213,11 @@ static const int TOO_MANY_LOOPS = 20;
  * not for a typical "I have been eliminated" scenario. Call takeLosingTurn for that.
  *
  * Note that any changes the player has made to the gameData will NOT be saved. It you want
- * to do that, take a turn with the localParticipantId as the next player. Then, in the 
+ * to do that, take a turn with the localParticipantId as the next player. Then, in the
  * completion handler, you can call leaveInTurn.
  *
- * One other side effect here, the game will be silently cancelled if all but one player has left. 
- * If you want to avoid this, you should call finishWithData and declare the remaining player the 
+ * One other side effect here, the game will be silently cancelled if all but one player has left.
+ * If you want to avoid this, you should call finishWithData and declare the remaining player the
  * winner.
  */
 
@@ -287,7 +284,7 @@ static const int TOO_MANY_LOOPS = 20;
 - (IBAction)takeTurnWasPressed:(id)sender {
   self.gameData.stringToPassAround = self.turnTextField.text;
   self.gameData.turnCounter++;
-  
+
   // Did the player click "win game?", or have all other players been eliminated?
   if (self.winGameSwitch.on || self.nextParticipantId == self.match.localParticipantId) {
     [self takeWinningTurn];
@@ -312,14 +309,12 @@ static const int TOO_MANY_LOOPS = 20;
 
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

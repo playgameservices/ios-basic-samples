@@ -41,7 +41,7 @@
 + (MPManager *)sharedInstance;
 
 /**
- * Creates a quick match room. 
+ * Creates a quick match room.
  *
  * @param totalPlayers All players to add to the match (local player included)
  */
@@ -59,12 +59,12 @@
  * Sends your player's score to everybody else in the room
  *
  * @param score Total score up to this point
- * @param isFinal Is this the player's final score? 
+ * @param isFinal Is this the player's final score?
  */
 - (void)sendPlayersMyScore:(int)score isFinal:(BOOL)isFinal;
 
 /**
- * Safely leaves the room and alerts the other players. Typically called at the end of a 
+ * Safely leaves the room and alerts the other players. Typically called at the end of a
  * match.
  */
 - (void)leaveRoom;

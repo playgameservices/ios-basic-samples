@@ -4,7 +4,4 @@
    <FileRef
       location = "group:TrivialQuest2.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
 </Workspace>

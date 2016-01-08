@@ -170,7 +170,7 @@
     NSURL *webLink = [NSURL URLWithString:[NSString stringWithFormat:@"%@?gamedata=%@", WEB_GAME_URL, encodedID]];
 
     // TODO (class): share link
-    NSLog([NSString stringWithFormat:@"Share link %@ with annotation %@", webLink, prefillText]);
+    NSLog(@"Share link %@ with annotation %@", webLink.path, prefillText);
   }];
 }
 

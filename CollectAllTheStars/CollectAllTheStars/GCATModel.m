@@ -125,7 +125,7 @@ return self;
 /**
  * If you want to attempt a manual merge, this would be the way to do it.
  * Note that in general, manual merges work best if you have "union" type of merges where taking
- * the highest value is the best resolution (i.e. high scores on a level, stars per level, 
+ * the highest value is the best resolution (i.e. high scores on a level, stars per level,
  * unlocked levels, etc.)
  */
 - (void)resolveSnapshotWithBaseMetadata :(GPGSnapshotMetadata*)conflictingSnapshotBase
@@ -175,7 +175,7 @@ return self;
           }];
         }
       }];
-    }                                                                          
+    }
   }];
 }
 

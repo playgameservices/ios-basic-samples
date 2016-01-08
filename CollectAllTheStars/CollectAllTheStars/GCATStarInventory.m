@@ -39,7 +39,7 @@ NSString *const kJSONLevelsKey = @"levels";
     _starDict = [[NSMutableDictionary alloc] init];
   }
   return self;
-    
+
 }
 
 
@@ -80,7 +80,7 @@ NSString *const kJSONLevelsKey = @"levels";
   // Just for debugging
   NSString *jsonString = [[NSString alloc] initWithData:saveData encoding:NSUTF8StringEncoding];
   NSLog(@"I got yer cloud save data right here... %@",jsonString);
-  
+
   return saveData;
 }
 

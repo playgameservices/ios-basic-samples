@@ -24,9 +24,6 @@
 
 @implementation AppDelegate
 
-// TODO (class): Handle deep links via app invites.
-
-
 - (BOOL)application:(UIApplication *)app
             openURL:(NSURL *)url
             options:(NSDictionary *)options {
@@ -38,10 +35,9 @@
 -(BOOL)application:(UIApplication *)application
            openURL:(NSURL *)url
  sourceApplication:(NSString *)sourceApplication
-        annotation:(id)annotation
-{
+        annotation:(id)annotation {
   NSLog(@"I am receiving the URL %@", [url absoluteString]);
-  
+
   NSDictionary *options = @{UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication,
                             UIApplicationOpenURLOptionsAnnotationKey: annotation};
 
@@ -55,7 +51,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // TODO (class): Handle deep links via app invites.
+  // You can add deep link handlers here.
   return YES;
 }
 
@@ -65,7 +61,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-  // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+  // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
   // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 

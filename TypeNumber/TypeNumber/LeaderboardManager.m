@@ -22,7 +22,6 @@
 
 
 @implementation LeaderboardManager
-
 +(NSString *)getLeaderboardForDifficultyLevel:(TNDifficultyLevel)level {
     return (level == TNDifficultyLevelEasy) ? LEAD_EASY : LEAD_HARD;
 }
@@ -32,12 +31,10 @@
              withCompletionHandler:(SubmitScoreCompletionHandler)handler {
   NSString *myLeaderboardId = [LeaderboardManager getLeaderboardForDifficultyLevel:level];
   self.scoreCompletionHandler = handler;
-  
+
   GPGScore *submitMe = [GPGScore scoreWithLeaderboardId:myLeaderboardId];
   submitMe.value = score;
-  
-  
-  
+
   [submitMe submitScoreWithCompletionHandler:^(GPGScoreReport *report, NSError *error) {
     if (error) {
       NSLog(@"Received an error attempting to add to leaderboard %@: %@", submitMe, error);
@@ -45,16 +42,13 @@
       if (report.isHighScoreForLocalPlayerToday) {
         NSLog(@"Woo hoo! Daily high score!");
       }
-      
+
       self.scoreCompletionHandler(report);
     }
   }];
-  
 }
 
 -(void)dealloc {
   self.scoreCompletionHandler = nil;
 }
-
-
 @end

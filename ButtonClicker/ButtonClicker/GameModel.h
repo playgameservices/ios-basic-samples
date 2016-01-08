@@ -30,8 +30,8 @@ typedef NS_ENUM(NSInteger, BCGameState) {
 @property (nonatomic, readonly) CFTimeInterval timeLeft;
 @property (nonatomic, readonly) BCGameState gameState;
 
-/** 
- * Get ready to start a new game! Reset our score to zero, and get ourselves into a 
+/**
+ * Get ready to start a new game! Reset our score to zero, and get ourselves into a
  * "Ready to start" phase
  */
 - (void)prepareToStart;
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, BCGameState) {
 
 /**
  * We received word that an opponent has reached a particular score
- * 
+ *
  * @param participantId The random string corresponding to this player in the match
  * @param newScore The new player's reported score
  * @param isFinal Is this the player's final score?

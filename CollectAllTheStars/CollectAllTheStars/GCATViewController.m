@@ -67,8 +67,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 @implementation GCATViewController
 
 # pragma mark - Sign-in functions
--(void)startGoogleGamesSignIn
-{
+-(void)startGoogleGamesSignIn {
   // Without this line, you will get an error code: GPGServiceMethodFailedError.
   [GPGManager sharedInstance].snapshotsEnabled = YES;
   // This is the updated way to sign in and does not require reauthorize.
@@ -100,8 +99,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 
 // Refresh our buttons depending on whether or not the user has signed in to
 // Play Games
--(void)refreshButtons
-{
+-(void)refreshButtons {
   BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
   for (UIButton *hideMe in self.levelButtons) {
     hideMe.hidden = !signedIn;
@@ -247,23 +245,19 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 
 
 # pragma mark - PickerView methods
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
   return 1;
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
   return 20;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
   return [NSString stringWithFormat:@"World %d", (int)row+1];
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
   self.pickerSelectedRow = (int)row;
 }
 
@@ -285,8 +279,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 
 }
 
--(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
   if (buttonIndex == 1) { //Done
     self.currentWorld = self.pickerSelectedRow + 1;
     [self refreshStarDisplay];
@@ -312,8 +305,7 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 
 # pragma mark - Standard lifecycle functions
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
   self.levelButtons = [NSArray arrayWithObjects:self.level1Button,
                        self.level2Button, self.level3Button,
@@ -328,23 +320,21 @@ static NSString * const kDeclinedGooglePreviously = @"UserDidDeclineGoogleSignIn
 
   [GPGManager sharedInstance].snapshotsEnabled = YES;
   [GPGManager sharedInstance].statusDelegate = self;
-  
+
   self.currentlySigningIn  = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 
   [self refreshButtons];
 
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [self refreshButtons];
   [self refreshStarDisplay];
   [GIDSignIn sharedInstance].uiDelegate = self;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }

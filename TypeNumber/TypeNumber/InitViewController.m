@@ -43,7 +43,7 @@
 
 @implementation InitViewController
 
-#pragma mark - Google+ sign-in elements
+#pragma mark - Google sign-in elements
 
 -(void)refreshInterface {
   BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
@@ -58,7 +58,7 @@
     flipMe.enabled = signedIn;
     flipMe.hidden = !signedIn;
   }
-  
+
   [self.signingIn stopAnimating];
   self.gameIcons.hidden = !signedIn;
 
@@ -89,7 +89,6 @@
     self.signInButton.alpha = 0.4;
     [self.signingIn startAnimating];
   }
-  
 }
 
 - (void)didFinishGamesSignInWithError:(NSError *)error {

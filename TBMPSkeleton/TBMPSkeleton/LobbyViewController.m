@@ -52,8 +52,7 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
 
 # pragma mark - Sign in stuff
 
--(void)refreshButtons
-{
+-(void)refreshButtons {
   BOOL signedIn = [GPGManager sharedInstance].isSignedIn;
   self.signInButton.hidden = signedIn;
   self.signOutButton.hidden = !signedIn;
@@ -381,8 +380,7 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
 
 # pragma mark - Lifecycle methods
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   [super viewDidLoad];
 
   [GPGManager sharedInstance].statusDelegate = self;
@@ -390,16 +388,14 @@ typedef NS_ENUM(NSInteger, LobbyAlertViewType) {
   _tryingSilentSignin = [[GPGManager sharedInstance] signInWithClientID:CLIENT_ID silently:YES];
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
+-(void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   [GIDSignIn sharedInstance].uiDelegate = self;
   [self refreshButtons];
 }
 
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
   // Dispose of any resources that can be recreated.
 }

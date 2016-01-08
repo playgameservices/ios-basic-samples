@@ -34,8 +34,7 @@ static const double kTotalGameTime = 20.0;
 
 @implementation GameModel
 
-- (id)init
-{
+- (id)init {
   self = [super init];
   if (self) {
     // Custom intiialization here
