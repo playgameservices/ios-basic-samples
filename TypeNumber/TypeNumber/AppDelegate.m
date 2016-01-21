@@ -24,26 +24,15 @@
 
 @implementation AppDelegate
 
-- (BOOL)application:(UIApplication *)app
-            openURL:(NSURL *)url
-            options:(NSDictionary *)options {
-  return [[GIDSignIn sharedInstance] handleURL:url
-                             sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-                                    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
-}
-
 -(BOOL)application:(UIApplication *)application
            openURL:(NSURL *)url
  sourceApplication:(NSString *)sourceApplication
         annotation:(id)annotation {
   NSLog(@"I am receiving the URL %@", [url absoluteString]);
 
-  NSDictionary *options = @{UIApplicationOpenURLOptionsSourceApplicationKey: sourceApplication,
-                            UIApplicationOpenURLOptionsAnnotationKey: annotation};
-
   return [[GIDSignIn sharedInstance] handleURL:url
-                             sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
-                                    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+                             sourceApplication:sourceApplication
+                                    annotation:annotation];
 
 }
 
