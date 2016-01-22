@@ -228,11 +228,6 @@
 			attributes = {
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Google;
-				TargetAttributes = {
-					4B5B77AD1923127200963C75 = {
-						DevelopmentTeam = Z2YEEZZZN6;
-					};
-				};
 			};
 			buildConfigurationList = 4B5B77A91923127200963C75 /* Build configuration list for PBXProject "TrivialQuest2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -387,8 +382,9 @@
 		4B5D79D81B84F4AF00C066CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ENABLE_BITCODE = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "$(SRCROOT)/TrivialQuest2/TrivialQuest2-Info.plist";
@@ -401,9 +397,10 @@
 		4B5D79D91B84F4AF00C066CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ENABLE_BITCODE = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/TrivialQuest2/TrivialQuest2-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.TrivialQuest2;
 				PRODUCT_NAME = TrivialQuest2;
