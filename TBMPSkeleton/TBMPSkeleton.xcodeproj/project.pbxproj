@@ -259,9 +259,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Google;
 				TargetAttributes = {
-					49D7689718CBCAB3007FDE22 = {
-						DevelopmentTeam = Z2YEEZZZN6;
-					};
 					49D768B818CBCAB3007FDE22 = {
 						TestTargetID = 49D7689718CBCAB3007FDE22;
 					};
