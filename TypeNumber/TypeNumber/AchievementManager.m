@@ -55,7 +55,7 @@
   if (score == 0) {
     [self unlockAchievement:ACH_HUMBLE];
   } else if (score == 9999) {
-    [self unlockAchievement:ACH_COCKY];
+    [self unlockAchievement:ACH_ARROGANT];
   }
 }
 

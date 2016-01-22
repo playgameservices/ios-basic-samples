@@ -46,8 +46,8 @@
 /** Show a toast with Event details. */
 - (IBAction)ShowEvents:(id)sender {
   NSLog(@"---- Showing Event Counts -----");
-  NSArray* events = [NSArray arrayWithObjects:  BLUE_MONSTER_EVENT_ID, GREEN_MONSTER_EVENT_ID,
-                     RED_MONSTER_EVENT_ID, YELLOW_MONSTER_EVENT_ID, nil];
+  NSArray* events = [NSArray arrayWithObjects:  EVENT_BLUE, EVENT_GREEN,
+                     EVENT_RED, EVENT_YELLOW, nil];
   NSArray* labels = [NSArray arrayWithObjects: @"Blue", @"Green", @"Red", @"Yellow", nil];
 
   for (int i=0; i < 4; i++){
@@ -64,7 +64,7 @@
  *  @param sender A reference for the object sending the message.
  */
 - (IBAction)attackBlue:(id)sender {
-  [GPGEvent eventForId:BLUE_MONSTER_EVENT_ID
+  [GPGEvent eventForId:EVENT_BLUE
      completionHandler:^(GPGEvent *event, NSError *error) {
        NSLog(@"Event: %@ Error: %@", event, error);
        if (event){
@@ -83,7 +83,7 @@
 - (IBAction)attackGreen:(id)sender {
   NSLog(@"Attacked a green monster.");
 
-  [GPGEvent eventForId:GREEN_MONSTER_EVENT_ID
+  [GPGEvent eventForId:EVENT_GREEN
      completionHandler:^(GPGEvent *event, NSError *error) {
        if (event){
          NSLog(@"INCREMENTING GREEN BY 1");
@@ -100,7 +100,7 @@
  *  @param sender A reference for the object sending the message.
  */
 - (IBAction)attackRed:(id)sender {
-  [GPGEvent eventForId:RED_MONSTER_EVENT_ID
+  [GPGEvent eventForId:EVENT_RED
      completionHandler:^(GPGEvent *event, NSError *error) {
        if (event){
          [event increment];
@@ -116,7 +116,7 @@
  *  @param sender A reference for the object sending the message.
  */
 - (IBAction)attackYellow:(id)sender {
-  [GPGEvent eventForId:YELLOW_MONSTER_EVENT_ID
+  [GPGEvent eventForId:EVENT_YELLOW
      completionHandler:^(GPGEvent *event, NSError *error) {
        if (event){
          [event increment];
