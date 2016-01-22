@@ -23,9 +23,9 @@
 #define CLIENT_ID @"ReplaceMe"
 
 // Replace the strings with your event identifiers.
-#define BLUE_MONSTER_EVENT_ID @"ReplaceMe"
-#define GREEN_MONSTER_EVENT_ID @"ReplaceMe"
-#define RED_MONSTER_EVENT_ID @"ReplaceMe"
-#define YELLOW_MONSTER_EVENT_ID @"ReplaceMe"
+#define EVENT_BLUE @"ReplaceMe"
+#define EVENT_GREEN @"ReplaceMe"
+#define EVENT_RED @"ReplaceMe"
+#define EVENT_YELLOW @"ReplaceMe"
 
 #endif
